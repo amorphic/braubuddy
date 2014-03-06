@@ -1,0 +1,24 @@
+[global]
+# Server host and port
+server.socket_host: "0.0.0.0"
+server.socket_port: 8070
+
+[engine]
+# Units
+units: 'celsius'
+# Frequency
+frequency: 2 
+# Thermometer
+thermometer: braubuddy.thermometer.RandomRangeThermometer()
+# Environmental Controller
+envcontroller: braubuddy.envcontroller.TestEnvController()
+# Thermostat
+thermostat: braubuddy.thermostat.SimpleTargeted('celsius', 21) 
+
+[outputs]
+# Outputs
+csv_out: braubuddy.output.CSVFile(units='celsius', show_timestamp=True)
+json_out: braubuddy.output.JSONFile()
+
+[/api]
+
