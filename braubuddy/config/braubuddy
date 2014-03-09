@@ -1,15 +1,15 @@
 [global]
 # Server host and port
 server.socket_host: "0.0.0.0"
-server.socket_port: 8070
+server.socket_port: 8080
 
 [engine]
 # Units
 units: 'celsius'
-# Frequency
+# Frequency of thermostat cycle in seconds
 frequency: 2 
 # Thermometer
-thermometer: braubuddy.thermometer.RandomRangeThermometer()
+thermometer: braubuddy.thermometer.Temper()
 # Environmental Controller
 envcontroller: braubuddy.envcontroller.TestEnvController()
 # Thermostat
@@ -17,8 +17,8 @@ thermostat: braubuddy.thermostat.SimpleTargeted('celsius', 21)
 
 [outputs]
 # Outputs
-csv_out: braubuddy.output.CSVFile(units='celsius', show_timestamp=True)
-json_out: braubuddy.output.JSONFile()
+csv_out: braubuddy.output.CSVFile(out_file='/home/james/output/bb.csv', units='celsius', show_timestamp=True)
+json_out: braubuddy.output.JSONFile(out_file='/home/james/output/bb.json')
 
-[/api]
-
+[/]
+response.stream: True

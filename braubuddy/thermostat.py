@@ -1,5 +1,7 @@
 '''
 Braubuddy Thermostat.
+
+Need to be able to reset the target temp with a simple temp val
 '''
 
 import abc

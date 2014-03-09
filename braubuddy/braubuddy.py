@@ -1,32 +1,34 @@
 """
-Braubuddy engine
+Braubuddy
 
 TODO:
-- layout
- - 'engine', 'cycle, 'api'?
-  - each a separate class, separate config?
-  - cycle config
-   - not in braubuddy format?
-   - separate from app config so not changed on update?
-   - provide heavily commented config.example and tell users to copy it
+- code layout
+ - outputs need a better home
+ - provide heavily commented config.example and tell users to copy it
 - html template
-- graphs/graphics consuming api
+ - basic template
+ - graphs/graphics consuming api
 - graphite output
 """
-
-import braubuddy 
 import logging
 import cherrypy
+import os
 import sys
 import json
+import thermostat
+import thermometer
+import envcontroller
+import output
+import engine
 from cherrypy.process.plugins import Monitor
 
 # Temp/Controller data
-RECENT_DATA = braubuddy.output.ListMemory()
+RECENT_DATA = output.ListMemory()
 
 # Config file
-CONFIG = 'config/braubuddy'
-CONFIG_APP = 'config/app'
+THIS_DIR = os.path.dirname(__file__)
+CONFIG_BRAUBUDDY = os.path.join(THIS_DIR, 'config/braubuddy')
+CONFIG_API = os.path.join(THIS_DIR, 'config/api')
 
 class API(object):
     """
@@ -49,58 +51,42 @@ class API(object):
             pass
         return 'Set temp to {0}'.format(temp)
 
-class Engine(object):
+class Interface(object):
     """
-    The Braubuddy Engine.
+    Braubuddy web interface.
     """
-
-    def __init__(self):
-
-        self.api = API()
 
     @cherrypy.expose
     def index(self):
         # Serve html + js prettiness pointing at api
         return 'Braubuddy'
 
-    def cycle(self):
-        """
-        Performs full thermostat cycle.
-        """
-
-        # Load Config
-        e_conf = cherrypy.request.app.config['engine']
-        envcontroller = e_conf['envcontroller']
-        thermometer = e_conf['thermometer']
-        thermostat = e_conf['thermostat']
-        # Environment Input
-        current_heat, current_cool = envcontroller.get_power_levels()
-        current_temp = thermometer.get_temperature()
-        required_heat, required_cool = thermostat.get_required_state(
-            current_temp, current_heat, current_cool)
-        # Set Power Levels
-        envcontroller.set_heater_level(required_heat)
-        envcontroller.set_cooler_level(required_cool)        
-        # Output
-        outputs = cherrypy.request.app.config['outputs']
-        for name, output in outputs.iteritems():
-            output.publish_status(current_temp, current_heat, current_cool)
-        RECENT_DATA.publish_status(current_temp, current_heat, current_cool)
-
 def main():
+    '''
+    Start the braubuddy engine and interface
+    '''
 
-    # Create Braubuddy application
-    braubuddy_engine = Engine()
-    # Load Global config
-    cherrypy.config.update(CONFIG)
-    # Mount Braubuddy application
-    cherrypy.tree.mount(braubuddy_engine, config=CONFIG)
+    # Load global config and mount applications
+    cherrypy.config.update(CONFIG_BRAUBUDDY)
+    cherrypy.tree.mount(Interface(), '', config=CONFIG_BRAUBUDDY)
+    cherrypy.tree.mount(API(), '/api', config=CONFIG_API)
+
+    # Load engine config and initialise engine
+    units = cherrypy.tree.apps[''].config['engine']['units']
+    frequency = cherrypy.tree.apps[''].config['engine']['frequency']
+    thermometer = cherrypy.tree.apps[''].config['engine']['thermometer']
+    envcontroller = cherrypy.tree.apps[''].config['engine']['envcontroller']
+    thermostat = cherrypy.tree.apps[''].config['engine']['thermostat']
+    # Adding outputs to engine for now but this doesn't feel quite right
+    outputs = cherrypy.tree.apps[''].config['outputs']
+    outputs['recent_data'] = RECENT_DATA
+    bb_engine = engine.Engine(envcontroller, thermometer, thermostat, outputs)
+
     # Create job to regularly perform thermostat cycle
-    cycle = Monitor(cherrypy.engine, braubuddy_engine.cycle,
-        frequency=cherrypy.tree.apps[''].config['engine']['frequency'], 
-        #frequency=cherrypy.config['engine']['frequency'], 
-        name='bb_engine')
+    cycle = Monitor(cherrypy.engine, bb_engine.cycle,
+        frequency=frequency, name='bb_engine')
     cycle.subscribe()
+
     # Start cherrypy
     cherrypy.engine.signals.subscribe()
     cherrypy.engine.start()

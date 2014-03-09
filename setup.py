@@ -1,16 +1,18 @@
-from distutils.core import setup
+from setuptools import setup
 
 setup(
-    name='Braubuddy',
+    name='braubuddy',
     version='0.1.0',
     author='James Stewart',
     author_email='jstewart101@gmail.com',
-    packages=['braubuddy, braubuddy.test'],
+    packages=['braubuddy', 'test'],
     scripts=[],
     url='http://pypi.python.org/pypi/Braubuddy/',
     license='LICENSE.txt',
     description='An extensile thermostat framework',
-    long_description=open('README.txt').read(),
+    long_description=open('README.md').read(),
     install_requires=[
+        'tosr0x>=0.2.0',
+        'temperusb>=1.1.2'
     ],
 )

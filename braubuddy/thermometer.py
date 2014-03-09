@@ -4,6 +4,7 @@ Braubuddy Thermometer
 
 import random
 import abc
+import temperusb
 import temper
 import logging
 
@@ -88,7 +89,7 @@ class IThermometer(object):
         pass
 
     
-class RandomRangeThermometer(IThermometer):
+class RandomRange(IThermometer):
     """
     Thermometer which generates random temperature readings within
     a defined range. Use for testing.
@@ -121,7 +122,7 @@ class RandomRangeThermometer(IThermometer):
             )
         return current_temp
 
-class TemperThermometer(IThermometer):
+class Temper(IThermometer):
     """
     TEMPer USB Thermometer
 
@@ -151,6 +152,7 @@ class TemperThermometer(IThermometer):
         LOGGER.info(
             'Discovering TEMPer USB thermometer(s)'
         )
+        #th = temperusb.TemperHandler()
         th = temper.TemperHandler()
         temper_devices = th.get_devices()
         LOGGER.info(
