@@ -9,7 +9,8 @@ units: 'celsius'
 # Frequency of thermostat cycle in seconds
 frequency: 2 
 # Thermometer
-thermometer: braubuddy.thermometer.Temper()
+##thermometer: braubuddy.thermometer.Temper()
+thermometer: braubuddy.thermometer.RandomRange()
 # Environmental Controller
 envcontroller: braubuddy.envcontroller.TestEnvController()
 # Thermostat

@@ -37,11 +37,17 @@ class API(object):
 
     @cherrypy.expose
     def index(self):
-        # Return page w/API instructions
+        '''
+        Return page w/API instructions
+        '''
         return 'Braubuddy API'
 
     @cherrypy.expose
+    @cherrypy.tools.json_out()
     def data(self):
+        '''
+        Return recent data as tuples
+        '''
         return unicode(RECENT_DATA.get_datapoints())
 
     @cherrypy.expose
@@ -58,7 +64,10 @@ class Interface(object):
 
     @cherrypy.expose
     def index(self):
-        # Serve html + js prettiness pointing at api
+        '''
+        Serve html w/cur temp and status
+        Serve garph js pointing at api
+        '''
         return 'Braubuddy'
 
 def main():
@@ -78,6 +87,7 @@ def main():
     envcontroller = cherrypy.tree.apps[''].config['engine']['envcontroller']
     thermostat = cherrypy.tree.apps[''].config['engine']['thermostat']
     # Adding outputs to engine for now but this doesn't feel quite right
+    # Should make outputs separate (custom plugin?) and event-driven
     outputs = cherrypy.tree.apps[''].config['outputs']
     outputs['recent_data'] = RECENT_DATA
     bb_engine = engine.Engine(envcontroller, thermometer, thermostat, outputs)
