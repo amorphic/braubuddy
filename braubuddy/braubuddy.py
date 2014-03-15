@@ -5,30 +5,37 @@ TODO:
 - code layout
  - outputs need a better home
  - provide heavily commented config.example and tell users to copy it
-- html template
+- jinja2 template
  - basic template
  - graphs/graphics consuming api
 - graphite output
 """
-import logging
-import cherrypy
 import os
 import sys
+import logging
+import cherrypy
 import json
+import jinja2
+from datetime import datetime
+from jinja2 import Environment, FileSystemLoader
+from cherrypy.process.plugins import Monitor
+
 import thermostat
 import thermometer
 import envcontroller
 import output
 import engine
-from cherrypy.process.plugins import Monitor
 
 # Temp/Controller data
 RECENT_DATA = output.ListMemory()
 
-# Config file
-THIS_DIR = os.path.dirname(__file__)
-CONFIG_BRAUBUDDY = os.path.join(THIS_DIR, 'config/braubuddy')
-CONFIG_API = os.path.join(THIS_DIR, 'config/api')
+# Config files
+#THIS_DIR = os.path.dirname(__file__)
+THIS_DIR = os.path.dirname(os.path.abspath(__file__))
+CONFIG_DIR = os.path.join(THIS_DIR, 'config')
+CONFIG_BRAUBUDDY = os.path.join(CONFIG_DIR, 'braubuddy')
+CONFIG_API = os.path.join(CONFIG_DIR, 'api')
+TEMPLATE_DIR = os.path.join(THIS_DIR, 'templates')
 
 class API(object):
     """
@@ -62,13 +69,28 @@ class Interface(object):
     Braubuddy web interface.
     """
 
+    def __init__(self):
+        self.j2env = Environment(loader=FileSystemLoader(TEMPLATE_DIR))
+
     @cherrypy.expose
     def index(self):
         '''
         Serve html w/cur temp and status
         Serve garph js pointing at api
         '''
-        return 'Braubuddy'
+        try:
+            last_datapoint = RECENT_DATA.get_datapoints()[0]
+            temp, heat, cool, time = RECENT_DATA.get_datapoints()[-1]
+        except IndexError:
+            # No datapoints loaded yet
+            temp = 0
+            heat = 0
+            cool = 0
+            time = 0
+        time = datetime.fromtimestamp(time).strftime('%d-%m-%y %H:%M')
+        template = self.j2env.get_template('braubuddy.html')
+        print 'temp is ' + str(temp)
+        return template.render(temp=temp, heat=heat, cool=cool, time=time)
 
 def main():
     '''

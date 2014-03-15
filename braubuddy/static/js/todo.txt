@@ -1,0 +1,3 @@
+http://www.jqplot.com/
+http://www.flotcharts.org/
+http://nvd3.org/ http://d3js.org/

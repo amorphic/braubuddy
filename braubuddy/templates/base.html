@@ -1,0 +1,20 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+{% block head %}
+<link rel="stylesheet" href="/css/bootstrap.css" />
+<title>Braubuddy - {% block title %}{% endblock %}</title>
+{% endblock %}
+</head>
+<body>
+<div id="content">{% block content %}{% endblock %}</div>
+<div id="footer">
+{% block footer %}
+<div align=center>
+    &copy; Copyright 2014 by <a href="http://jimter.net/">James Stewart</a>.
+</div>
+{% endblock %}
+</div>
+</body>
+</html>
