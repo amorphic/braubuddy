@@ -8,7 +8,7 @@ server.socket_port: 8080
 ##log.error_file: ’site.log’
 log.screen: True
 
-[engine]
+[components]
 # Units
 units: 'celsius'
 # Frequency of thermostat cycle in seconds
@@ -25,28 +25,3 @@ thermostat: braubuddy.thermostat.SimpleTargeted('celsius', 21)
 # Outputs
 csv_out: braubuddy.output.CSVFile(out_file='/home/james/output/bb.csv', units='celsius', show_timestamp=True)
 json_out: braubuddy.output.JSONFile(out_file='/home/james/output/bb.json')
-
-# Application - DO NOT EDIT
-[/favicon.ico]
-tools.staticfile.on: True
-tools.staticfile.filename: braubuddy.THIS_DIR + '/static/img/favicon.ico'
-
-[/css]
-tools.staticdir.on: True
-tools.staticdir.root: braubuddy.THIS_DIR
-tools.staticdir.dir: 'static/css/'
-
-[/fonts]
-tools.staticdir.on: True
-tools.staticdir.root: braubuddy.THIS_DIR
-tools.staticdir.dir: 'static/fonts/'
-
-[/img]
-tools.staticdir.on: True
-tools.staticdir.root: braubuddy.THIS_DIR
-tools.staticdir.dir: 'static/img/'
-
-[/js]
-tools.staticdir.on: True
-tools.staticdir.root: braubuddy.THIS_DIR
-tools.staticdir.dir: 'static/js/'

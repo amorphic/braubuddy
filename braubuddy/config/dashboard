@@ -1,0 +1,23 @@
+[/favicon.ico]
+tools.staticfile.on: True
+tools.staticfile.filename: braubuddy.THIS_DIR + '/static/img/favicon.ico'
+
+[/css]
+tools.staticdir.on: True
+tools.staticdir.root: braubuddy.THIS_DIR
+tools.staticdir.dir: 'static/css/'
+
+[/fonts]
+tools.staticdir.on: True
+tools.staticdir.root: braubuddy.THIS_DIR
+tools.staticdir.dir: 'static/fonts/'
+
+[/img]
+tools.staticdir.on: True
+tools.staticdir.root: braubuddy.THIS_DIR
+tools.staticdir.dir: 'static/img/'
+
+[/js]
+tools.staticdir.on: True
+tools.staticdir.root: braubuddy.THIS_DIR
+tools.staticdir.dir: 'static/js/'
