@@ -2,15 +2,15 @@
 Braubuddy
 
 TODO:
-- code layout
- - outputs need a better home
- - provide heavily commented config.example and tell users to copy it
-- use units properly
-- jinja2 template
- - css to make it pretty
- - graphs/graphics consuming api
-- graphite output
+* replace RECENT_DATA output with a bus
+* provide heavily commented config.example and tell users to copy it
+* use units properly
+* jinja2 template
+ * css to make it pretty
+ * graphs/graphics consuming api
+* graphite output
 """
+
 import os
 import sys
 import logging

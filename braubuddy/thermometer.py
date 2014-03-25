@@ -66,6 +66,12 @@ class DeviceError(Exception):
     """
     pass
 
+class ReadError(Exception):
+    """
+    Raised if there is a problem reading temperature.
+    """
+    pass
+
 class IThermometer(object):
     """
     Interface for creating a thermometer for use with :mod:`braudbuddy`.
@@ -85,17 +91,16 @@ class IThermometer(object):
         :type units: :class:`str` (either 'celsius' or 'farenheit').
         :returns: Thermometer temperature reading
         :rtype: :class:`float`
+        :raises: :class:`braubuddy.thermometer.ReadError` if temperature can not
+        be read.
         """
         pass
 
     
-class RandomRange(IThermometer):
+class DummyRandomRange(IThermometer):
     """
-    Thermometer which generates random temperature readings within
+    A dummy thermometer which generates random temperature readings within
     a defined range. Use for testing.
-
-    Base unit is Celsius, though it doesn't actually mean anything in
-    this case.
 
     :param `lower_bound`: Lower bound of returned temperature range
     :type `lower_bound`: :class:`int`
@@ -124,7 +129,7 @@ class RandomRange(IThermometer):
 
 class Temper(IThermometer):
     """
-    TEMPer USB Thermometer
+    A TEMPer USB Thermometer
 
     :raises: :class:`braubuddy.thermometer.DeviceError` if no TEMPer USB
     thermometer devices discovered.
@@ -165,5 +170,9 @@ class Temper(IThermometer):
  
     def get_temperature(self, units='celsius'):
 
-        current_temp = self._temper_device.get_temperature(format=units)
+        # Do this <retries> times
+        try:
+            current_temp = self._temper_device.get_temperature(format=units)
+        except Exception, err:
+            raise ReadError(err)
         return current_temp

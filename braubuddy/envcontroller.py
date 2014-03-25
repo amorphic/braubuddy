@@ -1,5 +1,5 @@
 """
-Braubuddy Environmental Controller.
+Braubuddy Environment Controller.
 """
 
 import tosr0x
@@ -62,9 +62,9 @@ class IEnvController(object):
             :class:`int` <cooler_power_level>)
         """
 
-class TestEnvController(IEnvController):
+class DummyEnvController(IEnvController):
     """
-    A dummy EnvController for testing purposes.
+    A dummy EnvController. Use for testing.
     """
 
     def __init__(self): 
@@ -86,10 +86,11 @@ class TestEnvController(IEnvController):
 
 class Tosr0xEnvController(IEnvController):
     """
-    Environment controller utilising the Tosr0x relay module: <link>.
+    An environment controller utilising the Tosr0x family of relay boards: 
+    
+    <link>
 
-    Uses relay 0 to switch heatering and relay 1 to switch coolering. Follow <these
-    instructions> to build a mains powerboard based on the Tosr0x. 
+    Uses relay 0 to switch heating and relay 1 to switch cooling. 
 
     :raises: :class:`braubuddy.envcontroller.DeviceError` if no Tosr0x USB relay
     module devices discovered.

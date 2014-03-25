@@ -48,8 +48,8 @@ class IThermostat(object):
 
 class UpperLowerRange(IThermostat):
     """
-    Uses an 'upper' temperature range to determine when to enable/disable
-    cooling and a 'lower' temperature range to determine when to
+    A thermostat which uses an 'upper' temperature range to determine when to
+    enable/disable cooling and a 'lower' temperature range to determine when to
     enable/disable heating.
 
     Heating and cooling are both treated as boolean, thus each is either on
@@ -70,7 +70,7 @@ class UpperLowerRange(IThermostat):
         # Temperature is rising.
         # Temperature rises above the upper_in threshold: Cooling remains
             disabled.
-        # Goto #1
+        # Repeat 
 
     For a desired temperature of 20C, use something like:
 
