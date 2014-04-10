@@ -86,7 +86,7 @@ class DummyEnvController(IEnvController):
 
 class Tosr0xEnvController(IEnvController):
     """
-    An environment controller utilising the Tosr0x family of relay boards: 
+    An environment controller utilising the Tosr0x family of relay modules: 
     
     <link>
 

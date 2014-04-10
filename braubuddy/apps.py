@@ -19,11 +19,25 @@ class API(object):
 
     @cherrypy.expose
     @cherrypy.tools.json_out()
-    def data(self):
+    #def status(self, before=0, since=0, limit=0):
+    def status(self, **kwargs):
         '''
         Return recent data as tuples
         '''
-        return unicode(braubuddy.RECENT_DATA.get_datapoints())
+        try:
+            since = int(kwargs.get('since', 0))
+        except ValueError:
+            since = 0
+        try:
+            before = int(kwargs.get('before', 0))
+        except ValueError:
+            before = 0
+        try:
+            limit = int(kwargs.get('limit', 0))
+        except ValueError:
+            limit = 0
+        return braubuddy.RECENT_DATA.get_datapoints(
+                since=since, before=before, limit=limit)
 
     @cherrypy.expose
     def set(self, temp):
@@ -46,6 +60,10 @@ class Dashboard(object):
         Serve html w/cur temp and status
         Serve garph js pointing at api
         '''
+        ##TODO: components = cherrypy.request.app.config['components']
+        ##target = components['thermometer'].get_target_temp()
+        target = 21
+        units = 'C'
         try:
             last_datapoint = braubuddy.RECENT_DATA.get_datapoints()[0]
             temp, heat, cool, time = braubuddy.RECENT_DATA.get_datapoints()[-1]
@@ -55,9 +73,10 @@ class Dashboard(object):
             heat = 0
             cool = 0
             time = 0
-        time = datetime.fromtimestamp(time).strftime('%d-%m-%y %H:%M')
+        time = datetime.fromtimestamp(time).strftime('%H:%M')
         template = self.j2env.get_template('braubuddy.html')
-        return template.render(temp=temp, heat=heat, cool=cool, time=time)
+        return template.render(temp=temp, heat=heat, cool=cool, time=time,
+                target=target, units=units)
 
 class Engine(object):
     """
@@ -68,7 +87,7 @@ class Engine(object):
         """
         Perform full thermostat cycle and return state.
         """
-        
+
         envcontroller = cherrypy.request.app.config['components']['envcontroller']
         thermometer = cherrypy.request.app.config['components']['thermometer']
         thermostat = cherrypy.request.app.config['components']['thermostat']

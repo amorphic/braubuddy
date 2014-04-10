@@ -2,31 +2,24 @@
 Braubuddy
 
 TODO:
+* auto-reload graphs every <interval> secs w/AJAX
+* add cool/heat as background bar graph in light colours
+* re-use graph function
+* use units properly and everywhere
+* add script start to setup.py
 * replace RECENT_DATA output with a bus
-* provide heavily commented config.example and tell users to copy it
-* use units properly
-* jinja2 template
- * css to make it pretty
- * graphs/graphics consuming api
 * graphite output
 """
 
-import os
 import sys
 import logging
-import json
 import cherrypy
 import braubuddy
-from datetime import datetime
 from cherrypy.process.plugins import Monitor
-
-# Temp/Controller data
-## Get rid of this and use a queue or summat
-RECENT_DATA = braubuddy.output.ListMemory()
 
 def main():
     '''
-    Start the braubuddy engine and interface
+    Start the braubuddy engine and interface.
     '''
 
     # Load global config and mount applications
@@ -46,6 +39,8 @@ def main():
     # Start cherrypy engine
     cherrypy.engine.signals.subscribe()
     cherrypy.engine.start()
+    # Initiate first engine cycle, otherwise no data available for <frequency> secs
+    cherrypy.tree.apps['/engine'].root.cycle()
     cherrypy.engine.block()
     return 0
 

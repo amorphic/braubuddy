@@ -193,8 +193,16 @@ class ListMemory(IOutput):
         self._datapoint_limit = datapoint_limit
         super(ListMemory, self).__init__(units)
 
-    def get_datapoints(self):
-        return self._datapoints
+    def get_datapoints(self, since=None, before=None, limit=None):
+
+        results = self._datapoints
+        if since:
+            results = [x for x in results if x[3] >= since]
+        if before:
+            results = [x for x in results if x[3] <= before]
+        if limit:
+            results = results[-limit:]
+        return results 
 
     def publish_status(self, temp, heater_percent, cooler_percent):
 
