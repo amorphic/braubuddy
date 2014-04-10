@@ -86,14 +86,15 @@ class DummyEnvController(IEnvController):
 
 class Tosr0xEnvController(IEnvController):
     """
-    An environment controller utilising the Tosr0x family of relay modules: 
+    An environment controller utilising the Tosr0x family of relay modules
+    made by TinySine: 
     
-    <link>
+    http://www.tinyosshop.com/index.php?route=product/category&path=141_142
 
     Uses relay 0 to switch heating and relay 1 to switch cooling. 
 
-    :raises: :class:`braubuddy.envcontroller.DeviceError` if no Tosr0x USB relay
-    module devices discovered.
+    :raises: :class:`braubuddy.envcontroller.DeviceError` if no Tosr0x USB
+        relay module devices discovered.
     """
 
     def __init__(self, device_path=False):
