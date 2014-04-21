@@ -1,2 +1,4 @@
 include README.md
-include braubuddy/config
+include-recursive braubuddy/static *.js *.css *.svg *.ico
+include braubuddy/templates *.html
+include braubuddy/config *

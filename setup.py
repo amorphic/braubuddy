@@ -5,7 +5,7 @@ setup(
     version='0.1.0',
     author='James Stewart',
     author_email='jstewart101@gmail.com',
-    packages=['braubuddy', 'test'],
+    packages=['braubuddy'],
     scripts=[],
     url='http://pypi.python.org/pypi/Braubuddy/',
     license='LICENSE.txt',
