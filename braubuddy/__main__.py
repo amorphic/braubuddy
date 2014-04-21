@@ -4,7 +4,7 @@ Braubuddy
 TODO:
 * auto-reload graphs every <interval> secs w/AJAX
 * add cool/heat as background bar graph in light colours
-* re-use graph function
+* all thermostats to use target value
 * use units properly and everywhere
 * add script start to setup.py
 * replace RECENT_DATA output with a bus
