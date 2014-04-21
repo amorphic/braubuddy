@@ -2,7 +2,6 @@ import os
 import thermostat
 import thermometer
 import envcontroller
-import engine
 import output
 import apps
 
