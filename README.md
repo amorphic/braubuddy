@@ -1,11 +1,11 @@
-Braubuddy
+#Braubuddy#
 ---
 
 An extensible thermostat framework.
 
 **Not *quite* ready for production - watch for a release soon**
 
-Todo:
+##Todo##
 ---
  * Auto-reload graphs every <interval> secs w/AJAX
  * Add cool/heat as background bar graph in light colours
