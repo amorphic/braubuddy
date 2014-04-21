@@ -11,6 +11,11 @@ setup(
     license='LICENSE.txt',
     description='An extensile thermostat framework',
     long_description=open('README.md').read(),
+    entry_points = {
+        'console_scripts': [
+            'braubuddy = braubuddy.runserver:main',
+        ]
+    },
     install_requires=[
         'tosr0x>=0.2.0',
         'temperusb>=1.1.2'
