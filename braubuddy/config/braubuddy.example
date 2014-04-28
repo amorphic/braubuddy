@@ -39,8 +39,8 @@ thermostat: braubuddy.thermostat.UpperLowerRange('celsius', 18.5, 19.5, 20.5, 21
 [outputs]
 ### Outputs ###
 # Text file
-txt_out: braubuddy.output.TextFile(out_file='/home/james/output/bb.txt', units='celsius', show_timestamp=True)
+txt_out: braubuddy.output.TextFile(out_file='/tmp/output/bb.txt', units='celsius', show_timestamp=True)
 # CSV file
-csv_out: braubuddy.output.CSVFile(out_file='/home/james/output/bb.csv', units='celsius', show_timestamp=True)
+csv_out: braubuddy.output.CSVFile(out_file='/tmp/output/bb.csv', units='celsius', show_timestamp=True)
 # JSON file
-json_out: braubuddy.output.JSONFile(out_file='/home/james/output/bb.json', units='celsius', datapoint_limit=44640)
+json_out: braubuddy.output.JSONFile(out_file='/tmp/output/bb.json', units='celsius', datapoint_limit=44640)
