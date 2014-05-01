@@ -18,6 +18,7 @@ setup(
     },
     install_requires=[
         'tosr0x>=0.2.0',
-        'temperusb>=1.1.2'
+        'temperusb>=1.1.2',
+        'cherrypy>=3.3.3',
     ],
 )
