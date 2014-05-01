@@ -7,6 +7,7 @@ import abc
 import temperusb
 import temper
 import logging
+from usb import USBError
 
 LOGGER = logging.getLogger(__name__)
 
@@ -167,12 +168,11 @@ class Temper(IThermometer):
             ).format(len(temper_devices))
         )
         return temper_devices
- 
+
     def get_temperature(self, units='celsius'):
 
-        # Do this <retries> times
         try:
-            current_temp = self._temper_device.get_temperature(format=units)
-        except Exception, err:
-            raise ReadError(err)
-        return current_temp
+	    current_temp = self._temper_device.get_temperature()
+	    return current_temp
+        except USBError, err:
+	    raise ReadError('USB error while reading TEMPer device temperature')

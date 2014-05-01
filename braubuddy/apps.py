@@ -1,6 +1,7 @@
 import logging
 import cherrypy
 import jinja2
+import time
 from datetime import datetime
 from jinja2 import Environment, FileSystemLoader
 import braubuddy
@@ -19,7 +20,6 @@ class API(object):
 
     @cherrypy.expose
     @cherrypy.tools.json_out()
-    #def status(self, before=0, since=0, limit=0):
     def status(self, **kwargs):
         '''
         Return recent data as tuples
@@ -88,14 +88,28 @@ class Engine(object):
         Perform full thermostat cycle and return state.
         """
 
+        retries = cherrypy.request.app.config['components']['retries']
+        retry_delay = cherrypy.request.app.config['components']['retry_delay']
         envcontroller = cherrypy.request.app.config['components']['envcontroller']
         thermometer = cherrypy.request.app.config['components']['thermometer']
         thermostat = cherrypy.request.app.config['components']['thermostat']
         
         # Environment input
-        ## Catch exceptions. Retries in thermometer.
         current_heat, current_cool = envcontroller.get_power_levels()
-        current_temp = thermometer.get_temperature()
+
+        # Temperature input
+	for i in range(retries):
+            try:
+                current_temp = thermometer.get_temperature()
+                break
+	    except braubuddy.thermometer.ReadError, err:
+		cherrypy.request.app.log.error(err.message)
+            time.sleep(retry_delay)
+	else:
+	    cherrypy.request.app.log.error(
+                'Unable to collect temperature after {0} '
+		'tries'.format(retries))
+	    return False
         required_heat, required_cool = thermostat.get_required_state(
             current_temp, current_heat, current_cool)
 
@@ -108,3 +122,4 @@ class Engine(object):
         outputs = cherrypy.request.app.config['outputs']
         for name, output in outputs.iteritems():
             output.publish_status(current_temp, current_heat, current_cool)
+	return True
