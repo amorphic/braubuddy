@@ -5,7 +5,7 @@ Braubuddy Thermometer
 import random
 import abc
 import temperusb
-import temper
+import ds18b20
 import logging
 from usb import USBError
 
@@ -170,9 +170,31 @@ class Temper(IThermometer):
         return temper_devices
 
     def get_temperature(self, units='celsius'):
-
         try:
-	    current_temp = self._temper_device.get_temperature()
-	    return current_temp
-        except USBError, err:
-	    raise ReadError('USB error while reading TEMPer device temperature')
+	        return self._temper_device.get_temperature()
+        except Exception as err:
+            raise ReadError(
+                'Error reading device temperature: {0}'.format(err))
+
+
+class DS18B20(IThermometer):
+    """
+    A DS18B20 Thermometer
+
+    :raises: :class:`braubuddy.thermometer.DeviceError` if no DS18B20
+    thermometer devices discovered.
+    """
+
+    def __init__(self):
+        try:
+            self._ds18b20_device = ds18b20.DS18B20()
+        except DS18B20Error as err:
+            LOGGER.debug(err)
+            raise DeviceError(err)
+
+    def get_temperature(self, units='celsius'):
+        try:
+	        return self._ds18b20_device.get_temperature()
+        except Exception as err:
+            raise ReadError(
+                'Error reading device temperature: {0}'.format(err))
