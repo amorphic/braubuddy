@@ -20,6 +20,8 @@ frequency: 2
 thermometer: braubuddy.thermometer.DummyRandomRange()
 # A TEMPer USB thermometer
 ##thermometer: braubuddy.thermometer.Temper()
+# A DS18B20 thermometer
+##thermometer: braubuddy.thermometer.DS18B20()
 
 ### Environment Controller ###
 # A dummy environment controller. Use for testing.
