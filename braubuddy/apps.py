@@ -88,7 +88,7 @@ class Engine(object):
         Perform full thermostat cycle and return state.
         """
 
-        retries = cherrypy.request.app.config['components']['retries']
+        retry_count = cherrypy.request.app.config['components']['retry_count']
         retry_delay = cherrypy.request.app.config['components']['retry_delay']
         envcontroller = cherrypy.request.app.config['components']['envcontroller']
         thermometer = cherrypy.request.app.config['components']['thermometer']
@@ -98,18 +98,18 @@ class Engine(object):
         current_heat, current_cool = envcontroller.get_power_levels()
 
         # Temperature input
-	for i in range(retries):
+        for i in range(retry_count):
             try:
                 current_temp = thermometer.get_temperature()
                 break
-	    except braubuddy.thermometer.ReadError, err:
-		cherrypy.request.app.log.error(err.message)
-            time.sleep(retry_delay)
-	else:
-	    cherrypy.request.app.log.error(
+            except braubuddy.thermometer.ReadError, err:
+                cherrypy.request.app.log.error(err.message)
+                time.sleep(retry_delay)
+        else:
+            cherrypy.request.app.log.error(
                 'Unable to collect temperature after {0} '
-		'tries'.format(retries))
-	    return False
+                'tries'.format(retry_count))
+            return False
         required_heat, required_cool = thermostat.get_required_state(
             current_temp, current_heat, current_cool)
 
@@ -122,4 +122,4 @@ class Engine(object):
         outputs = cherrypy.request.app.config['outputs']
         for name, output in outputs.iteritems():
             output.publish_status(current_temp, current_heat, current_cool)
-	return True
+	    return True
