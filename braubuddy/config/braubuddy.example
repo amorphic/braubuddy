@@ -5,7 +5,8 @@
 server.socket_host: "0.0.0.0"
 server.socket_port: 8080
 ### Logging ###
-##log.error_file: ’site.log’
+##log.access_file: ’/var/log/braubuddy_access.log’
+##log.error_file: ’/var/log/braubuddy_error.log’
 log.screen: True
 
 [components]
@@ -13,7 +14,7 @@ log.screen: True
 # Units ('celsius' or 'fahrenheit')
 units: 'celsius'
 # Frequency of thermostat cycle (seconds)
-frequency: 2 
+frequency: 60 
 # Temperature poll retry count
 retry_count: 3
 # Temperature poll retry delay (seconds)
