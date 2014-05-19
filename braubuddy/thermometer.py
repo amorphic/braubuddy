@@ -158,8 +158,7 @@ class Temper(IThermometer):
         LOGGER.info(
             'Discovering TEMPer USB thermometer(s)'
         )
-        #th = temperusb.TemperHandler()
-        th = temper.TemperHandler()
+        th = temperusb.TemperHandler()
         temper_devices = th.get_devices()
         LOGGER.info(
             (
