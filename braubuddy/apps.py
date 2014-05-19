@@ -65,7 +65,6 @@ class Dashboard(object):
         target = 21
         units = 'C'
         try:
-            last_datapoint = braubuddy.RECENT_DATA.get_datapoints()[0]
             temp, heat, cool, time = braubuddy.RECENT_DATA.get_datapoints()[-1]
         except IndexError:
             # No datapoints loaded yet
@@ -93,10 +92,8 @@ class Engine(object):
         envcontroller = cherrypy.request.app.config['components']['envcontroller']
         thermometer = cherrypy.request.app.config['components']['thermometer']
         thermostat = cherrypy.request.app.config['components']['thermostat']
-        
         # Environment input
         current_heat, current_cool = envcontroller.get_power_levels()
-
         # Temperature input
         for i in range(retry_count):
             try:
@@ -110,16 +107,13 @@ class Engine(object):
                 'Unable to collect temperature after {0} '
                 'tries'.format(retry_count))
             return False
+        # Set power levels
         required_heat, required_cool = thermostat.get_required_state(
             current_temp, current_heat, current_cool)
-
-        # Set power levels
         envcontroller.set_heater_level(required_heat)
         envcontroller.set_cooler_level(required_cool)
-
         # Output
-        # Should work out a way of doing this outside the components
-        outputs = cherrypy.request.app.config['outputs']
-        for name, output in outputs.iteritems():
+        # TODO: consider moving application state out of outputs
+        for name, output in cherrypy.request.app.config['outputs'].iteritems():
             output.publish_status(current_temp, current_heat, current_cool)
-	    return True
+        return True
