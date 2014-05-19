@@ -12,8 +12,12 @@ log.screen: True
 ### Components ###
 # Units ('celsius' or 'fahrenheit')
 units: 'celsius'
-# Frequency of thermostat cycle in seconds
+# Frequency of thermostat cycle (seconds)
 frequency: 2 
+# Temperature poll retry count
+retry_count: 3
+# Temperature poll retry delay (seconds)
+retry_delay: 5
 
 ### Thermometer ###
 # A dummy thermometer which generates random temperatures. Use for testing.
