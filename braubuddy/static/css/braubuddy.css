@@ -13,3 +13,14 @@
 .voffset7 { margin-top: 80px; }
 .voffset8 { margin-top: 100px; }
 .voffset9 { margin-top: 150px; }
+
+.inline-headers h1,
+.inline-headers h2,
+.inline-headers h3, 
+.inline-headers h4, 
+.inline-headers h5, 
+.inline-headers h6 
+{
+  display: inline-block;
+  vertical-align: baseline;
+}
