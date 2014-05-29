@@ -1,44 +1,70 @@
-function bbStatusGraph(data_mins, id) {
+var hourlyChart = getTempChart();
+var dailyChart = getTempChart();
+var minsHourly = 60;
+var minsDaily = 480;
+
+function initChartsGauges() {
+  updateGauges();
+  renderCharts();
+  nv.addGraph(hourlyChart);
+  nv.addGraph(dailyChart);
+}
+
+function getTempChart() {
   var chart = nv.models.lineChart()
-                .margin({left: 35})  //Adjust chart margins to give the x-axis some breathing room.
-                .useInteractiveGuideline(true)  //We want nice looking tooltips and a guideline!
-                .transitionDuration(350)  //how fast do you want the lines to transition?
-                .showLegend(false)       //Show the legend, allowing users to turn on/off line series.
-                .showYAxis(true)        //Show the y-axis
-                .showXAxis(true)        //Show the x-axis
-  ;
-
-  chart.xAxis     //Chart x-axis settings
+    .margin({left: 35})
+    .useInteractiveGuideline(false)
+    .transitionDuration(350)
+    .showLegend(false)
+    .showYAxis(true)
+    .showXAxis(true);
+  chart.xAxis
       //.axisLabel('Time')
-      .tickFormat(function(d) { return d3.time.format('%H:%M')(new Date(d)); })
-
-  chart.yAxis     //Chart y-axis settings
+      .tickFormat(function(d) { return d3.time.format('%H:%M')(new Date(d)); });
+  chart.yAxis
       //.axisLabel('Temperature')
       .tickFormat(d3.format('.02f'));
+  return chart;
+}
 
-  //Get data points for past hour
-  var startTime = (new Date() - (data_mins * 60000)) / 1000 
+function renderCharts() {
+  // Hourly
+  var startTime = (new Date() - (minsHourly * 60000)) / 1000;
   d3.json("/api/status?since=" + parseInt(startTime), function(error, json) {
     if (error) return console.warn(error);
-    var myData = processBbJson(json)
-    console.info(myData)
-    d3.select("#" + id + " svg")    //Select the <svg> element you want to render the chart in.   
-      .datum(myData)         //Populate the <svg> element with chart data...
-      .call(chart);          //Finally, render the chart!
+    var tempData = processBraubuddyData(json);
+    d3.select("#chart-hourly svg")
+      .datum(tempData)
+      .call(hourlyChart);
   });
+  // Daily
+  var startTime = (new Date() - (minsDaily * 60000)) / 1000;
+  d3.json("/api/status?since=" + parseInt(startTime), function(error, json) {
+    if (error) return console.warn(error);
+    var tempData = processBraubuddyData(json);
+    d3.select("#chart-daily svg")
+      .datum(tempData)
+      .call(hourlyChart);
+  });
+}
 
-  //Update the chart when window resizes.
-  nv.utils.windowResize(function() { chart.update() });
-  return chart;
-};
+function updateGauges() {
+  d3.json("/api/status?limit=1", function(error,json) {
+    if (error) return console.warn(error);
+    $('#temp-current').text(d3.format('.01f')(json[0][0]));
+    $('#heat-level').text(json[0][1]);
+    $('#cool-level').text(json[0][2]);
+    $('#cycle-time').text(d3.time.format('%H:%M')(new Date(json[0][3] * 1000)));
+  });
+}
 
-function processBbJson(json) {
+function processBraubuddyData(json) {
   var temp = [], heat = [], cool = [];
   for (var i=0;i<json.length;i++) {
-    var timestamp = json[i][3]*1000
-    temp.push({x: timestamp, y: json[i][0]})
-    heat.push({x: timestamp, y: json[i][1]})
-    cool.push({x: timestamp, y: json[i][2]})
+    var timestamp = json[i][3]*1000;
+    temp.push({x: timestamp, y: json[i][0]});
+    heat.push({x: timestamp, y: json[i][1]});
+    cool.push({x: timestamp, y: json[i][2]});
   }
   return [
     {
@@ -48,13 +74,3 @@ function processBbJson(json) {
     }
   ];
 }
-
-nv.addGraph(function() {
-    var hourlyGraph = bbStatusGraph(60, 'chart-hourly')
-    return hourlyGraph
-});
-
-nv.addGraph(function() {
-    var dailyGraph = bbStatusGraph(480, 'chart-daily')
-    return dailyGraph
-});
