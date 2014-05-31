@@ -57,25 +57,20 @@ class Dashboard(object):
     @cherrypy.expose
     def index(self):
         '''
-        Serve html w/cur temp and status
-        Serve garph js pointing at api
+        Braubuddy dashboard displaying:
+            * current temperature
+            * current heat level
+            * current cool level
+            * target temperature
+            * last cycle time
+            * hourly temperature chart
+            * daily temperature chart
         '''
-        ##TODO: components = cherrypy.request.app.config['components']
-        ##target = components['thermometer'].get_target_temp()
+        thermometer = cherrypy.tree.apps['/engine'].config['components']['thermometer']
         target = 21
         units = 'C'
-        try:
-            temp, heat, cool, time = braubuddy.RECENT_DATA.get_datapoints()[-1]
-        except IndexError:
-            # No datapoints loaded yet
-            temp = 0
-            heat = 0
-            cool = 0
-            time = 0
-        time = datetime.fromtimestamp(time).strftime('%H:%M')
         template = self.j2env.get_template('braubuddy.html')
-        return template.render(temp=temp, heat=heat, cool=cool, time=time,
-                target=target, units=units)
+        return template.render(target=target, units=units)
 
 class Engine(object):
     """
