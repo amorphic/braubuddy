@@ -22,5 +22,6 @@ setup(
         'temperusb>=1.2.0',
     	'ds18b20>=0.01.02',
         'cherrypy>=3.3.0',
+        'jinja2>=2.7.0',
     ],
 )
