@@ -17,6 +17,7 @@ setup(
         ]
     },
     install_requires=[
+        'pyserial>=2.0',
         'tosr0x>=0.2.0',
         'temperusb>=1.2.0',
     	'ds18b20>=0.01.02',
