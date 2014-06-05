@@ -12,18 +12,11 @@ class API(object):
     """
 
     @cherrypy.expose
-    def index(self):
-        '''
-        Return page w/API instructions
-        '''
-        return 'Braubuddy API'
-
-    @cherrypy.expose
     @cherrypy.tools.json_out()
-    def status(self, **kwargs):
-        '''
-        Return recent data as tuples
-        '''
+    def index(self, **kwargs):
+        """
+        Return recent status data as tuples.
+        """
         try:
             since = int(kwargs.get('since', 0))
         except ValueError:
@@ -41,10 +34,14 @@ class API(object):
 
     @cherrypy.expose
     def set(self, temp):
+        """
+        Set target temperature.
+        """
         if temp:
-            # Set components temp to new temp (using queue?)
+            # Set components temp to new temp.
+            # TODO: Implement this when auth functionality exists for API.
             pass
-        return 'Set temp to {0}'.format(temp)
+        return 'Temperature set to {0}'.format(temp)
 
 class Dashboard(object):
     """
@@ -66,11 +63,15 @@ class Dashboard(object):
             * hourly temperature chart
             * daily temperature chart
         '''
-        thermometer = cherrypy.tree.apps['/engine'].config['components']['thermometer']
-        target = 21
-        units = 'C'
+        frequency = cherrypy.config['frequency']
+        show_footer = cherrypy.config['show_footer']
+        thermostat = cherrypy.tree.apps['/engine'].config['components']['thermostat']
+        target = thermostat.get_target() 
+        units = braubuddy.thermometer.abbreviate_temp_units(
+            thermostat.get_units())
         template = self.j2env.get_template('braubuddy.html')
-        return template.render(target=target, units=units)
+        return template.render(frequency=frequency, target=target, units=units,
+            show_footer=show_footer)
 
 class Engine(object):
     """
@@ -81,9 +82,8 @@ class Engine(object):
         """
         Perform full thermostat cycle and return state.
         """
-
-        retry_count = cherrypy.request.app.config['components']['retry_count']
-        retry_delay = cherrypy.request.app.config['components']['retry_delay']
+        retry_count = cherrypy.config['retry_count']
+        retry_delay = cherrypy.config['retry_delay']
         envcontroller = cherrypy.request.app.config['components']['envcontroller']
         thermometer = cherrypy.request.app.config['components']['thermometer']
         thermostat = cherrypy.request.app.config['components']['thermostat']
@@ -108,7 +108,6 @@ class Engine(object):
         envcontroller.set_heater_level(required_heat)
         envcontroller.set_cooler_level(required_cool)
         # Output
-        # TODO: consider moving application state out of outputs
         for name, output in cherrypy.request.app.config['outputs'].iteritems():
             output.publish_status(current_temp, current_heat, current_cool)
         return True

@@ -64,10 +64,9 @@
   window.onload=function(){
     initChartsGauges();
     setInterval(function(){
-      //TODO: pass interval to template
       updateGauges();
       renderCharts();
-    }, 3000);
+      }, {{ frequency * 1000 }});
   }
 </script>
 {% endblock %}

@@ -19,9 +19,11 @@
 <div id="content">{% block content %}{% endblock %}</div>
 <div id="footer">
 {% block footer %}
+{% if show_footer %}
 <div align=center>
     <h6>Braubuddy | By <a href="http://jimter.net/">James Stewart</a>.</h6>
 </div>
+{% endif %}
 {% endblock %}
 </div>
 </body>

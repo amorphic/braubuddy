@@ -1,6 +1,5 @@
 """
 Start Braubuddy
-
 """
 
 import sys
@@ -11,10 +10,9 @@ from cherrypy.process.plugins import Monitor
 
 
 def main():
-    '''
+    """ 
     Start the braubuddy engine and interface.
-    '''
-
+    """
     # Load global config and mount applications
     cherrypy.config.update(braubuddy.CONFIG_BRAUBUDDY)
     cherrypy.tree.mount(
@@ -29,11 +27,10 @@ def main():
     engine_config['outputs']['recent_data'] = braubuddy.RECENT_DATA
 
     # Create job to regularly perform thermostat cycle
-    frequency = engine_config['components']['frequency']
     cycle = Monitor(
         cherrypy.engine,
         cherrypy.tree.apps['/engine'].root.cycle,
-        frequency=frequency,
+        frequency=cherrypy.config['frequency'],
         name='bb_engine')
     cycle.subscribe()
 

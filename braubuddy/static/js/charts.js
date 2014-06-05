@@ -30,7 +30,7 @@ function getTempChart() {
 function renderCharts() {
   // Hourly
   var startTime = (new Date() - (minsHourly * 60000)) / 1000;
-  d3.json("/api/status?since=" + parseInt(startTime), function(error, json) {
+  d3.json("/api?since=" + parseInt(startTime), function(error, json) {
     if (error) return console.warn(error);
     var tempData = processBraubuddyData(json);
     d3.select("#chart-hourly svg")
@@ -39,7 +39,7 @@ function renderCharts() {
   });
   // Daily
   var startTime = (new Date() - (minsDaily * 60000)) / 1000;
-  d3.json("/api/status?since=" + parseInt(startTime), function(error, json) {
+  d3.json("/api?since=" + parseInt(startTime), function(error, json) {
     if (error) return console.warn(error);
     var tempData = processBraubuddyData(json);
     d3.select("#chart-daily svg")
@@ -49,7 +49,7 @@ function renderCharts() {
 }
 
 function updateGauges() {
-  d3.json("/api/status?limit=1", function(error,json) {
+  d3.json("/api?limit=1", function(error,json) {
     if (error) return console.warn(error);
     $('#temp-current').text(d3.format('.01f')(json[0][0]));
     $('#heat-level').text(json[0][1]);

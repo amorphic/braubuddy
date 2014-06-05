@@ -1,7 +1,5 @@
 '''
 Braubuddy Thermostat.
-
-Need to be able to reset the target temp with a simple temp val
 '''
 
 import abc
@@ -14,15 +12,30 @@ class IThermostat(object):
 
     __metaclass__ = abc.ABCMeta
 
-    def __init__(self, units):
+    def __init__(self, target, units):
         """
         Initialise thermostat.
 
+        :param target: Target temperature.
+        :type target: :class:`float`
         :param units: Temperature units in which to work. Use 'celsius'
             or 'fahrenheit'.
         :type unit: :class:`str`
         """
+    
+        self._target = target
+        self._units = units
 
+    def get_target(self):
+        return self._target
+
+    def set_target(self, target):
+        self._target = target
+
+    def get_units(self):
+        return self._units
+
+    def set_units(self, units):
         self._units = units
 
     @abc.abstractmethod
@@ -46,19 +59,19 @@ class IThermostat(object):
         pass
 
 
-class UpperLowerRange(IThermostat):
+class SimpleRanged(IThermostat):
     """
     A thermostat which uses an 'upper' temperature range to determine when to
     enable/disable cooling and a 'lower' temperature range to determine when to
     enable/disable heating.
 
-    Heating and cooling are both treated as boolean, thus each is either on
+    Heating and cooling are both treated as boolean and thus are either on
     (100 percent) or off (0 percent).
 
     The use of inner and outer values prevents flapping, (causing the heater or
     cooler to start and stop repeatedly). This is generally undesirable.
 
-    Here is an example cycle against the upper range on a hot day:
+    This is an example cycle against the upper range on a hot day:
 
         # Heating and cooling are disabled.
         # Temperature is rising, (it's a hot day).
@@ -72,33 +85,23 @@ class UpperLowerRange(IThermostat):
             disabled.
         # Repeat 
 
-    For a desired temperature of 20C, use something like:
-
-        * lower_out = 18.5
-        * lower_in = 19.5
-        * upper_in = 20.5
-        * upper_out = 21.5
-
-    If this seems too hard, use :class:`SimpleTargeted` which attempts to
-    choose sensible values for a given target temperature.
-
-    :param lower_out: Temperature at which heating will switch on.
+    :param lower_out: Units below target at which heating will switch on.
     :type lower_out: :class:`int`
-    :param lower_in: Temperature at which heating will switch off.
+    :param lower_in: Units below target at which heating will switch off.
     :type lower_in: :class:`int`
-    :param upper_in: Temperature at which cooling will switch off.
+    :param upper_in: Units above target at which cooling will switch off.
     :type upper_in: :class:`int`
-    :param upper_out: Temperature at which cooling will switch on.
+    :param upper_out: Units above target at which cooling will switch on.
     :type upper_out: :class:`int`
     """
 
-    def __init__(self, units, lower_out, lower_in, upper_in, upper_out):
+    def __init__(self, target, units, lower_out=2, lower_in=1, upper_in=1, upper_out=2):
 
-        self._lower_outside = lower_out
-        self._lower_inside = lower_in
-        self._upper_inside = upper_in
-        self._upper_outside = upper_out
-        super(UpperLowerRange, self).__init__(units)
+        self._lower_outside = target - lower_out
+        self._lower_inside = target - lower_in
+        self._upper_inside = target + upper_in
+        self._upper_outside = target + upper_out
+        super(SimpleRanged, self).__init__(target, units)
 
     def get_required_state(self, temp, heater_percent, cooler_percent,):
 
@@ -124,30 +127,3 @@ class UpperLowerRange(IThermostat):
                 new_cooler_percent = 0
 
         return new_heater_percent, new_cooler_percent
-
-
-class SimpleTargeted(UpperLowerRange):
-    """
-    A simplified :class:`UpperLowerRange` thermostat.
-
-    Automatically calculates ranges based on target temperature and
-    step value.
-
-    :param units: Temperature units in which to work. Use 'celsius'
-        or 'fahrenheit'
-    :type unit: :class:`str`
-    :param target: Target temperature.
-    :type target: :class:`int`
-    :param step: Step used to calculate thresholds relative to target.
-    :type step: :class:`int`
-    """
-
-    def __init__(self, units, target, step=1):
-
-        super(SimpleTargeted, self).__init__(
-            units,
-            target - (step * 2),
-            target - step,
-            target + step,
-            target + (step * 2)
-        )
