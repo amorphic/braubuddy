@@ -24,6 +24,5 @@ setup(
         'cherrypy>=3.2.2',
         'pyxdg>=0.25'
         'jinja2>=2.7.0',
-        ],
     ],
 )
