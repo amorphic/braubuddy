@@ -1,7 +1,7 @@
 var hourlyChart = getTempChart();
 var dailyChart = getTempChart();
 var minsHourly = 60;
-var minsDaily = 480;
+var minsDaily = 1440;
 
 function initChartsGauges() {
   updateGauges();
