@@ -35,4 +35,4 @@ TEMPLATE_DIR = os.path.join(THIS_DIR, 'templates')
 CONFIG_BRAUBUDDY = _get_user_config(os.path.join(CONFIG_DIR, 'braubuddy'))
 
 # Recent state data
-RECENT_DATA = output.ListMemory()
+RECENT_DATA = output.ListMemoryOutput()
