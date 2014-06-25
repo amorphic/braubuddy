@@ -22,9 +22,9 @@ show_footer: True
 [components]
 # Thermometer #
 # Dummy thermometer which generates random temperatures. Use for testing.
-##thermometer: braubuddy.thermometer.DummyRandomRange()
+thermometer: braubuddy.thermometer.DummyRandomRange()
 # TEMPer USB thermometer
-thermometer: braubuddy.thermometer.Temper()
+##thermometer: braubuddy.thermometer.TemperThermometer()
 
 # Environment Controller #
 # Dummy environment controller. Use for testing.
@@ -36,12 +36,12 @@ envcontroller: braubuddy.envcontroller.DummyEnvController()
 # Thermostat #
 # Thermostat which uses an 'upper' temperature range to determine when to
 # cool and a 'lower' temperature range to determine when to heat.
-thermostat: braubuddy.thermostat.SimpleRanged(20, 'celsius', 2, 1, 1, 2) 
+thermostat: braubuddy.thermostat.SimpleRangedThermostat(20, 'celsius', lower_out=2, lower_in=1, upper_in=1, upper_out=2)
 
 [outputs]
 # Text file
-txt_out: braubuddy.output.TextFile(out_file='/home/james/output/bb.txt', units='celsius', show_timestamp=True)
+##txt_out: braubuddy.output.TextFile(units='celsius', out_file='~/braubuddy.log', separator=' ', show_labels=False, show_units=True, show_timestamp=True, timestamp_format='%Y-%m-%d %H:%M:%S')
 # CSV file
-csv_out: braubuddy.output.CSVFile(out_file='/home/james/output/bb.csv', units='celsius', show_timestamp=True)
+##csv_out: braubuddy.output.CSVFile(units='celsius', out_file='~/braubuddy.csv', show_timestamp=True, timestamp_format='%Y-%m-%d %H:%M:%S')
 # JSON file
-json_out: braubuddy.output.JSONFile(out_file='/home/james/output/bb.json', units='celsius', datapoint_limit=44640)
+##json_out: braubuddy.output.JSONFile(units='celsius', out_file='~/braubuddy.json', datapoint_limit=44640)
