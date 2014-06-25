@@ -59,7 +59,7 @@ class IThermostat(object):
         pass
 
 
-class SimpleRanged(IThermostat):
+class SimpleRangedThermostat(IThermostat):
     """
     A thermostat which uses an 'upper' temperature range to determine when to
     enable/disable cooling and a 'lower' temperature range to determine when to
@@ -95,20 +95,20 @@ class SimpleRanged(IThermostat):
     :type upper_out: :class:`int`
     """
 
-    def __init__(self, target, units, lower_out=2, lower_in=1, upper_in=1, upper_out=2):
+    def __init__(self, target, units, lower_out=2, lower_in=1, upper_in=1,
+            upper_out=2):
 
         self._lower_outside = target - lower_out
         self._lower_inside = target - lower_in
         self._upper_inside = target + upper_in
         self._upper_outside = target + upper_out
-        super(SimpleRanged, self).__init__(target, units)
+        super(SimpleRangedThermostat, self).__init__(target, units)
 
     def get_required_state(self, temp, heater_percent, cooler_percent,):
 
         # By default heater/cooler percents remain the same
         new_heater_percent = heater_percent
         new_cooler_percent = cooler_percent
-
         if self._lower_inside < temp < self._upper_inside:
             # Temp within acceptible bounds - heater and cooler off
             new_heater_percent = 0
@@ -125,5 +125,4 @@ class SimpleRanged(IThermostat):
                 # Temp exceeds lower outside threshold - heater on|cooler off
                 new_heater_percent = 100
                 new_cooler_percent = 0
-
         return new_heater_percent, new_cooler_percent

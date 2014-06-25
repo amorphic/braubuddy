@@ -41,7 +41,6 @@ def map_temp_units_to_symbol(units='celsius'):
             ]   
         }   
     }   
-
     for unit, details in unit_map.iteritems():
         if units in details['aliases']:
             return details['symbol']
@@ -92,7 +91,7 @@ class IOutput(object):
         :type coolerer_percent: :class:`float`
         """
 
-class TextFile(IOutput):
+class TextFileOutput(IOutput):
     """
     Output to text file.
 
@@ -109,11 +108,14 @@ class TextFile(IOutput):
     :type show_units: :class:`bool`
     :param show_timestamp Add timestamp to output values, (e.g.
         2014-01-01 06:40 Temperature:40°C).
+    :param timetamp_format: A timestamp format parseable by
+        :func:`datetime.datetime.strftime`, (e.g. '%Y-%m-%d %H:%M:%S').
+    :type timestamp_format: :class:`str`
     """
 
-    def __init__(self, units='celsius', out_file='braubuddy.log', separator=' ', show_labels=False, \
-            show_units=False, show_timestamp=False, \
-            timestamp_format='%Y-%m-%d %H:%M:%S'):
+    def __init__(self, units='celsius', out_file='braubuddy.log',
+            separator=' ', show_labels=False, show_units=True,
+            show_timestamp=True, timestamp_format='%Y-%m-%d %H:%M:%S'):
 
         self._out_file = out_file
         self._separator = separator
@@ -121,14 +123,13 @@ class TextFile(IOutput):
         self._show_units = show_units
         self._show_timestamp = show_timestamp
         self._timestamp_format = timestamp_format
-        super(TextFile, self).__init__(units)
+        super(TextFileOutput, self).__init__(units)
 
     def publish_status(self, temp, heater_percent, cooler_percent):
         
         temp_str = temp
         heater_str = heater_percent
         cooler_str = cooler_percent
-
         # Add units if required
         if self._show_units:
             temp_str = '{0}{1}'.format(temp_str, self.units)
@@ -157,7 +158,7 @@ class TextFile(IOutput):
         except IOError, err:
             raise OutputError(err)
 
-class CSVFile(TextFile):
+class CSVFileOutput(TextFileOutput):
     """
     Output to CSV file.
 
@@ -166,17 +167,21 @@ class CSVFile(TextFile):
     :type units: :class:`str`
     :param out_file: Path to output file.
     :type out_file: :class:`str`
+    :param show_timestamp Add timestamp to output values, (e.g.
+        2014-01-01 06:40 Temperature:40°C).
+    :param timetamp_format: A timestamp format parseable by
+        :func:`datetime.datetime.strftime`, (e.g. '%Y-%m-%d %H:%M:%S').
     """
 
     def __init__(self, units='celsius', out_file='braubuddy.csv',
-        show_timestamp=False, timestamp_format='%Y-%m-%d %H:%M:%S'):
+        show_timestamp=True, timestamp_format='%Y-%m-%d %H:%M:%S'):
 
         separator = ',' 
-        super(CSVFile, self).__init__(units, out_file=out_file,
+        super(CSVFileOutput, self).__init__(units, out_file=out_file,
             separator=separator, show_timestamp=show_timestamp,
             timestamp_format=timestamp_format)
 
-class ListMemory(IOutput):
+class ListMemoryOutput(IOutput):
     """
     Output to a list in memory
 
@@ -188,13 +193,13 @@ class ListMemory(IOutput):
     """
 
     def __init__(self, units='celsius', datapoint_limit=44640):
-
+        
         self._datapoints = []
         self._datapoint_limit = datapoint_limit
-        super(ListMemory, self).__init__(units)
+        super(ListMemoryOutput, self).__init__(units)
 
     def get_datapoints(self, since=None, before=None, limit=None):
-
+        
         results = self._datapoints
         if since:
             results = [x for x in results if x[3] >= since]
@@ -205,13 +210,12 @@ class ListMemory(IOutput):
         return results 
 
     def publish_status(self, temp, heater_percent, cooler_percent):
-
+        
         # Get timestamp in epoch seconds
         timestamp = int(time.time())
         # Append new status
         status = [temp, heater_percent, cooler_percent, timestamp]
         self._datapoints.append(status)
-
         # Drop datapoints if limit exceeded
         if self._datapoint_limit != 0:
             while len(self._datapoints) > self._datapoint_limit:
@@ -223,8 +227,9 @@ class ListMemory(IOutput):
                     ).format(self._datapoints[0]
                 ))
                 self._datapoints.pop(0)
-         
-class JSONFile(IOutput):
+        
+
+class JSONFileOutput(IOutput):
     """
     Output to JSON file.
 
@@ -242,10 +247,10 @@ class JSONFile(IOutput):
 
         self._out_file = out_file
         self._datapoint_limit = datapoint_limit
-        super(JSONFile, self).__init__(units)
+        super(JSONFileOutput, self).__init__(units)
 
     def publish_status(self, temp, heater_percent, cooler_percent):
-
+        
         # Load status history from JSON
         try:
             with open(self._out_file, 'r') as fh:
@@ -256,7 +261,6 @@ class JSONFile(IOutput):
             status_history = {
                 'datapoints' : []
             }
-
         # Check data loaded from JSON contains datapoints
         if 'datapoints' not in status_history.keys():
             raise OutputError(
@@ -274,12 +278,9 @@ class JSONFile(IOutput):
         if self._datapoint_limit != 0:
             while len(status_history['datapoints']) > self._datapoint_limit:
                 # Discard oldest status datapoint
-                LOGGER.debug(
-                    (
-                        'Datapoint limit exceeded - '
-                        'dropping earliest datapoint: {0!r}'
-                    ).format(status_history['datapoints'][0]
-                ))
+                LOGGER.debug(('Datapoint limit exceeded - '
+                    'dropping earliest datapoint: {0!r}').format(
+                        status_history['datapoints'][0]))
                 status_history['datapoints'].pop(0)
         # Write status history JSON to file
         new_json = json.dumps(status_history)

@@ -107,7 +107,7 @@ class IThermometer(object):
         pass
 
     
-class DummyRandomRange(IThermometer):
+class DummyThermometer(IThermometer):
     """
     A dummy thermometer which generates random temperature readings within
     a defined range. Use for testing.
@@ -122,7 +122,7 @@ class DummyRandomRange(IThermometer):
         # Set random range bounds
         self.lower_bound = lower_bound
         self.upper_bound = upper_bound
-        super(IThermometer, self).__init__()
+        super(DummyThermometer, self).__init__()
 
     def get_temperature(self, units='celsius'):
         # Returns random temperature within defined range
@@ -135,7 +135,7 @@ class DummyRandomRange(IThermometer):
             )
         return current_temp
 
-class Temper(IThermometer):
+class TemperThermometer(IThermometer):
     """
     A TEMPer USB Thermometer
 
@@ -182,7 +182,7 @@ class Temper(IThermometer):
                 'Error reading device temperature: {0}'.format(err))
 
 
-class DS18B20(IThermometer):
+class DS18B20Thermometer(IThermometer):
     """
     A DS18B20 Thermometer
 
