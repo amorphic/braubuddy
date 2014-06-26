@@ -106,8 +106,9 @@ class TextFileOutput(IOutput):
     :type show_labels: :class`bool`
     :param show_units: Add units to output values, (e.g. '40°C').
     :type show_units: :class:`bool`
-    :param show_timestamp Add timestamp to output values, (e.g.
+    :param show_timestamp: Add timestamp to output values, (e.g.
         2014-01-01 06:40 Temperature:40°C).
+    :type show_timestamp: :class:`bool`
     :param timetamp_format: A timestamp format parseable by
         :func:`datetime.datetime.strftime`, (e.g. '%Y-%m-%d %H:%M:%S').
     :type timestamp_format: :class:`str`
@@ -167,10 +168,12 @@ class CSVFileOutput(TextFileOutput):
     :type units: :class:`str`
     :param out_file: Path to output file.
     :type out_file: :class:`str`
-    :param show_timestamp Add timestamp to output values, (e.g.
+    :param show_timestamp: Add timestamp to output values, (e.g.
         2014-01-01 06:40 Temperature:40°C).
+    :type: :class:`bool`
     :param timetamp_format: A timestamp format parseable by
         :func:`datetime.datetime.strftime`, (e.g. '%Y-%m-%d %H:%M:%S').
+    :type: :class:`str`
     """
 
     def __init__(self, units='celsius', out_file='braubuddy.csv',

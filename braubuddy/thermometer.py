@@ -102,7 +102,7 @@ class IThermometer(object):
         :returns: Thermometer temperature reading
         :rtype: :class:`float`
         :raises: :class:`braubuddy.thermometer.ReadError` if temperature can not
-        be read.
+            be read.
         """
         pass
 
@@ -140,7 +140,7 @@ class TemperThermometer(IThermometer):
     A TEMPer USB Thermometer
 
     :raises: :class:`braubuddy.thermometer.DeviceError` if no TEMPer USB
-    thermometer devices discovered.
+        thermometer devices discovered.
     """
 
     def __init__(self):
@@ -187,7 +187,7 @@ class DS18B20Thermometer(IThermometer):
     A DS18B20 Thermometer
 
     :raises: :class:`braubuddy.thermometer.DeviceError` if no DS18B20
-    thermometer devices discovered.
+        thermometer devices discovered.
     """
 
     def __init__(self):

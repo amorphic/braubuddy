@@ -78,11 +78,11 @@ class SimpleRangedThermostat(IThermostat):
         # Temperature rises above the upper_out threshold: Cooling is enabled.
         # Temperature is dropping.
         # Temperature drops below the upper_out threshold: Cooling remains
-            enabled.
+        enabled.
         # Temperature drops below the upper_in threshold: Cooling is disabled.
         # Temperature is rising.
         # Temperature rises above the upper_in threshold: Cooling remains
-            disabled.
+        disabled.
         # Repeat 
 
     :param lower_out: Units below target at which heating will switch on.
