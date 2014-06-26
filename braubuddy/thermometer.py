@@ -98,7 +98,7 @@ class IThermometer(object):
         Get thermometer temperature in celsius or farenheit.
 
         :param units: Temperature units, 'celsius' (default) or 'farenheit.'
-        :type units: :class:`str` (either 'celsius' or 'farenheit').
+        :type units: :class:`str`
         :returns: Thermometer temperature reading
         :rtype: :class:`float`
         :raises: :class:`braubuddy.thermometer.ReadError` if temperature can not
@@ -159,7 +159,7 @@ class TemperThermometer(IThermometer):
         Get attached TEMPer devices
         
         :returns: list of attached TEMPer devices
-        :rtype: :class:`list` of :class:`temper.TemperDevice`
+        :rtype: :class:`list` of :class:`temperusb.TemperDevice`
         """
         LOGGER.info(
             'Discovering TEMPer USB thermometer(s)'
