@@ -1,5 +1,5 @@
 """
-Braubuddy Thermometer
+Braubuddy Thermometer.
 """
 
 from braubuddy.thermometer.base import DeviceError
