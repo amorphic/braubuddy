@@ -2,6 +2,7 @@ import logging
 import json
 import time
 from braubuddy.output import IOutput
+from braubuddy.output import OutputError
 
 LOGGER = logging.getLogger(__name__)
 

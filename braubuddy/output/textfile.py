@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
 from braubuddy.output import IOutput
+from braubuddy.output import OutputError
 
 
 class TextFileOutput(IOutput):
