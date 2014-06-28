@@ -1,4 +1,4 @@
 recursive-include braubuddy/static *.js *.css *.svg *.ico
 include braubuddy/templates *.html
 include braubuddy/config *
-include README.md
+include README.rst
