@@ -1,6 +1,7 @@
 import logging
 import ds18b20
 from braubuddy.thermometer import DeviceError
+from braubuddy.thermometer import ReadError
 from braubuddy.thermometer import IThermometer
 
 LOGGER = logging.getLogger(__name__)
