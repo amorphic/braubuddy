@@ -1,6 +1,8 @@
 import logging
 import tosr0x
 from braubuddy.envcontroller import IEnvController 
+from braubuddy.envcontroller import DeviceError
+from braubuddy.envcontroller import PercentageError
 
 LOGGER = logging.getLogger(__name__)
 
