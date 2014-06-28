@@ -10,7 +10,7 @@ setup(
     url='http://pypi.python.org/pypi/Braubuddy/',
     license='LICENSE.txt',
     description='An extensile thermostat framework',
-    long_description=open('README.md').read(),
+    long_description=open('README.rst').read(),
     entry_points = {
         'console_scripts': [
             'braubuddy = braubuddy.runserver:main',
