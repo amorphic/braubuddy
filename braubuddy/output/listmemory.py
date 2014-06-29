@@ -1,8 +1,6 @@
-import logging
 import time
+from cherrypy import log
 from braubuddy.output import IOutput
-
-LOGGER = logging.getLogger(__name__)
 
 
 class ListMemoryOutput(IOutput):
@@ -44,10 +42,6 @@ class ListMemoryOutput(IOutput):
         if self._datapoint_limit != 0:
             while len(self._datapoints) > self._datapoint_limit:
                 # Discard oldest status datapoint
-                LOGGER.debug(
-                    (
-                        'Datapoint limit exceeded - '
-                        'dropping earliest datapoint: {0!r}'
-                    ).format(self._datapoints[0]
-                ))
+                log(('Datapoint limit exceeded - dropping earliest datapoint: '
+                    '{0!r}').format(self._datapoints[0]))
                 self._datapoints.pop(0)

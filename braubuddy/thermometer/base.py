@@ -2,10 +2,8 @@
 Braubuddy envcontroller exceptions and interface.
 """
 
-import logging
 import abc
-
-LOGGER = logging.getLogger(__name__)
+from cherrypy import log
 
 
 class DeviceError(Exception):

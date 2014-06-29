@@ -1,10 +1,8 @@
-import logging
+from cherrypy import log
 import ds18b20
 from braubuddy.thermometer import DeviceError
 from braubuddy.thermometer import ReadError
 from braubuddy.thermometer import IThermometer
-
-LOGGER = logging.getLogger(__name__)
 
 
 class DS18B20Thermometer(IThermometer):
@@ -19,7 +17,7 @@ class DS18B20Thermometer(IThermometer):
         try:
             self._ds18b20_device = ds18b20.DS18B20()
         except DS18B20Error as err:
-            LOGGER.debug(err)
+            log(err)
             raise DeviceError(err)
 
     def get_temperature(self, units='celsius'):

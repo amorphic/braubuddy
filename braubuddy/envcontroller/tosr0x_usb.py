@@ -1,10 +1,8 @@
-import logging
+from cherrypy import log
 import tosr0x
 from braubuddy.envcontroller import IEnvController 
 from braubuddy.envcontroller import DeviceError
 from braubuddy.envcontroller import PercentageError
-
-LOGGER = logging.getLogger(__name__)
 
 
 class Tosr0xEnvController(IEnvController):
@@ -24,7 +22,7 @@ class Tosr0xEnvController(IEnvController):
         tosr0x_devices = self._get_tosr0x_devices()
         if len(tosr0x_devices) == 0:
             msg = 'No TEMPer USB devices discovered'
-            LOGGER.error(msg)
+            log.error(msg)
             raise DeviceError(msg)
         # Use first device if multiple devices discovered
         self._tosr0x_device = tosr0x_devices[0]
@@ -39,14 +37,10 @@ class Tosr0xEnvController(IEnvController):
         :rtype: :class:`list` of :class:`tosr0x.relayModule`
         """
 
-        LOGGER.info('Discovering TEMPer USB thermometer(s)')   
+        log('Discovering TEMPer USB thermometer(s)')   
         tosr0x_devices = tosr0x.handler()
-        LOGGER.info(
-            (
-                '{0} TEMPer USB thermometer(s) '
-                'discovered'
-            ).format(len(tosr0x_devices))
-        )   
+        log(('{0} TEMPer USB thermometer(s) discovered').format(
+            len(tosr0x_devices)))   
         return tosr0x_devices
 
     def _set_relay_from_percent(self, relay_number, percent):

@@ -1,11 +1,9 @@
-import logging
 import json
 import time
 from os.path import expanduser
+from cherrypy import log
 from braubuddy.output import IOutput
 from braubuddy.output import OutputError
-
-LOGGER = logging.getLogger(__name__)
 
 
 class JSONFileOutput(IOutput):
@@ -57,7 +55,7 @@ class JSONFileOutput(IOutput):
         if self._datapoint_limit != 0:
             while len(status_history['datapoints']) > self._datapoint_limit:
                 # Discard oldest status datapoint
-                LOGGER.debug(('Datapoint limit exceeded - '
+                log(('Datapoint limit exceeded - '
                     'dropping earliest datapoint: {0!r}').format(
                         status_history['datapoints'][0]))
                 status_history['datapoints'].pop(0)

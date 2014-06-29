@@ -2,10 +2,8 @@
 Braubuddy envcontroller exceptions and interface.
 """
 
-import logging
 import abc
-
-LOGGER = logging.getLogger(__name__)
+from cherrypy import log
 
 
 class DeviceError(Exception):
@@ -60,5 +58,3 @@ class IEnvController(object):
         :rtype: :class:`tuple` of (:class:`int` <heater_power_level>,
             :class:`int` <cooler_power_level>)
         """
-
-

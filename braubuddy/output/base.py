@@ -4,9 +4,6 @@ Braubuddy output template and interface.
 """
 
 import abc
-import logging
-
-LOGGER = logging.getLogger(__name__)
 
 
 class OutputError(Exception):
