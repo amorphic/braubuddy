@@ -22,7 +22,7 @@ show_footer: True
 [components]
 # Thermometer #
 # Dummy thermometer which generates random temperatures. Use for testing.
-thermometer: braubuddy.thermometer.DummyRandomRange()
+thermometer: braubuddy.thermometer.DummyThermometer()
 # TEMPer USB thermometer
 ##thermometer: braubuddy.thermometer.TemperThermometer()
 
@@ -40,8 +40,8 @@ thermostat: braubuddy.thermostat.SimpleRangedThermostat(20, 'celsius', lower_out
 
 [outputs]
 # Text file
-##txt_out: braubuddy.output.TextFile(units='celsius', out_file='~/braubuddy.log', separator=' ', show_labels=False, show_units=True, show_timestamp=True, timestamp_format='%Y-%m-%d %H:%M:%S')
+##txt_out: braubuddy.output.TextFileOutput(units='celsius', out_file='~/braubuddy.log', separator=' ', show_labels=False, show_units=True, show_timestamp=True, timestamp_format='%Y-%m-%d %H:%M:%S')
 # CSV file
-##csv_out: braubuddy.output.CSVFile(units='celsius', out_file='~/braubuddy.csv', show_timestamp=True, timestamp_format='%Y-%m-%d %H:%M:%S')
+##csv_out: braubuddy.output.CSVFileOutput(units='celsius', out_file='~/braubuddy.csv', show_timestamp=True, timestamp_format='%Y-%m-%d %H:%M:%S')
 # JSON file
-##json_out: braubuddy.output.JSONFile(units='celsius', out_file='~/braubuddy.json', datapoint_limit=44640)
+##json_out: braubuddy.output.JSONFileOutput(units='celsius', out_file='~/braubuddy.json', datapoint_limit=44640)
