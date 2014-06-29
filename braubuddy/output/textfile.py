@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
+from os.path import expanduser
 from braubuddy.output import IOutput
 from braubuddy.output import OutputError
 
@@ -31,7 +32,7 @@ class TextFileOutput(IOutput):
             separator=' ', show_labels=False, show_units=True,
             show_timestamp=True, timestamp_format='%Y-%m-%d %H:%M:%S'):
 
-        self._out_file = out_file
+        self._out_file = expanduser(out_file)
         self._separator = separator
         self._show_labels = show_labels
         self._show_units = show_units
@@ -66,7 +67,7 @@ class TextFileOutput(IOutput):
             timestamp = datetime.now().strftime(self._timestamp_format)
             line = '{0}{1}{2}'.format(timestamp, self._separator, line)
         try:
-            fh = open(self._out_file, 'a')
+            fh = open(self._out_file, 'a+')
             fh.write(line)
             fh.close()
         except IOError, err:

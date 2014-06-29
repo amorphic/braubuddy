@@ -1,6 +1,7 @@
 import logging
 import json
 import time
+from os.path import expanduser
 from braubuddy.output import IOutput
 from braubuddy.output import OutputError
 
@@ -23,7 +24,7 @@ class JSONFileOutput(IOutput):
     def __init__(self, units='celsius', out_file='braubuddy.json',
         datapoint_limit=44640):
 
-        self._out_file = out_file
+        self._out_file = expanduser(out_file)
         self._datapoint_limit = datapoint_limit
         super(JSONFileOutput, self).__init__(units)
 
@@ -62,6 +63,6 @@ class JSONFileOutput(IOutput):
                 status_history['datapoints'].pop(0)
         # Write status history JSON to file
         new_json = json.dumps(status_history)
-        fh = open(self._out_file, 'w')
+        fh = open(self._out_file, 'a+')
         fh.write(new_json)
         fh.close()
