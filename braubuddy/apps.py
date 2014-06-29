@@ -63,11 +63,11 @@ class Dashboard(object):
             * hourly temperature chart
             * daily temperature chart
         '''
-        frequency = cherrypy.config['frequency']
-        show_footer = cherrypy.config['show_footer']
+        show_footer = cherrypy.tree.apps['/engine'].config['global']['show_footer']
+        frequency = cherrypy.tree.apps['/engine'].config['global']['frequency']
         thermostat = cherrypy.tree.apps['/engine'].config['components']['thermostat']
         target = thermostat.get_target() 
-        units = braubuddy.thermometer.abbreviate_temp_units(
+        units = braubuddy.thermometer.IThermometer.abbreviate_temp_units(
             thermostat.get_units())
         template = self.j2env.get_template('braubuddy.html')
         return template.render(frequency=frequency, target=target, units=units,
@@ -82,8 +82,8 @@ class Engine(object):
         """
         Perform full thermostat cycle and return state.
         """
-        retry_count = cherrypy.config['retry_count']
-        retry_delay = cherrypy.config['retry_delay']
+        retry_count = cherrypy.request.app.config['global']['retry_count']
+        retry_delay = cherrypy.request.app.config['global']['retry_delay']
         envcontroller = cherrypy.request.app.config['components']['envcontroller']
         thermometer = cherrypy.request.app.config['components']['thermometer']
         thermostat = cherrypy.request.app.config['components']['thermostat']

@@ -13,24 +13,26 @@ def main():
     """ 
     Start the braubuddy engine and interface.
     """
-    # Load global config and mount applications
-    cherrypy.config.update(braubuddy.CONFIG_BRAUBUDDY)
+    # Mount applications
+    # Engine
     cherrypy.tree.mount(
-        braubuddy.apps.Engine(), '/engine', config=braubuddy.CONFIG_BRAUBUDDY)
+        braubuddy.apps.Engine(), '/engine', config=braubuddy.CONFIG_FILE_BRAUBUDDY)
+    # Dashboard
     cherrypy.tree.mount(
-        braubuddy.apps.Dashboard(), '', config=braubuddy.CONFIG_DASHBOARD)
+        braubuddy.apps.Dashboard(), '', config=braubuddy.CONFIG_FILE_DASHBOARD)
+    # API
     cherrypy.tree.mount(
-        braubuddy.apps.API(), '/api', config=braubuddy.CONFIG_API)
-    engine_config = cherrypy.tree.apps['/engine'].config
+        braubuddy.apps.API(), '/api', config=braubuddy.CONFIG_FILE_API)
 
-    # Add recent data storage to outputs to be consumed by applications
+    # Append internal data storage to outputs
+    engine_config = cherrypy.tree.apps['/engine'].config
     engine_config['outputs']['recent_data'] = braubuddy.RECENT_DATA
 
-    # Create job to regularly perform thermostat cycle
+    # Job to regularly perform thermostat cycle
     cycle = Monitor(
         cherrypy.engine,
         cherrypy.tree.apps['/engine'].root.cycle,
-        frequency=cherrypy.config['frequency'],
+        frequency=engine_config['global']['frequency'],
         name='bb_engine')
     cycle.subscribe()
 
@@ -38,7 +40,7 @@ def main():
     cherrypy.engine.signals.subscribe()
     cherrypy.engine.start()
 
-    # Initiate first engine cycle, so graph data is available immediately
+    # Initiate first engine cycle to ensure data is available immediately
     cherrypy.tree.apps['/engine'].root.cycle()
     cherrypy.engine.block()
     return 0
