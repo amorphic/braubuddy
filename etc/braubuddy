@@ -20,25 +20,33 @@ retry_delay: 5
 show_footer: True 
 
 [components]
-# Thermometer #
-# Dummy thermometer which generates random temperatures. Use for testing.
-thermometer: braubuddy.thermometer.DummyThermometer()
+### Configure these.
+
+## Thermometer ##
+# Automatically discover a connected thermometer.
+thermometer: braubuddy.thermometer.AutoThermometer()
+# Dummy thermometer which generates random temperatures..
+##thermometer: braubuddy.thermometer.DummyThermometer()
+# DS18B20 thermometer
+##thermometer: braubuddy.thermometer.TemperThermometer()
 # TEMPer USB thermometer
 ##thermometer: braubuddy.thermometer.TemperThermometer()
 
-# Environment Controller #
+## Environment Controller ##
+# Automatically discover a connected environmenal controller.
+envcontroller: braubuddy.envcontroller.AutoEnvController()
 # Dummy environment controller. Use for testing.
-envcontroller: braubuddy.envcontroller.DummyEnvController()
-# Environment controller utilising the Tosr0x family of relay modules.
-# Uses relay 0 to switch heating and relay 1 to switch cooling.
+##envcontroller: braubuddy.envcontroller.DummyEnvController()
+# Environmental controller utilising a Tosr0x relay module.
 ##envcontroller: braubuddy.envcontroller.Tosr0xEnvController()
 
-# Thermostat #
-# Thermostat which uses an 'upper' temperature range to determine when to
-# cool and a 'lower' temperature range to determine when to heat.
+## Thermostat ##
+# Thermostat which uses upper/lower temperature ranges
 thermostat: braubuddy.thermostat.SimpleRangedThermostat(20, 'celsius', lower_out=2, lower_in=1, upper_in=1, upper_out=2)
 
 [outputs]
+### Configure these.
+
 # Text file
 ##txt_out: braubuddy.output.TextFileOutput(units='celsius', out_file='~/braubuddy.log', separator=' ', show_labels=False, show_units=True, show_timestamp=True, timestamp_format='%Y-%m-%d %H:%M:%S')
 # CSV file
