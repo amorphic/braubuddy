@@ -16,8 +16,7 @@ class TemperThermometer(IThermometer):
     def __init__(self):
         temper_devices = self._get_temper_devices()
         if len(temper_devices) == 0:
-            msg = 'No TEMPer USB devices discovered'
-            log.error(msg)
+            msg = 'No TEMPer devices discovered'
             raise DeviceError(msg)
         # Use first device if multiple devices discovered
         self._temper_device = temper_devices[0]
@@ -31,11 +30,8 @@ class TemperThermometer(IThermometer):
         :returns: list of attached TEMPer devices
         :rtype: :class:`list` of :class:`temperusb.TemperDevice`
         """
-        log('Discovering TEMPer USB thermometer(s)')
         th = temperusb.TemperHandler()
         temper_devices = th.get_devices()
-        log(('{0} TEMPer USB thermometer(s) discovered').format(
-            len(temper_devices)))
         return temper_devices
 
     def get_temperature(self, units='celsius'):

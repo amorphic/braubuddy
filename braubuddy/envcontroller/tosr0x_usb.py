@@ -21,8 +21,7 @@ class Tosr0xEnvController(IEnvController):
     def __init__(self, device_path=False):
         tosr0x_devices = self._get_tosr0x_devices()
         if len(tosr0x_devices) == 0:
-            msg = 'No TEMPer USB devices discovered'
-            log.error(msg)
+            msg = 'No Tosr0x devices discovered'
             raise DeviceError(msg)
         # Use first device if multiple devices discovered
         self._tosr0x_device = tosr0x_devices[0]
@@ -37,10 +36,7 @@ class Tosr0xEnvController(IEnvController):
         :rtype: :class:`list` of :class:`tosr0x.relayModule`
         """
 
-        log('Discovering TEMPer USB thermometer(s)')   
         tosr0x_devices = tosr0x.handler()
-        log(('{0} TEMPer USB thermometer(s) discovered').format(
-            len(tosr0x_devices)))   
         return tosr0x_devices
 
     def _set_relay_from_percent(self, relay_number, percent):

@@ -24,7 +24,9 @@ class AutoEnvController(IEnvController):
 
         log('Auto-discovering Environmental Controller.')
         try:
-            return(Tosr0xEnvController())
+            envcontroller = Tosr0xEnvController()
+            log('Tosr0x Environmental Controller detected.')
+            return envcontroller
         except DeviceError:
             log('No Tosr0x Environmental Controllers detected.')
         log.error('No compatible Environmental Controllers detected. '
