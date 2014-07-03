@@ -5,8 +5,6 @@ Braubuddy Dummy thermometer unit tests
 import unittest
 from mock import patch, call, MagicMock
 from braubuddy.thermometer import dummy 
-from braubuddy.thermometer import DeviceError
-from braubuddy.thermometer import ReadError
 
 class TestDummy(unittest.TestCase):
 
