@@ -2,7 +2,7 @@ from cherrypy import log
 from braubuddy.thermometer import DeviceError 
 from braubuddy.thermometer import IThermometer 
 from braubuddy.thermometer import DS18B20Thermometer 
-from braubuddy.thermometer import TemperThermometer
+from braubuddy.thermometer import TEMPerThermometer
 from braubuddy.thermometer import DummyThermometer 
 
 

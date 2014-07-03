@@ -5,7 +5,7 @@ from braubuddy.thermometer import ReadError
 from braubuddy.thermometer import IThermometer
 
 
-class TemperThermometer(IThermometer):
+class TEMPerThermometer(IThermometer):
     """
     A TEMPer USB Thermometer
 
@@ -36,8 +36,7 @@ class TemperThermometer(IThermometer):
 
     def get_temperature(self, units='celsius'):
         try:
-            # TODO: get temp in specified units
-	        return self._temper_device.get_temperature()
+	        return self._temper_device.get_temperature(format=units)
         except Exception as err:
             raise ReadError(
                 'Error reading device temperature: {0}'.format(err))
