@@ -4,6 +4,11 @@ from braubuddy.thermometer import DeviceError
 from braubuddy.thermometer import ReadError
 from braubuddy.thermometer import IThermometer
 
+UNIT_MAP = {
+    'celsius':      1,
+    'fahrenheit':   2
+}
+
 
 class DS18B20Thermometer(IThermometer):
     """
@@ -22,8 +27,7 @@ class DS18B20Thermometer(IThermometer):
 
     def get_temperature(self, units='celsius'):
         try:
-            # TODO: get temp in specified units
-	        return self._ds18b20_device.get_temperature()
+	        return self._ds18b20_device.get_temperature(unit=UNIT_MAP[units])
         except Exception as err:
             raise ReadError(
                 'Error reading device temperature: {0}'.format(err))

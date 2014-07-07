@@ -31,7 +31,7 @@ class AutoThermometer(IThermometer):
             pass
             log('No DS18B20 Thermometers detected.')
         try:
-            thermometer = TemperThermometer()
+            thermometer = TEMPerThermometer()
             log('TEMPer Thermometer detected.')
             return thermometer
         except DeviceError:
