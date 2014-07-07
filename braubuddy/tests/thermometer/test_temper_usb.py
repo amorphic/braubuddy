@@ -15,7 +15,6 @@ class TestTEMPer(unittest.TestCase):
     def test_temper_detected(self, mk_temperusb):
         """TEMPer device is detected if present."""
         mk_temper_device = MagicMock()
-        mk_temperusb.TemperHandler = MagicMock()
         mk_temperusb.TemperHandler.return_value.get_devices.return_value = \
             [mk_temper_device]
         thermometer = temper_usb.TEMPerThermometer()
@@ -26,7 +25,6 @@ class TestTEMPer(unittest.TestCase):
         mk_temper_device_1 = MagicMock()
         mk_temper_device_2 = MagicMock()
         mk_temper_device_3 = MagicMock()
-        mk_temperusb.TemperHandler = MagicMock()
         mk_temperusb.TemperHandler.return_value.get_devices.return_value = [ 
             mk_temper_device_1,
             mk_temper_device_2,
@@ -37,7 +35,6 @@ class TestTEMPer(unittest.TestCase):
 
     def test_temper_not_detected(self, mk_temperusb):
         """TEMPer device is not detected if not present"""
-        mk_temperusb.TemperHandler = MagicMock()
         mk_temperusb.TemperHandler.return_value.get_devices.return_value = []
         with self.assertRaises(DeviceError):
             t = temper_usb.TEMPerThermometer()
@@ -47,7 +44,6 @@ class TestTEMPer(unittest.TestCase):
         temp_c = 30
         mk_temper_device = MagicMock()
         mk_temper_device.get_temperature.return_value = temp_c
-        mk_temperusb.TemperHandler = MagicMock()
         mk_temperusb.TemperHandler.return_value.get_devices.return_value = \
             [mk_temper_device]
         thermometer = temper_usb.TEMPerThermometer()
@@ -59,7 +55,6 @@ class TestTEMPer(unittest.TestCase):
         temp_f = 86
         mk_temper_device = MagicMock()
         mk_temper_device.get_temperature.return_value = temp_f
-        mk_temperusb.TemperHandler = MagicMock()
         mk_temperusb.TemperHandler.return_value.get_devices.return_value = \
             [mk_temper_device]
         thermometer = temper_usb.TEMPerThermometer()
@@ -70,7 +65,6 @@ class TestTEMPer(unittest.TestCase):
         """ReadError is raised on TEMPer device read error."""
         mk_temper_device = MagicMock()
         mk_temper_device.get_temperature.side_effect=Exception('Some Error')
-        mk_temperusb.TemperHandler = MagicMock()
         mk_temperusb.TemperHandler.return_value.get_devices.return_value = \
             [mk_temper_device]
         thermometer = temper_usb.TEMPerThermometer()
