@@ -1,5 +1,5 @@
 """
-Braubuddy Dummy thermometer unit tests.
+Braubuddy Auto thermometer unit tests.
 """
 
 import unittest
@@ -8,8 +8,6 @@ from braubuddy.thermometer import auto
 from braubuddy.thermometer import dummy 
 from braubuddy.thermometer import ds18b20_gpio 
 from braubuddy.thermometer import temper_usb 
-from braubuddy.thermometer import DeviceError
-from braubuddy.thermometer import ReadError
 
 class TestAuto(unittest.TestCase):
 
