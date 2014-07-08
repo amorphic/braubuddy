@@ -37,6 +37,7 @@ class IEnvController(object):
         
         :param percent: Heater power level.
         :type _percent: :class:`int` in range(0-100)
+        :raises: PercentageError if percent is invalid
         """
 
     @abc.abstractmethod
@@ -47,6 +48,7 @@ class IEnvController(object):
         
         :param percent: Cooler power level.
         :type _percent: :class:`int` in range(0-100)
+        :raises: PercentageError if percent is invalid
         """
 
     @abc.abstractmethod
