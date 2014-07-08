@@ -1,5 +1,5 @@
 """
-Braubuddy Dummy thermometer unit tests
+Braubuddy Dummy thermometer unit tests.
 """
 
 import unittest
@@ -8,8 +8,8 @@ from braubuddy.thermometer import dummy
 
 class TestDummy(unittest.TestCase):
 
-    def test_within_bounds(self):
-        """Dummy thermometer returns values within bounds."""
+    def test_created_within_bounds(self):
+        """Dummy thermometer is created and returns values within bounds."""
 
         lower_bound = 20
         upper_bound = 30

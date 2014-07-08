@@ -34,7 +34,7 @@ class TestTEMPer(unittest.TestCase):
         self.assertIs(thermometer._temper_device, mk_temper_device_1)
 
     def test_temper_not_detected(self, mk_temperusb):
-        """TEMPer device is not detected if not present"""
+        """DeviceError raised if no TEMPer devices present."""
         mk_temperusb.TemperHandler.return_value.get_devices.return_value = []
         with self.assertRaises(DeviceError):
             t = temper_usb.TEMPerThermometer()
