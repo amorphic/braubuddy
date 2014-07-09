@@ -40,6 +40,10 @@ class SimpleRangedThermostat(IThermostat):
     def __init__(self, target, units, lower_out=2, lower_in=1, upper_in=1,
             upper_out=2):
 
+        if lower_out <= lower_in:
+            raise ValueError('lower_out must be > lower_in.')
+        if upper_out <= upper_in:
+            raise ValueError('upper_out must be > upper_in.')
         self._lower_outside = target - lower_out
         self._lower_inside = target - lower_in
         self._upper_inside = target + upper_in
