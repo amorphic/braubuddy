@@ -66,11 +66,10 @@ class Dashboard(object):
         show_footer = cherrypy.tree.apps['/engine'].config['global']['show_footer']
         frequency = cherrypy.tree.apps['/engine'].config['global']['frequency']
         thermostat = cherrypy.tree.apps['/engine'].config['components']['thermostat']
-        target = thermostat.get_target() 
         units = braubuddy.thermometer.IThermometer.abbreviate_temp_units(
             thermostat.get_units())
         template = self.j2env.get_template('braubuddy.html')
-        return template.render(frequency=frequency, target=target, units=units,
+        return template.render(frequency=frequency, units=units,
             show_footer=show_footer)
 
 class Engine(object):
@@ -108,6 +107,7 @@ class Engine(object):
         envcontroller.set_heater_level(required_heat)
         envcontroller.set_cooler_level(required_cool)
         # Output
+        target = thermostat.get_target() 
         for name, output in cherrypy.request.app.config['outputs'].iteritems():
-            output.publish_status(current_temp, current_heat, current_cool)
+            output.publish_status(target, current_temp, current_heat, current_cool)
         return True

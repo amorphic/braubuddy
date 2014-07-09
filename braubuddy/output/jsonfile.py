@@ -26,7 +26,7 @@ class JSONFileOutput(IOutput):
         self._datapoint_limit = datapoint_limit
         super(JSONFileOutput, self).__init__(units)
 
-    def publish_status(self, temp, heater_percent, cooler_percent):
+    def publish_status(self, target, temp, heater_percent, cooler_percent):
         
         # Load status history from JSON
         try:
@@ -48,7 +48,7 @@ class JSONFileOutput(IOutput):
         # Get timestamp in epoch seconds
         timestamp = int(time.time())
         # Create new status
-        status = [temp, heater_percent, cooler_percent, timestamp]
+        status = [target, temp, heater_percent, cooler_percent, timestamp]
         # Add new status to previous data
         status_history['datapoints'].append(status)
         # Drop datapoints if limit exceeded
@@ -61,6 +61,6 @@ class JSONFileOutput(IOutput):
                 status_history['datapoints'].pop(0)
         # Write status history JSON to file
         new_json = json.dumps(status_history)
-        fh = open(self._out_file, 'a+')
+        fh = open(self._out_file, 'w+')
         fh.write(new_json)
         fh.close()

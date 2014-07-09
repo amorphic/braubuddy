@@ -40,24 +40,28 @@ class TextFileOutput(IOutput):
         self._timestamp_format = timestamp_format
         super(TextFileOutput, self).__init__(units)
 
-    def publish_status(self, temp, heater_percent, cooler_percent):
+    def publish_status(self, target, temp, heater_percent, cooler_percent):
         
+        target_str = target
         temp_str = temp
         heater_str = heater_percent
         cooler_str = cooler_percent
         # Add units if required
         if self._show_units:
+            target_str = '{0}{1}'.format(target_str, self.units)
             temp_str = '{0}{1}'.format(temp_str, self.units)
             heater_str = '{0}%'.format(heater_str)
             cooler_str = '{0}%'.format(cooler_str)
         # Add labels if required
         if self._show_labels:
+            target_str = 'Target:{0}'.format(target_str)
             temp_str = 'Temperature:{0}'.format(temp_str)
             heater_str = 'Heater:{0}'.format(heater_str)
             cooler_str = 'Cooler:{0}'.format(cooler_str)
         # Generate output line
-        line = '{1}{0}{2}{0}{3}\n'.format(
+        line = '{1}{0}{2}{0}{3}{0}{4}\n'.format(
             self._separator,
+            target_str,
             temp_str,
             heater_str,
             cooler_str

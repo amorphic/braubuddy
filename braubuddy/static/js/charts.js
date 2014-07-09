@@ -30,7 +30,7 @@ function getTempChart() {
 function renderCharts() {
   // Hourly
   var startTime = (new Date() - (minsHourly * 60000)) / 1000;
-  d3.json("/api?since=" + parseInt(startTime), function(error, json) {
+  d3.json("/api/?since=" + parseInt(startTime), function(error, json) {
     if (error) return console.warn(error);
     var tempData = processBraubuddyData(json);
     d3.select("#chart-hourly svg")
@@ -39,7 +39,7 @@ function renderCharts() {
   });
   // Daily
   var startTime = (new Date() - (minsDaily * 60000)) / 1000;
-  d3.json("/api?since=" + parseInt(startTime), function(error, json) {
+  d3.json("/api/?since=" + parseInt(startTime), function(error, json) {
     if (error) return console.warn(error);
     var tempData = processBraubuddyData(json);
     d3.select("#chart-daily svg")
@@ -49,28 +49,36 @@ function renderCharts() {
 }
 
 function updateGauges() {
-  d3.json("/api?limit=1", function(error,json) {
+  d3.json("/api/?limit=1", function(error,json) {
     if (error) return console.warn(error);
-    $('#temp-current').text(d3.format('.01f')(json[0][0]));
-    $('#heat-level').text(json[0][1]);
-    $('#cool-level').text(json[0][2]);
-    $('#cycle-time').text(d3.time.format('%H:%M')(new Date(json[0][3] * 1000)));
+    $('#temp-target').text(d3.format('.01f')(json[0][0]));
+    $('#temp-current').text(d3.format('.01f')(json[0][1]));
+    $('#heat-level').text(json[0][2]);
+    $('#cool-level').text(json[0][3]);
+    $('#cycle-time').text(d3.time.format('%H:%M')(new Date(json[0][4] * 1000)));
   });
 }
 
 function processBraubuddyData(json) {
-  var temp = [], heat = [], cool = [];
-  for (var i=0;i<json.length;i++) {
-    var timestamp = json[i][3]*1000;
-    temp.push({x: timestamp, y: json[i][0]});
-    heat.push({x: timestamp, y: json[i][1]});
-    cool.push({x: timestamp, y: json[i][2]});
+  var target = []; temp = [], heat = [], cool = [];
+  for (var i=0; i<json.length; i++) {
+    console.log(json)
+    var timestamp = json[i][4]*1000;
+    target.push({x: timestamp, y: json[i][0]});
+    temp.push({x: timestamp, y: json[i][1]});
+    heat.push({x: timestamp, y: json[i][2]});
+    cool.push({x: timestamp, y: json[i][3]});
   }
   return [
     {
+      values: target,
+      key: 'Target',
+      color: '#55AA55'
+    },
+    {
       values: temp,
       key: 'Temperature',
-      color: '#ff7f0e'
+      color: '#D4A76A'
     }
   ];
 }

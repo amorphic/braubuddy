@@ -73,10 +73,12 @@ class IOutput(object):
                 return details['symbol']
 
     @abc.abstractmethod
-    def publish_status(self, temp, heater_percent, cooler_percent):
+    def publish_status(self, target, temp, heater_percent, cooler_percent):
         """
         Publish braubuddy status
 
+        :param target: Target temperature.
+        :type target: :class:`float`
         :param temp: Current temperature.
         :type temp: :class:`float`
         :param heater_percent: Current heater power level as percentage.

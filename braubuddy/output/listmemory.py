@@ -24,19 +24,19 @@ class ListMemoryOutput(IOutput):
         
         results = self._datapoints
         if since:
-            results = [x for x in results if x[3] >= since]
+            results = [x for x in results if x[4] >= since]
         if before:
-            results = [x for x in results if x[3] <= before]
+            results = [x for x in results if x[4] <= before]
         if limit:
             results = results[-limit:]
         return results 
 
-    def publish_status(self, temp, heater_percent, cooler_percent):
+    def publish_status(self, target, temp, heater_percent, cooler_percent):
         
         # Get timestamp in epoch seconds
         timestamp = int(time.time())
         # Append new status
-        status = [temp, heater_percent, cooler_percent, timestamp]
+        status = [target, temp, heater_percent, cooler_percent, timestamp]
         self._datapoints.append(status)
         # Drop datapoints if limit exceeded
         if self._datapoint_limit != 0:
