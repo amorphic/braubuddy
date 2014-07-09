@@ -14,6 +14,8 @@ def main():
     Start the braubuddy engine and interface.
     """
     # Mount applications
+    cherrypy.config.update(braubuddy.CONFIG_FILE_BRAUBUDDY)
+
     # Engine
     cherrypy.tree.mount(
         braubuddy.apps.Engine(), '/engine', config=braubuddy.CONFIG_FILE_BRAUBUDDY)
