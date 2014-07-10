@@ -1,4 +1,3 @@
-import logging
 import cherrypy
 import jinja2
 import time
@@ -63,14 +62,13 @@ class Dashboard(object):
             * hourly temperature chart
             * daily temperature chart
         '''
-        show_footer = cherrypy.tree.apps['/engine'].config['global']['show_footer']
-        frequency = cherrypy.tree.apps['/engine'].config['global']['frequency']
-        thermostat = cherrypy.tree.apps['/engine'].config['components']['thermostat']
-        units = braubuddy.thermometer.IThermometer.abbreviate_temp_units(
-            thermostat.get_units())
+        units = cherrypy.config['thermometer'].abbreviate_temp_units(
+            cherrypy.config['thermostat'].get_units())
         template = self.j2env.get_template('braubuddy.html')
-        return template.render(frequency=frequency, units=units,
-            show_footer=show_footer)
+        return template.render(
+            frequency=cherrypy.config['frequency'],
+            units=units,
+            show_footer=cherrypy.config['show_footer'])
 
 class Engine(object):
     """
@@ -81,11 +79,11 @@ class Engine(object):
         """
         Perform full thermostat cycle and return state.
         """
-        retry_count = cherrypy.request.app.config['global']['retry_count']
-        retry_delay = cherrypy.request.app.config['global']['retry_delay']
-        envcontroller = cherrypy.request.app.config['components']['envcontroller']
-        thermometer = cherrypy.request.app.config['components']['thermometer']
-        thermostat = cherrypy.request.app.config['components']['thermostat']
+        retry_count = cherrypy.config['retry_count']
+        retry_delay = cherrypy.config['retry_delay']
+        envcontroller = cherrypy.config['envcontroller']
+        thermometer = cherrypy.config['thermometer']
+        thermostat = cherrypy.config['thermostat']
         # Environment input
         current_heat, current_cool = envcontroller.get_power_levels()
         # Temperature input
@@ -94,7 +92,7 @@ class Engine(object):
                 current_temp = thermometer.get_temperature()
                 break
             except braubuddy.thermometer.ReadError, err:
-                cherrypy.request.app.log.error(err.message)
+                cherrypy.log.error(err.message)
                 time.sleep(retry_delay)
         else:
             cherrypy.request.app.log.error(

@@ -5,20 +5,25 @@ Start Braubuddy
 import sys
 import logging
 import cherrypy
-import braubuddy
+#TODO: clean these up
 from cherrypy.process.plugins import Monitor
-
+from cherrypy.lib import reprconf
+import braubuddy
 
 def main():
     """ 
     Start the braubuddy engine and interface.
+    
+    Involves some creating use of cherrypy's config loader to allow for a
+    single user-editable config file.
     """
-    # Mount applications
-    cherrypy.config.update(braubuddy.CONFIG_FILE_BRAUBUDDY)
+
+    braubuddy_config = reprconf.as_dict(braubuddy.CONFIG_FILE_BRAUBUDDY)
+    cherrypy.config.update(braubuddy_config['global'])
 
     # Engine
-    cherrypy.tree.mount(
-        braubuddy.apps.Engine(), '/engine', config=braubuddy.CONFIG_FILE_BRAUBUDDY)
+    cherrypy.tree.mount(braubuddy.apps.Engine(), '/engine',
+        config={'outputs': braubuddy_config['outputs']})
     # Dashboard
     cherrypy.tree.mount(
         braubuddy.apps.Dashboard(), '', config=braubuddy.CONFIG_FILE_DASHBOARD)
@@ -34,7 +39,7 @@ def main():
     cycle = Monitor(
         cherrypy.engine,
         cherrypy.tree.apps['/engine'].root.cycle,
-        frequency=engine_config['global']['frequency'],
+        frequency=cherrypy.config['frequency'],
         name='bb_engine')
     cycle.subscribe()
 
