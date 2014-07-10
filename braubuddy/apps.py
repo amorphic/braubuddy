@@ -62,13 +62,11 @@ class Dashboard(object):
             * hourly temperature chart
             * daily temperature chart
         '''
-        units = cherrypy.config['thermometer'].abbreviate_temp_units(
-            cherrypy.config['thermostat'].get_units())
         template = self.j2env.get_template('braubuddy.html')
         return template.render(
             frequency=cherrypy.config['frequency'],
-            units=units,
-            show_footer=cherrypy.config['show_footer'])
+            units=cherrypy.config['units_abbreviated'],
+            show_footer=cherrypy.config['dashboard_footer'])
 
 class Engine(object):
     """
