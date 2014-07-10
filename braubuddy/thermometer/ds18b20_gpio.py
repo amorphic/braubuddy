@@ -1,4 +1,3 @@
-from cherrypy import log
 import ds18b20
 from braubuddy.thermometer import DeviceError
 from braubuddy.thermometer import ReadError

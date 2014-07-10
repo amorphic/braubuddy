@@ -3,7 +3,6 @@ Braubuddy envcontroller exceptions and interface.
 """
 
 import abc
-from cherrypy import log
 
 
 class DeviceError(Exception):
