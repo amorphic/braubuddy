@@ -18,8 +18,10 @@ frequency: 60
 retry_count: 3
 # Temperature poll retry delay (seconds)
 retry_delay: 5
-# Display page footer
-show_footer: True 
+# Dashboard title
+dashboard_title = 'Braubuddy'
+# Dashboard footer display
+dashboard_footer: True 
 
 ### Thermometer ###
 # Automatically discovered thermometer.
@@ -33,9 +35,9 @@ thermometer: braubuddy.thermometer.AutoThermometer()
 
 ### Environment Controller ###
 # Automatically discovered environmenal controller.
-##envcontroller: braubuddy.envcontroller.AutoEnvController()
+envcontroller: braubuddy.envcontroller.AutoEnvController()
 # Dummy environment controller. Use for testing.
-envcontroller: braubuddy.envcontroller.DummyEnvController()
+##envcontroller: braubuddy.envcontroller.DummyEnvController()
 # Environmental controller utilising a Tosr0x relay module.
 ##envcontroller: braubuddy.envcontroller.Tosr0xEnvController()
 
