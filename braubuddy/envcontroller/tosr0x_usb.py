@@ -1,4 +1,3 @@
-from cherrypy import log
 import tosr0x
 from braubuddy.envcontroller import IEnvController 
 from braubuddy.envcontroller import DeviceError
