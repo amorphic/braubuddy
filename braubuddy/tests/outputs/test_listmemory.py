@@ -8,7 +8,7 @@ from braubuddy.output import listmemory
 class TestListMemory(unittest.TestCase):
 
     def test_published_datapoint_returned(self):
-        "Published datapoint is returned."""
+        """Published datapoint is returned."""
         output = listmemory.ListMemoryOutput()
         target = 20
         temp = 22
@@ -19,7 +19,7 @@ class TestListMemory(unittest.TestCase):
         self.assertEqual(result[0:4], [target, temp, heat, cool])
 
     def test_published_datapoints_returned(self):
-        "Published datapoints are returned."""
+        """Published datapoints are returned."""
         output = listmemory.ListMemoryOutput()
         for i in range(100):
             output.publish_status(20, 22, 100, 0)
@@ -27,7 +27,7 @@ class TestListMemory(unittest.TestCase):
         self.assertEqual(len(result), 100)
 
     def test_limited_datapoints_returned(self):
-        "Limited datapoints are returned."""
+        """Limited datapoints are returned."""
         output = listmemory.ListMemoryOutput()
         for i in range(100):
             output.publish_status(20, 22, 100, 0)
