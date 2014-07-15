@@ -45,7 +45,7 @@ class IOutput(object):
 
         :param units: Temperature units to output. Use 'celsius' or
             'fahrenheit'.
-        :type units: :class:`str`
+        :type units: :class:`unicode`
         """
 
         unit_map =  {

@@ -5,7 +5,11 @@ from braubuddy.output import IOutput
 
 class ListMemoryOutput(IOutput):
     """
-    Output to a list in memory
+    Output to a list in memory.
+
+    This is a special output used internally by the Braubuddy engine to store
+    metrics for the dashboard and api. It could also be used by a thermostat
+    if it required access to past data.
 
     :param units: Temperature units to output. Use 'celsius' or
         'fahrenheit'.
