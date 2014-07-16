@@ -60,7 +60,7 @@ class TextFileOutput(unittest.TestCase):
         output = textfile.TextFileOutput(
             units='fahrenheit',
             separator=',',
-            show_labels=True,
+            show_labels=False,
             out_file=outfile.name
         )
         output.publish_status(self.temp, self.target, self.heat, self.cool)
