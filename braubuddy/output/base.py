@@ -43,8 +43,8 @@ class IOutput(object):
         """ 
         Map temperature units to a symbol for output.
 
-        :param units: Temperature units to output. Use 'celsius' or
-            'fahrenheit'.
+        :param units: Temperature units to map. Should be 'celsius',
+            'fahrenheit' or some variant thereof.
         :type units: :class:`unicode`
         """
 
