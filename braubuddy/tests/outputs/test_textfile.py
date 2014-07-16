@@ -17,8 +17,8 @@ class TextFileOutput(unittest.TestCase):
         self.heat = 0
         self.cool = 10
 
-    def test_set_units(self):
-        """Units are set."""
+    def test_set_units_to_fahrenheit(self):
+        """Units are set to fahrenheit."""
         outfile = NamedTemporaryFile()
         output = textfile.TextFileOutput(
             units='fahrenheit',
