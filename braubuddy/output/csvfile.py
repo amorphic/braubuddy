@@ -6,6 +6,8 @@ class CSVFileOutput(TextFileOutput):
     """
     Output to CSV file.
 
+    This is just a shortcut to create a TextFileOutput in CSV format.
+
     :param units: Temperature units to output. Use 'celsius' or
         'fahrenheit'.
     :type units: :class:`str`
@@ -22,7 +24,6 @@ class CSVFileOutput(TextFileOutput):
     def __init__(self, units='celsius', out_file='braubuddy.csv',
         show_timestamp=True, timestamp_format='%Y-%m-%d %H:%M:%S'):
 
-        separator = ',' 
-        super(CSVFileOutput, self).__init__(units, out_file=out_file,
-            separator=separator, show_timestamp=show_timestamp,
-            timestamp_format=timestamp_format)
+        super(CSVFileOutput, self).__init__(units=units, out_file=out_file,
+            separator=',', show_labels=False, show_units=False,
+            show_timestamp=show_timestamp, timestamp_format=timestamp_format)
