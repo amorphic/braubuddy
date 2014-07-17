@@ -35,30 +35,21 @@ class JSONFileOutput(IOutput):
             fh.close()
         except (IOError, ValueError):
             # No existing file or invalid JSON so start with no datapoints
-            status_history = {
-                'datapoints' : []
-            }
-        # Check data loaded from JSON contains datapoints
-        if 'datapoints' not in status_history.keys():
-            raise OutputError(
-                "JSON in file {0} does not contain key 'datapoints'".format(
-                    self._out_file
-                )
-            )
+            status_history = []
         # Get timestamp in epoch seconds
         timestamp = int(time.time())
         # Create new status
         status = [target, temp, heater_percent, cooler_percent, timestamp]
         # Add new status to previous data
-        status_history['datapoints'].append(status)
+        status_history.append(status)
         # Drop datapoints if limit exceeded
         if self._datapoint_limit != 0:
-            while len(status_history['datapoints']) > self._datapoint_limit:
+            while len(status_history) > self._datapoint_limit:
                 # Discard oldest status datapoint
                 log(('Datapoint limit exceeded - '
                     'dropping earliest datapoint: {0!r}').format(
-                        status_history['datapoints'][0]))
-                status_history['datapoints'].pop(0)
+                        status_history[0]))
+                status_history.pop(0)
         # Write status history JSON to file
         new_json = json.dumps(status_history)
         fh = open(self._out_file, 'w+')
