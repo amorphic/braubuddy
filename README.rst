@@ -5,7 +5,7 @@ Braubuddy
   :alt: Braubuddy CI
   :target: https://travis-ci.org/amorphic/braubuddy
 
-.. image:: https://github.com/amorphic/braubuddy/images/braubuddy_logo.png
+.. image:: images/logo/bb_logo_256x256.png
   :alt: Braubuddy web application
   :target: https://github.com/amorphic/braubuddy
 
@@ -23,7 +23,7 @@ Web Interface
 
 Monitor your thermostat from any device with a web browser.
 
-.. image:: https://github.com/amorphic/braubuddy/images/webapp.png
+.. image:: /images/screenshots/1.png
   :alt: Braubuddy web application
   :target: https://github.com/amorphic/braubuddy
 
