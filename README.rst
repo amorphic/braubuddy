@@ -1,13 +1,7 @@
-_logo Braubuddy
+|logo| Braubuddy
 ===============
 
-.. image:: https://travis-ci.org/amorphic/braubuddy.svg?branch=master
-  :alt: Braubuddy CI
-  :target: https://travis-ci.org/amorphic/braubuddy
-
-.. _logo image:: images/logo/bb_logo_24x24.png
-  :alt: Braubuddy web application
-  :target: https://github.com/amorphic/braubuddy
+|travis|
 
 *Braubuddy* is an extensible thermostat framework written in Python. Use *Braubuddy* wherever you need precise temperature control:
 
@@ -23,9 +17,7 @@ Web Interface
 
 Monitor your thermostat from any device with a web browser.
 
-.. image:: /images/screenshots/1.png
-  :alt: Braubuddy web application
-  :target: https://github.com/amorphic/braubuddy
+|screenshot_1|
 
 API
 ~~~
@@ -181,4 +173,15 @@ Braubuddy is designed to be extensible.
 - Raise issues for Requests (for hardware w/existing python libs)
 - Creating plugins is easy. Send a PR!
 
+.. |travis| image:: https://travis-ci.org/amorphic/braubuddy.svg?branch=master
+  :alt: Braubuddy CI
+  :target: https://travis-ci.org/amorphic/braubuddy
+
+.. |logo| image:: images/logo/bb_logo_24x24.png
+  :alt: Braubuddy web application
+  :target: https://github.com/amorphic/braubuddy
+
+.. |screenshot_1| image:: /images/screenshots/1.png
+  :alt: Braubuddy web application
+  :target: https://github.com/amorphic/braubuddy
 
