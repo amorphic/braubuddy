@@ -1,11 +1,11 @@
-Braubuddy
-=========
+_logo Braubuddy
+===============
 
 .. image:: https://travis-ci.org/amorphic/braubuddy.svg?branch=master
   :alt: Braubuddy CI
   :target: https://travis-ci.org/amorphic/braubuddy
 
-.. image:: images/logo/bb_logo_256x256.png
+.. _logo image:: images/logo/bb_logo_24x24.png
   :alt: Braubuddy web application
   :target: https://github.com/amorphic/braubuddy
 
