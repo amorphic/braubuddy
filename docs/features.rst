@@ -6,9 +6,7 @@ Web Interface
 
 Monitor your thermostat from any device with a web browser.
 
-.. image:: https://github.com/amorphic/braubuddy/images/webapp.png
-  :alt: Braubuddy web application
-  :target: https://github.com/amorphic/braubuddy
+.. image:: ../images/screenshots/1.png
 
 API
 ---
@@ -29,8 +27,3 @@ Extensible
 ----------
 
 `Request support <http://braubuddy.org>` for the components you need. Better still, extend *Braubuddy*'s simple interfaces to create new components and `submit a pull request <http://braubuddy.org>`_!
- 
-Compatible
-----------
-
-Tested under Python 2.6, 2.7 and 3.4.

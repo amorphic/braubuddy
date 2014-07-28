@@ -6,10 +6,6 @@
 Braubuddy
 =========
 
-.. image:: https://github.com/amorphic/braubuddy/images/braubuddy_logo.png
-  :alt: Braubuddy web application
-  :target: https://github.com/amorphic/braubuddy
-
 *Braubuddy* is an extensible thermostat framework written in Python. Use *Braubuddy* wherever you need precise temperature control:
 
 - Keep tropical fish swimming happily in water that's 26°C 
