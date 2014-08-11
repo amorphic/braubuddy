@@ -115,7 +115,7 @@ html_theme = 'alabaster'
 html_theme_options = {
     'logo': 'bb_logo_128x128.png', 
     'logo_name': True,
-    'description': 'An extensible thermostat framework written in Python.',
+    'description': 'A temperature management framework written in Python.',
     'github_button': True,
     'github_user': 'amorphic',
     'github_repo': 'braubuddy',
@@ -282,3 +282,7 @@ texinfo_documents = [
 
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
+
+# This value selects what content will be inserted into the main body of an
+# autoclass directive.
+autoclass_content = 'init'

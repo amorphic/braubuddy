@@ -1,33 +1,50 @@
+.. _components:
+
 Components
 ==========
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 3 
 
-.. autosummary::
-    braubuddy.thermometer
-    braubuddy.envcontroller
-    braubuddy.thermostat
-    braubuddy.output
+.. _thermometer:
 
-.. automodule:: thermometer
-    :members:
-    :undoc-members:
-    :show-inheritance:
+Thermometer
+-----------
 
-.. automodule:: envcontroller
-    :members:
-    :undoc-members:
-    :show-inheritance:
+.. autoclass:: braubuddy.thermometer.base.IThermometer
 
-.. automodule:: thermostat
-    :members:
-    :undoc-members:
-    :show-inheritance:
+TEMPer USB
+^^^^^^^^^^
 
-.. automodule:: output
-    :members:
-    :undoc-members:
-    :show-inheritance:
+.. autoclass:: braubuddy.thermometer.temper_usb.TEMPerThermometer
 
+DS18B20 GPIO
+^^^^^^^^^^^^
 
+.. autoclass:: braubuddy.thermometer.ds18b20_gpio.DS18B20Thermometer
+
+.. _envcontroller:
+
+EnvController
+-------------
+
+.. autoclass:: braubuddy.envcontroller.base.IEnvController
+
+.. _thermostat:
+
+Thermostat
+----------
+
+.. autoclass:: braubuddy.thermostat.base.IThermostat
+
+SimpleRanged
+^^^^^^^^^^^^
+
+.. autoclass:: braubuddy.thermostat.simpleranged.SimpleRangedThermostat
+
+.. _output:
+
+Output
+------
+
+.. autoclass:: braubuddy.output.base.IOutput
