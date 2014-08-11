@@ -14,7 +14,7 @@ def main():
     """ 
     Start the braubuddy engine and interface.
     
-    Involves some creating use of cherrypy's config loader to allow for a
+    Involves some creative use of cherrypy's config loader to allow for a
     single user-editable config file.
     """
 

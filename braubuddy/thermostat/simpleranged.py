@@ -15,17 +15,17 @@ class SimpleRangedThermostat(IThermostat):
 
     This is an example cycle against the upper range on a hot day:
 
-        # Heating and cooling are disabled.
-        # Temperature is rising, (it's a hot day).
-        # Temperature rises above the upper_out threshold: Cooling is enabled.
-        # Temperature is dropping.
-        # Temperature drops below the upper_out threshold: Cooling remains
-        enabled.
-        # Temperature drops below the upper_in threshold: Cooling is disabled.
-        # Temperature is rising.
-        # Temperature rises above the upper_in threshold: Cooling remains
-        disabled.
-        # Repeat 
+        #. Heating and cooling are disabled.
+        #. Temperature is rising, (it's a hot day).
+        #. Temperature rises above the upper_out threshold: Cooling is enabled.
+        #. Temperature is dropping.
+        #. Temperature drops below the upper_out threshold: Cooling remains
+            enabled.
+        #. Temperature drops below the upper_in threshold: Cooling is disabled.
+        #. Temperature is rising.
+        #. Temperature rises above the upper_in threshold: Cooling remains
+            disabled.
+        #. Repeat 
 
     :param lower_out: Units below target at which heating will switch on.
     :type lower_out: :class:`int`
