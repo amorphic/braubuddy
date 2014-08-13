@@ -41,11 +41,11 @@ Time-series temperature, heating and cooling metrics may be consumed programatic
 Outputs
 ^^^^^^^
 
-*Braubuddy* :ref:`output` allow metric values to be recorded in a variety of formats or published directly to external services.
+*Braubuddy* :ref:`outputs <output>` allow metric values to be recorded in a variety of formats or published directly to external services.
 
 Extensible
 ^^^^^^^^^^
 
-The various :ref:`components` of *Braubuddy* are designed to be extended.
+The various *Braubuddy* :ref:`components` are designed to be extended.
 
 A growing list of thermometers, environmental controllers, thermostat algorithms and outputs are supported. Consult :ref:`contribute` for information on requesting or adding support for additional components.

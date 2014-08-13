@@ -3,64 +3,82 @@
 Configuration
 =============
 
-Config File
------------
+The *Braubuddy* configuration file allows target temperature, temperature units, outputs and various other parameters to be defined.
 
-About deploying conifg, XDG etc.
+File
+----
 
-Config Parameters
------------------
+Starting *Braubuddy* without deploying a custom configuration yields this message:
 
-+-------------+-------------------+--------------+--------------------------------------+------------------------------+
-|Section      |Parameter          |Type          |Default                               |Descrption                    |
-+=============+===================+==============+======================================+==============================+
-|**global**   |environment        |:class:`str`  |``'production'``                      |Cherrypy environment.         |
-|             |                   |              |                                      |``'development'`` or          |
-|             |                   |              |                                      |``'production'``.             |
-|             +-------------------+--------------+--------------------------------------+------------------------------+
-|             |server.socket_host |:class:`str`  |``'0.0.0.0'``                         |Server IP Address.            |
-|             +-------------------+--------------+--------------------------------------+------------------------------+
-|             |server.socket_port |:class:`int`  |``8080``                              |Server Port.                  |
-|             +-------------------+--------------+--------------------------------------+------------------------------+
-|             |log.access_file    |:class:`str`  |``’/var/log/braubuddy_access.log’``   |Access log location.          |
-|             |                   |              |                                      |*Access logging disabled if   |
-|             |                   |              |                                      |undefined*.                   |
-|             +-------------------+--------------+--------------------------------------+------------------------------+
-|             |log.error_file     |:class:`str`  |``’/var/log/braubuddy_error.log’``    |Error log location.           |
-|             |                   |              |                                      |*Error logging disabled if    |
-|             |                   |              |                                      |undefined*.                   |
-|             +-------------------+--------------+--------------------------------------+------------------------------+
-|             |log.screen         |:class:`int`  |``True``                              |Log to screen.                |
-|             +-------------------+--------------+--------------------------------------+------------------------------+
-|             |units              |:class:`int`  |``'celsius'``                         |Temperature units.            |
-|             |                   |              |                                      |``'celsius'`` or              |
-|             |                   |              |                                      |``'fahrenheit'``.             |
-|             +-------------------+--------------+--------------------------------------+------------------------------+
-|             |frequency          |:class:`int`  |``60``                                |Engine cycle frequency.       |
-|             +-------------------+--------------+--------------------------------------+------------------------------+
-|             |retry_count        |:class:`int`  |``3``                                 |Temperature poll retry count. |
-|             +-------------------+--------------+--------------------------------------+------------------------------+
-|             |retry_delay        |:class:`int`  |``5``                                 |Temperature poll retry delay. |
-|             +-------------------+--------------+--------------------------------------+------------------------------+
-|             |show_footer        |:class:`bool` |``True``                              |Show web interface footer.    |
-+-------------+-------------------+--------------+--------------------------------------+------------------------------+
-|*components* |thermometer        ||ithermometer|||thermometer_auto|                    ||thermometer|.                |
-|             +-------------------+--------------+--------------------------------------+------------------------------+
-|             |envcontroller      ||iecontroller|||econtroller_auto|                    ||envcontroller|.              |
-|             +-------------------+--------------+--------------------------------------+------------------------------+
-|             |thermostat         ||ithermostat| ||thermostat_auto|                     ||thermostat|.                 |
-+-------------+-------------------+--------------+--------------------------------------+------------------------------+
-|*outputs*    |\*                 ||ioutput|     |``None``                              | Any number of |outputs|.     |
-+-------------+-------------------+--------------+--------------------------------------+------------------------------+
+::
+
+   Loading braubuddy with default config.
+   Please copy customised etc/braubuddy to one of these locations:
+   /home/<user>/.config/braubuddy/
+   /etc/xdg/braubuddy/
+
+
+*Braubuddy* conforms to a subset of the `XDG Base Directory Specification`_ for configuration file locations:
+
+    1. ``/etc/xdg/braubuddy`` - Configuratin file  to be used system-wide.
+    2. ``/home/<user>/.config/braubuddy`` - Configuration file for the current user. Over-rides system configution file.
+
+Simply copy the default configuration file from ``etc/braubuddy`` to one of these locations and edit it to reflect your requirements.
+
+Parameters
+----------
+
++-------------+-------------------+---------------+--------------------------------------+------------------------------+
+|Section      |Parameter          |Type           |Default                               |Descrption                    |
++=============+===================+===============+======================================+==============================+
+|**global**   |environment        |:class:`str`   |``'production'``                      |Cherrypy environment.         |
+|             |                   |               |                                      |``'development'`` or          |
+|             |                   |               |                                      |``'production'``.             |
+|             +-------------------+---------------+--------------------------------------+------------------------------+
+|             |server.socket_host |:class:`str`   |``'0.0.0.0'``                         |Server IP Address.            |
+|             +-------------------+---------------+--------------------------------------+------------------------------+
+|             |server.socket_port |:class:`int`   |``8080``                              |Server Port.                  |
+|             +-------------------+---------------+--------------------------------------+------------------------------+
+|             |log.access_file    |:class:`str`   |``’/var/log/braubuddy_access.log’``   |Access log location.          |
+|             |                   |               |                                      |*Access logging disabled if   |
+|             |                   |               |                                      |undefined*.                   |
+|             +-------------------+---------------+--------------------------------------+------------------------------+
+|             |log.error_file     |:class:`str`   |``’/var/log/braubuddy_error.log’``    |Error log location.           |
+|             |                   |               |                                      |*Error logging disabled if    |
+|             |                   |               |                                      |undefined*.                   |
+|             +-------------------+---------------+--------------------------------------+------------------------------+
+|             |log.screen         |:class:`int`   |``True``                              |Log to screen.                |
+|             +-------------------+---------------+--------------------------------------+------------------------------+
+|             |units              |:class:`int`   |``'celsius'``                         |Temperature units.            |
+|             |                   |               |                                      |``'celsius'`` or              |
+|             |                   |               |                                      |``'fahrenheit'``.             |
+|             +-------------------+---------------+--------------------------------------+------------------------------+
+|             |frequency          |:class:`int`   |``60``                                |Engine cycle frequency.       |
+|             +-------------------+---------------+--------------------------------------+------------------------------+
+|             |retry_count        |:class:`int`   |``3``                                 |Temperature poll retry count. |
+|             +-------------------+---------------+--------------------------------------+------------------------------+
+|             |retry_delay        |:class:`int`   |``5``                                 |Temperature poll retry delay. |
+|             +-------------------+---------------+--------------------------------------+------------------------------+
+|             |show_footer        |:class:`bool`  |``True``                              |Show web interface footer.    |
++-------------+-------------------+---------------+--------------------------------------+------------------------------+
+|*components* |thermometer        ||ithermometer| ||thermometer_auto|                    ||thermometer|.                |
+|             +-------------------+---------------+--------------------------------------+------------------------------+
+|             |envcontroller      ||iecontroller| ||econtroller_auto|                    ||envcontroller|.              |
+|             +-------------------+---------------+--------------------------------------+------------------------------+
+|             |thermostat         ||ithermostat|  ||thermostat_simpleranged|             ||thermostat|.                 |
++-------------+-------------------+---------------+--------------------------------------+------------------------------+
+|*outputs*    |\*                 ||ioutput|      |``None``                              | Any number of |outputs|.     |
++-------------+-------------------+---------------+--------------------------------------+------------------------------+
 
 .. |thermometer| replace:: :ref:`thermometer`
 .. |ithermometer| replace:: :class:`braubuddy.thermometer.IThermometer`
-.. |thermometer_auto| replace:: :class:`braubuddy.thermometer.AutoThermometer`
+.. |thermometer_auto| replace:: :ref:`AutoThermometer`
 .. |envcontroller| replace:: :ref:`Environmental Controller <envcontroller>` 
 .. |iecontroller| replace:: :class:`braubuddy.envcontoller.IEnvcontroller`
-.. |econtroller_auto| replace:: :class:`braubuddy.envcontoller.AutoEnvcontroller`
+.. |econtroller_auto| replace:: :ref:`AutoEnvController`
 .. |thermostat| replace:: :ref:`thermostat` 
 .. |ithermostat| replace:: :class:`braubuddy.thermostat.IThermostat`
-.. |thermostat_auto| replace:: :class:`braubuddy.thermostat.SimpleRangedThermostat`
+.. |thermostat_simpleranged| replace:: :ref:`SimpleRangedThermostat`
 .. |outputs| replace:: :ref:`outputs <output>` 
 .. |ioutput| replace:: :class:`braubuddy.output.IOutput`
+.. _XDG Base Directory Specification: http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html

@@ -32,13 +32,13 @@ Install the latest development release from `Github`_:
 Run
 ---
 
-Run *Braubuddy* with default configuration:
+Run *Braubuddy*:
 
 ::
 
     braubuddy
 
-Braubuddy will auto-detect your hardware and begin managing your environment. The *Braubuddy* web interface should be accessible by browsing to *http://<hostname>:8080*.
+*Braubuddy* will auto-detect your hardware and begin managing your environment. The *Braubuddy* web interface should be accessible by browsing to *http://<hostname>:8080*.
 
 With *Braubuddy* up and running, the next step is to customise your :ref:`configuration`.
 

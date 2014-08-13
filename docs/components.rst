@@ -3,15 +3,19 @@
 Components
 ==========
 
-.. toctree::
-    :maxdepth: 3 
-
 .. _thermometer:
 
 Thermometer
 -----------
 
 .. autoclass:: braubuddy.thermometer.base.IThermometer
+
+.. _autothermometer:
+
+Auto
+^^^^
+
+.. autoclass:: braubuddy.thermometer.auto.AutoThermometer
 
 TEMPer USB
 ^^^^^^^^^^
@@ -30,12 +34,21 @@ EnvController
 
 .. autoclass:: braubuddy.envcontroller.base.IEnvController
 
+.. _autoenvcontroller:
+
+Auto
+^^^^
+
+.. autoclass:: braubuddy.envcontroller.auto.AutoEnvController
+
 .. _thermostat:
 
 Thermostat
 ----------
 
 .. autoclass:: braubuddy.thermostat.base.IThermostat
+
+.. _simplerangedthermostat:
 
 SimpleRanged
 ^^^^^^^^^^^^
