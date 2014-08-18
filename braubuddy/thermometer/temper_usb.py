@@ -6,8 +6,9 @@ from braubuddy.thermometer import IThermometer
 
 class TEMPerThermometer(IThermometer):
     """
-    A TEMPer USB Thermometer
-
+    TEMPer USB Thermometer manufactured by `RDing
+    <http://www.rding-china.com/>`_.
+    
     :raises: :class:`braubuddy.thermometer.DeviceError` if no TEMPer USB
         thermometer devices discovered.
     """

@@ -6,12 +6,10 @@ from braubuddy.envcontroller import PercentageError
 
 class Tosr0xEnvController(IEnvController):
     """
-    An environment controller utilising the Tosr0x family of relay modules
-    made by TinySine: 
-    
-    http://www.tinyosshop.com/index.php?route=product/category&path=141_142
+    Tosr0x family of relay modules manufactured by
+    `TinySine <http://www.tinyosshop.com>`_.
 
-    Uses relay 0 to switch heating and relay 1 to switch cooling. 
+    Relay 0 switches heating and relay 1 switches cooling.
 
     :raises: :class:`braubuddy.envcontroller.DeviceError` if no Tosr0x USB
         relay module devices discovered.

@@ -3,11 +3,11 @@
 
 |travis|
 
-*Braubuddy* is an extensible thermostat framework written in Python. Use *Braubuddy* wherever you need precise temperature control:
+*Braubuddy* is a temperature management framework written in Python. Use *Braubuddy* wherever you need precise temperature control:
 
 - Keep tropical fish swimming happily in water that's 26°C 
-- Brew the perfect lager by fermenting at 9°C
-- Maximise employee output by maintaining an optimum office ambient air temp of 21.5°C
+- Brew a perfect lager by fermenting at a constant 9°C
+- Maximise employee productivity with an optimum office ambient air temp of 21.5°C
 
 Features
 --------

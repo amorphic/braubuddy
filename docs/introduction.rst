@@ -46,6 +46,4 @@ Outputs
 Extensible
 ^^^^^^^^^^
 
-The various *Braubuddy* :ref:`components` are designed to be extended.
-
-A growing list of thermometers, environmental controllers, thermostat algorithms and outputs are supported. Consult :ref:`contribute` for information on requesting or adding support for additional components.
+The various *Braubuddy* :ref:`components` are designed to be extended. Consult the :ref:`guidelines <contribute>` if you'd like to request or contribute support for a particular component.

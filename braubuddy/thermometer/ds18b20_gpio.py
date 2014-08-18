@@ -11,7 +11,8 @@ UNIT_MAP = {
 
 class DS18B20Thermometer(IThermometer):
     """
-    A DS18B20 Thermometer.
+    DS18B20 GPIO anagolgue thermometer manufactured by `Maxim
+    Integrated Products <http://www.maximintegrated.com>`_.
 
     :raises: :class:`braubuddy.thermometer.DeviceError` if no DS18B20
         thermometer devices discovered.

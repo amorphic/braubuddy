@@ -16,7 +16,7 @@ class TextFileOutput(IOutput):
     :type out_file: :class:`str`
     :param separator: Separator between line output values.
     :type separator: :class:`str`
-    :param show_labels: Add label to output values, (e.g. 'Temperature:40').
+    :param show_labels: Add labels to output values, (e.g. 'Temperature:40').
     :type show_labels: :class`bool`
     :param show_units: Add units to output values, (e.g. '40°C').
     :type show_units: :class:`bool`

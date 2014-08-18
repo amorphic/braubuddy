@@ -4,13 +4,15 @@ Interfaces
 .. toctree::
     :maxdepth: 3
 
-*Braubuddy* is extensile. Core components are implemented as Abstract Base Classes (:mod:`abc`). 
+*Braubuddy* is components are built upon Abstract Base Classes (:mod:`abc`):
 
 .. autosummary::
     braubuddy.thermometer.base
     braubuddy.envcontroller.base
     braubuddy.thermostat.base
     braubuddy.output.base
+
+To add support for a new component simply extend the appropriate ABC. Consult the source of an existing component to get started and don't forget to :ref:`contribute <contribute>` your new component back to the *Braubuddy* project when you're done!
 
 Thermometer
 -----------
@@ -43,5 +45,3 @@ Output
     :members:
     :undoc-members:
     :noindex:
-
-

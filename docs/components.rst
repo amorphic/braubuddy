@@ -2,29 +2,32 @@
 
 Components
 ==========
+*Braubuddy* brings together a number of components to control and monitor temperature.
+
+<diagram>
+
+A growing list of :ref:`thermometers <thermometer>`, :ref:`environmental controllers <envcontroller>`, :ref:`thermostat algorithms <thermostat>` and :ref:`outputs <output>` are supported.
+
+Consult the :ref:`guidelines <contribute>` if you'd like to request or contribute support for a particular component.
 
 .. _thermometer:
 
 Thermometer
 -----------
-
 .. autoclass:: braubuddy.thermometer.base.IThermometer
 
 .. _autothermometer:
 
 Auto
 ^^^^
-
 .. autoclass:: braubuddy.thermometer.auto.AutoThermometer
 
 TEMPer USB
 ^^^^^^^^^^
-
 .. autoclass:: braubuddy.thermometer.temper_usb.TEMPerThermometer
 
 DS18B20 GPIO
 ^^^^^^^^^^^^
-
 .. autoclass:: braubuddy.thermometer.ds18b20_gpio.DS18B20Thermometer
 
 .. _envcontroller:
@@ -32,27 +35,25 @@ DS18B20 GPIO
 EnvController
 -------------
 
-.. autoclass:: braubuddy.envcontroller.base.IEnvController
-
 .. _autoenvcontroller:
 
 Auto
 ^^^^
-
 .. autoclass:: braubuddy.envcontroller.auto.AutoEnvController
+
+Tosr0x USB
+^^^^^^^^^^
+.. autoclass:: braubuddy.envcontroller.tosr0x_usb.Tosr0xEnvController
 
 .. _thermostat:
 
 Thermostat
 ----------
 
-.. autoclass:: braubuddy.thermostat.base.IThermostat
-
 .. _simplerangedthermostat:
 
 SimpleRanged
 ^^^^^^^^^^^^
-
 .. autoclass:: braubuddy.thermostat.simpleranged.SimpleRangedThermostat
 
 .. _output:
@@ -60,4 +61,26 @@ SimpleRanged
 Output
 ------
 
-.. autoclass:: braubuddy.output.base.IOutput
+.. _textfile:
+
+TextFile
+^^^^^^^^
+.. autoclass:: braubuddy.output.textfile.TextFileOutput
+
+.. _csvfile:
+
+CSVFile
+^^^^^^^
+.. autoclass:: braubuddy.output.csvfile.CSVFileOutput
+
+.. _jsonfile:
+
+JSONFile
+^^^^^^^^
+.. autoclass:: braubuddy.output.jsonfile.JSONFileOutput
+
+.. _listmemory:
+
+ListMemory
+^^^^^^^^^^
+.. autoclass:: braubuddy.output.listmemory.ListMemoryOutput

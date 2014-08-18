@@ -3,7 +3,7 @@
 API
 ==========
 
-Metrics collected during each Braubuddy cycle are stored and madeavailable via ``GET`` requests to an API endpoint:
+Metrics collected during each Braubuddy cycle are stored and made available via ``GET`` requests to an API endpoint:
 
 ::
 

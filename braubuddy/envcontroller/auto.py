@@ -10,9 +10,9 @@ class AutoEnvController(IEnvController):
     Attempts to automatically discover a connected environmental controller
     device.
 
-    - If mutliple devices are connected, the first discovered device is
-    returned.
-    - If no devices are detected, a dummy device is returned.
+    * If mutliple devices are connected, the first discovered device is
+        returned.
+    * If no devices are detected, a dummy device is returned.
     """
 
     def __new__(self):
