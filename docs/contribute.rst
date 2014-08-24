@@ -1,6 +1,3 @@
 .. _contribute:
 
-Contribute
-==========
-
-.. include:: ../CONTRIBUTE
+.. include:: ../CONTRIBUTE.rst

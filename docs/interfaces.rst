@@ -4,7 +4,7 @@ Interfaces
 .. toctree::
     :maxdepth: 3
 
-*Braubuddy* is components are built upon Abstract Base Classes (:mod:`abc`):
+*Braubuddy* components are built upon Abstract Base Classes (:mod:`abc`):
 
 .. autosummary::
     braubuddy.thermometer.base
