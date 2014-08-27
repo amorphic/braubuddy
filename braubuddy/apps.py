@@ -64,6 +64,7 @@ class Dashboard(object):
         '''
         template = self.j2env.get_template('braubuddy.html')
         return template.render(
+            title=cherrypy.config['dashboard_title'],
             frequency=cherrypy.config['frequency'],
             units=cherrypy.config['units_abbreviated'],
             show_footer=cherrypy.config['dashboard_footer'])
