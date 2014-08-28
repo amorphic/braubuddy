@@ -11,7 +11,7 @@ setup(
     license='LICENSE.txt',
     description='An extensile thermostat framework',
     long_description=open('README.rst').read(),
-    entry_points = {
+    entry_points={
         'console_scripts': [
             'braubuddy = braubuddy.runserver:main',
         ]

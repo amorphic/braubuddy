@@ -22,6 +22,7 @@ class IThermostat(object):
     
         self._target = target
 
+    #TODO: abc.property?
     def get_target(self):
         return self._target
 
