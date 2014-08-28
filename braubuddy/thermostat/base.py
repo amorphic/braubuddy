@@ -12,19 +12,15 @@ class IThermostat(object):
 
     __metaclass__ = abc.ABCMeta
 
-    def __init__(self, target, units):
+    def __init__(self, target):
         """
         Initialise thermostat.
 
         :param target: Target temperature.
         :type target: :class:`float`
-        :param units: Temperature units in which to work. Use 'celsius'
-            or 'fahrenheit'.
-        :type unit: :class:`str`
         """
     
         self._target = target
-        self._units = units
 
     def get_target(self):
         return self._target
@@ -32,14 +28,9 @@ class IThermostat(object):
     def set_target(self, target):
         self._target = target
 
-    def get_units(self):
-        return self._units
-
-    def set_units(self, units):
-        self._units = units
-
     @abc.abstractmethod
-    def get_required_state(self, temp, heater_percent, cooler_percent):
+    def get_required_state(self, temp, heater_percent, cooler_percent,
+            units='celsius'):
         """
         Get the required heater + cooler power levels given the current
         temperature and heater + cooler power levels.
@@ -53,6 +44,9 @@ class IThermostat(object):
         :type heater_percent: :class:`int` in range(0-100)
         :param cooler: Current cooler power level.
         :type cooler: :class:`int` in range (0-100)
+        :param units: Temperature units in which to work. Use 'celsius'
+            or 'fahrenheit'.
+        :type units: :class:`str`
         :returns: Required heater and cooler power levels.
         :rtype: :class:`tuple` of (:class:`int`, :class:`int`)
         """

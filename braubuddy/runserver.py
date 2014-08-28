@@ -34,7 +34,7 @@ def main():
     # Add abbreviated units to global
     cherrypy.config['units_abbreviated'] = \
         braubuddy.thermometer.IThermometer.abbreviate_temp_units(
-            cherrypy.config['thermostat'].get_units())
+            cherrypy.config['units'])
 
     # Append internal data storage to outputs
     engine_config = cherrypy.tree.apps['/engine'].config

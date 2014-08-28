@@ -37,7 +37,7 @@ class SimpleRangedThermostat(IThermostat):
     :type upper_out: :class:`int`
     """
 
-    def __init__(self, target, units, lower_out=2, lower_in=1, upper_in=1,
+    def __init__(self, target, lower_out=2, lower_in=1, upper_in=1,
             upper_out=2):
 
         if lower_out <= lower_in:
@@ -48,9 +48,10 @@ class SimpleRangedThermostat(IThermostat):
         self._lower_inside = target - lower_in
         self._upper_inside = target + upper_in
         self._upper_outside = target + upper_out
-        super(SimpleRangedThermostat, self).__init__(target, units)
+        super(SimpleRangedThermostat, self).__init__(target)
 
-    def get_required_state(self, temp, heater_percent, cooler_percent,):
+    def get_required_state(self, temp, heater_percent, cooler_percent,
+            units='celsius'):
 
         # By default heater/cooler percents remain the same
         new_heater_percent = heater_percent

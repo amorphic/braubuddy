@@ -78,6 +78,7 @@ class Engine(object):
         """
         Perform full thermostat cycle and return state.
         """
+        units = cherrypy.config['units']
         retry_count = cherrypy.config['retry_count']
         retry_delay = cherrypy.config['retry_delay']
         envcontroller = cherrypy.config['envcontroller']
@@ -88,7 +89,7 @@ class Engine(object):
         # Temperature input
         for i in range(retry_count):
             try:
-                current_temp = thermometer.get_temperature()
+                current_temp = thermometer.get_temperature(units=units)
                 break
             except braubuddy.thermometer.ReadError, err:
                 cherrypy.log.error(err.message)
@@ -100,7 +101,7 @@ class Engine(object):
             return False
         # Set power levels
         required_heat, required_cool = thermostat.get_required_state(
-            current_temp, current_heat, current_cool)
+            current_temp, current_heat, current_cool, units=units)
         envcontroller.set_heater_level(required_heat)
         envcontroller.set_cooler_level(required_cool)
         # Output
