@@ -4,12 +4,10 @@
 # Server host and port
 server.socket_host: "0.0.0.0"
 server.socket_port: 8080
-
 # Logging #
 ##log.access_file: ’/var/log/braubuddy_access.log’
 ##log.error_file: ’/var/log/braubuddy_error.log’
 log.screen: True
-
 # Units ('celsius' or 'fahrenheit')
 units: 'celsius'
 # Frequency of thermostat cycle in seconds
@@ -20,10 +18,10 @@ retry_count: 3
 retry_delay: 5
 # Dashboard title
 dashboard_title = 'Braubuddy'
-# Dashboard footer display
+# Display dashboard footer
 dashboard_footer: True 
 
-### Thermometer ###
+## Thermometer ##
 # Automatically discovered thermometer.
 thermometer: braubuddy.thermometer.AutoThermometer()
 # Dummy thermometer which generates random temperatures..
@@ -33,7 +31,7 @@ thermometer: braubuddy.thermometer.AutoThermometer()
 # TEMPer USB thermometer
 ##thermometer: braubuddy.thermometer.TEMPerThermometer()
 
-### Environment Controller ###
+## Environment Controller ##
 # Automatically discovered environmenal controller.
 envcontroller: braubuddy.envcontroller.AutoEnvController()
 # Dummy environment controller. Use for testing.
@@ -41,12 +39,13 @@ envcontroller: braubuddy.envcontroller.AutoEnvController()
 # Environmental controller utilising a Tosr0x relay module.
 ##envcontroller: braubuddy.envcontroller.Tosr0xEnvController()
 
-### Thermostat ###
+## Thermostat ##
 # Thermostat which uses upper/lower temperature ranges
 thermostat: braubuddy.thermostat.SimpleRangedThermostat(20, lower_out=2, lower_in=1, upper_in=1, upper_out=2)
 
-### Outputs ###
 [outputs]
+### Configure these.
+
 # Text file
 ##txt_out: braubuddy.output.TextFileOutput(out_file='~/braubuddy.log', separator=' ', show_labels=False, show_units=True, show_timestamp=True, timestamp_format='%Y-%m-%d %H:%M:%S')
 # CSV file
