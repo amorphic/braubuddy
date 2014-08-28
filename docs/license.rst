@@ -6,4 +6,4 @@ License
 BSD License
 -----------
 
-.. include:: ../LICENSE
+.. include:: ../LICENSE.txt
