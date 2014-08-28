@@ -1,5 +1,5 @@
 """
-Braubuddy envcontroller exceptions and interface.
+Braubuddy thermometer exceptions and interface.
 """
 
 import abc
