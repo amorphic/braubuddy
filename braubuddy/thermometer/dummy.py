@@ -1,5 +1,7 @@
 import random
+from braubuddy import utils
 from braubuddy.thermometer import IThermometer
+
 
 
 class DummyThermometer(IThermometer):
@@ -23,7 +25,7 @@ class DummyThermometer(IThermometer):
         # Returns random temperature within defined range
         current_temp = random.randrange(self.lower_bound, self.upper_bound)
         if units == 'fahrenheit':
-            current_temp = convert_temp_units(
+            current_temp = utils.convert_temp_units(
                 current_temp,
                 units_from='celsius',
                 units_to='fahrenheit'
