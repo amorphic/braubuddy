@@ -3,7 +3,9 @@
 
 |travis|
 
-*Braubuddy* is a temperature management framework written in Python. Use *Braubuddy* wherever you need precise temperature control:
+*Braubuddy* is a temperature management framework written in Python.
+
+Conceived as a means of monitoring and controlling the fermentation temperature of beer, *Braubuddy* can be used in any situation requiring precise temperature control:
 
 - Keep tropical fish swimming happily in water that's 26°C 
 - Brew a perfect lager by fermenting at a constant 9°C
@@ -13,33 +15,26 @@ Features
 --------
 
 Web Interface
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
 
-Monitor your thermostat from any device with a web browser.
+*Braubuddy*'s web interface facilitates temperature monitoring from any device with a web browser:
 
-|screenshot_1|
+.. image:: ../images/screenshots/1.png
 
 API
-~~~
+^^^
 
-Consume time-series temperature, heating and cooling metrics `programatically <http://braubuddy.org>`_.
+Time-series temperature, heating and cooling metrics may be consumed programatically using the *Braubuddy* :ref:`API`.
 
 Outputs
-~~~~~~~
+^^^^^^^
 
-Output metrics in various file formats or directly to other APIs.
-
-Modular
-~~~~~~~
-
-Support for a growing list of thermometers, environmental controllers, thermostat algorithms and outputs.
+*Braubuddy* :ref:`outputs <output>` allow metric values to be recorded in a variety of formats or published directly to external services.
 
 Extensible
-~~~~~~~~~~
+^^^^^^^^^^
 
-`Request support <http://braubuddy.org>` for the components you need. Better still, extend *Braubuddy*'s simple interfaces to create new components and `submit a pull request <http://braubuddy.org>`_!
- 
-Getting Started
+The various *Braubuddy* :ref:`components` are designed to be extended. Consult the :ref:`guidelines <contribute>` if you'd like to request or contribute support for a particular component.Getting Started
 ---------------
 
 Installation
@@ -73,100 +68,18 @@ Install the latest development release from `Github <https://github.com/amorphic
 Start
 ~~~~~
 
-
-``braubuddy``
-
+::
+    braubuddy
 
 Configure
 ~~~~~~~~~
 
-Before starting, copy the example config file to either:
+If not already present, a default configuration file is deployed to ``~/.config/braubuddy/``.
 
-Home config dir:
+For system-wide configuration, copy this config to ``/etc/xdg/braubuddy/``.
 
-``cp etc/braubuddy ~/.config/braubuddy/``
+The example config file use default targets and automatically attempts to find a compatible thermometer and environmental controller. Follow `the docs <http://braubuddy.org/configure>`_ to customise your configuration. 
 
-System config dir:
-
-``cp etc/braubuddy /etc/xdg/braubuddy/``
-
-The example config file uses a dummy thermometer and environmental
-controller. Follow `the docs <http://braubuddy.org>`_ to configure the components that you wish to use. 
-
-Components
-----------
-
-Braubuddy is designed to be extensible. t is easy to add support for new
-*Thermometers*, *Environmental Controllers*, *Thermostats* and
-*Outputs*.
-
-Thermometer
-~~~~~~~~~~~
-
-A *thermometer* is a physical device which measures temperature.
-
-Braubuddy includes support for these *thermometers*:
-
--  Temper USB
--  DCXXXX
-
-Environmental Controller
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-An *environmental controller* is a physical device which controls
-heating and cooling levels.
-
-Braubuddy includes support for these *envrionmental controllers*:
-
--  **Tosr0x**
-
-Thermostat
-~~~~~~~~~~
-
-A *thermostat* is an algorithm which takes current and target
-temperatures as inputs and produces required heating and cooling levels
-as outputs.
-
-Braubuddy includes support for these *thermostats*:
-
-- **SimpleRanged** - *uses an 'upper' temperature range to determine when to enable/disable cooling and a 'lower' temperature range to determine when to enable/disable heating.*
-
-Output
-~~~~~~
-
-An *output* is a destination for the metrics collected during each
-Braubuddy cycle: *temperature*, *heat level*, *cool level*, *date* and
-*time*.
-
-Braubuddy inclues support for these *outputs*:
-
-- TextFile
-- CSVFile
-- JSONFile
-
-API
----
-
-Metrics collected during each Braubuddy cycle are also available via an
-API endpoint: ``http://hostname:port/api/``'.
-
-Metrics are presented as a time series in the format:
-
-``[_temperature_, _heat level_, _cool_level, _epoch time_]``
-
-e.g.
-
-::
-
-    [[25.5, 0, 0, 1402990571], [27.25, 0, 100, 1402990631], [28.5, 0, 100, 1402990692], [29.375, 0, 100, 1402990754], [30.0, 0, 100, 1402990815], [30.25, 0, 100, 1402990876], [30.375, 0, 100, 1402990937], [30.5, 0, 100, 1402990999], [30.375, 0, 100, 1402991060], [30.375, 0, 100, 1402991121], [30.5, 0, 100, 1402991182], [30.375, 0, 100, 1402991243], [30.375, 0, 100, 1402991305], [30.75, 0, 100, 1402991366], [30.875, 0, 100, 1402991427], [31.125, 0, 100, 1402991488]]
-
-Contribute
-----------
-
-Braubuddy is designed to be extensible.
-
-- Raise issues for Requests (for hardware w/existing python libs)
-- Creating plugins is easy. Send a PR!
 
 .. |travis| image:: https://travis-ci.org/amorphic/braubuddy.svg?branch=master
   :alt: Braubuddy CI

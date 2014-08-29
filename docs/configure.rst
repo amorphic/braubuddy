@@ -8,23 +8,13 @@ The *Braubuddy* configuration file allows target temperature, temperature units,
 File
 ----
 
-Starting *Braubuddy* without deploying a custom configuration yields this message:
-
-::
-
-   Loading braubuddy with default config.
-   Please copy customised etc/braubuddy to one of these locations:
-   /home/<user>/.config/braubuddy/
-   /etc/xdg/braubuddy/
-
-
 *Braubuddy* conforms to a subset of the `XDG Base Directory Specification`_ for configuration file locations:
 
     1. ``/etc/xdg/braubuddy`` - Configuratin file  to be used system-wide.
-    2. ``/home/<user>/.config/braubuddy`` - Configuration file for the current user. Over-rides system configution file.
+    2. ``/home/<user>/.config/braubuddy`` - Configuration file for the current user. Over-rides the system configuration file if present.
 
-Simply copy the default configuration file from ``etc/braubuddy`` to one of these locations and edit it to reflect your requirements.
-
+If not present on startup, a default configuration file is deployed to ``~/.config/braubuddy/``.
+ 
 Parameters
 ----------
 
