@@ -10,26 +10,26 @@ class TestSimpleRangedInvalidBounds(unittest.TestCase):
     def test_upper_inside_equals_upper_outside(self):
         """Upper inside bound equals upper outside bound"""
         with self.assertRaises(ValueError):
-            thermostat = simpleranged.SimpleRangedThermostat(20, 'celsius',
-                lower_out=2, lower_in=1, upper_in=1, upper_out=1)
+            thermostat = simpleranged.SimpleRangedThermostat(20, lower_out=2,
+                lower_in=1, upper_in=1, upper_out=1)
 
     def test_upper_inside_gt_upper_outside(self):
         """Upper inside bound greater than upper outside bound"""
         with self.assertRaises(ValueError):
-            thermostat = simpleranged.SimpleRangedThermostat(20, 'celsius',
-                lower_out=2, lower_in=1, upper_in=2, upper_out=1)
+            thermostat = simpleranged.SimpleRangedThermostat(20, lower_out=2,
+                lower_in=1, upper_in=2, upper_out=1)
 
     def test_lower_inside_equals_lower_outside(self):
         """Lower inside bound equals lower outside bound"""
         with self.assertRaises(ValueError):
-            thermostat = simpleranged.SimpleRangedThermostat(20, 'celsius',
-                lower_out=1, lower_in=1, upper_in=1, upper_out=2)
+            thermostat = simpleranged.SimpleRangedThermostat(20, lower_out=1,
+                lower_in=1, upper_in=1, upper_out=2)
 
     def test_lower_inside_gt_lower_outside(self):
         """Lower inside bound greater than lower outside bound"""
         with self.assertRaises(ValueError):
-            thermostat = simpleranged.SimpleRangedThermostat(20, 'celsius',
-                lower_out=1, lower_in=2, upper_in=2, upper_out=1)
+            thermostat = simpleranged.SimpleRangedThermostat(20, lower_out=1,
+                lower_in=2, upper_in=2, upper_out=1)
 
 
 class TestSimpleRangedRequiredStates(unittest.TestCase):
@@ -39,7 +39,6 @@ class TestSimpleRangedRequiredStates(unittest.TestCase):
         units =  'celsius'
         self.thermostat = simpleranged.SimpleRangedThermostat(
             target,
-            units,
             lower_out=2,
             lower_in=1,
             upper_in=1,
