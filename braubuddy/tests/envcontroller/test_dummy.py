@@ -2,12 +2,12 @@
 Braubuddy Dummy envcontroller unit tests.
 """
 
-import unittest
+from braubuddy.tests import BraubuddyTestCase
 from braubuddy.envcontroller import dummy 
 from braubuddy.envcontroller import PercentageError 
 
 
-class TestDummy(unittest.TestCase):
+class TestDummy(BraubuddyTestCase):
 
     def test_heat_set_and_get(self):
         """Dummy device returns previously set heating value."""

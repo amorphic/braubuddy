@@ -2,11 +2,11 @@
 Braubuddy Dummy thermometer unit tests.
 """
 
-import unittest
 from mock import patch, call, MagicMock
+from braubuddy.tests import BraubuddyTestCase
 from braubuddy.thermometer import dummy 
 
-class TestDummy(unittest.TestCase):
+class TestDummy(BraubuddyTestCase):
 
     def test_created_within_bounds(self):
         """Dummy thermometer is created and returns values within bounds."""

@@ -2,15 +2,15 @@
 Braubuddy JSONFileOutput unit tests
 """
 
-import unittest
 import json
 from random import randrange 
 from time import time
 from tempfile import NamedTemporaryFile
+from braubuddy.tests import BraubuddyTestCase
 from braubuddy.output import jsonfile
 
 
-class JSONFileOutput(unittest.TestCase):
+class JSONFileOutput(BraubuddyTestCase):
 
     def test_publish_metric(self):
         """A single metric is published."""

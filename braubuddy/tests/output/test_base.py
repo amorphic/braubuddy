@@ -3,11 +3,11 @@
 Braubuddy Base unit tests
 """
 
-import unittest
+from braubuddy.tests import BraubuddyTestCase
 from braubuddy.output import base 
 
 
-class IOutput(unittest.TestCase):
+class IOutput(BraubuddyTestCase):
 
     def test_map_c_to_symbol(self):
         """c is mapped to °C"""

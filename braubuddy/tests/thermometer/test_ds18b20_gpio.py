@@ -2,15 +2,15 @@
 Braubuddy DS18B20 thermometer unit tests
 """
 
-import unittest
 from mock import patch, call, MagicMock
+from braubuddy.tests import BraubuddyTestCase
 from braubuddy.thermometer import ds18b20_gpio
 from braubuddy.thermometer import DeviceError
 from braubuddy.thermometer import ReadError
 
 
 @patch('braubuddy.thermometer.ds18b20_gpio.ds18b20')
-class TestDS18B20(unittest.TestCase):
+class TestDS18B20(BraubuddyTestCase):
    
     def test_ds18b20_detected(self, mk_ds18b20):
         """DS18B20 device is detected if present."""

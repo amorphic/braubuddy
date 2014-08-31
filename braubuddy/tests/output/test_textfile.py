@@ -3,13 +3,13 @@
 Braubuddy TextOutput unit tests
 """
 
-import unittest
 import re
 from tempfile import NamedTemporaryFile
+from braubuddy.tests import BraubuddyTestCase
 from braubuddy.output import textfile
 
 
-class TextFileOutput(unittest.TestCase):
+class TextFileOutput(BraubuddyTestCase):
 
     def setUp(self):
         self.target = 20

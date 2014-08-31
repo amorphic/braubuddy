@@ -2,15 +2,15 @@
 Braubuddy Tosr0x envcontroller unit tests.
 """
 
-import unittest
 from mock import patch, call, MagicMock
+from braubuddy.tests import BraubuddyTestCase
 from braubuddy.envcontroller import tosr0x_usb
 from braubuddy.envcontroller import DeviceError 
 from braubuddy.envcontroller import PercentageError 
 
 
 @patch('braubuddy.envcontroller.tosr0x_usb.tosr0x')
-class TestTosr0x(unittest.TestCase):
+class TestTosr0x(BraubuddyTestCase):
 
     def test_tosr0x_detected(self, mk_tosr0x):
         """Tosr0x device is detected if present."""

@@ -2,15 +2,15 @@
 Braubuddy TEMPer thermometer unit tests
 """
 
-import unittest
 from mock import patch, call, MagicMock
+from braubuddy.tests import BraubuddyTestCase
 from braubuddy.thermometer import temper_usb 
 from braubuddy.thermometer import DeviceError
 from braubuddy.thermometer import ReadError
 
 
 @patch('braubuddy.thermometer.temper_usb.temperusb')
-class TestTEMPer(unittest.TestCase):
+class TestTEMPer(BraubuddyTestCase):
    
     def test_temper_detected(self, mk_temperusb):
         """TEMPer device is detected if present."""

@@ -2,14 +2,14 @@
 Braubuddy Auto thermometer unit tests.
 """
 
-import unittest
 from mock import patch, call, MagicMock
+from braubuddy.tests import BraubuddyTestCase
 from braubuddy.thermometer import auto 
 from braubuddy.thermometer import dummy 
 from braubuddy.thermometer import ds18b20_gpio 
 from braubuddy.thermometer import temper_usb 
 
-class TestAuto(unittest.TestCase):
+class TestAuto(BraubuddyTestCase):
 
     @patch('braubuddy.thermometer.ds18b20_gpio.ds18b20')
     @patch('braubuddy.thermometer.temper_usb.temperusb')

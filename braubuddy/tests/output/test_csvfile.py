@@ -3,13 +3,13 @@
 Braubuddy CSVFileOutput unit tests
 """
 
-import unittest
 import re
 from tempfile import NamedTemporaryFile
+from braubuddy.tests import BraubuddyTestCase
 from braubuddy.output import csvfile
 
 
-class CSVFileOutput(unittest.TestCase):
+class CSVFileOutput(BraubuddyTestCase):
 
     def setUp(self):
         self.target = 20

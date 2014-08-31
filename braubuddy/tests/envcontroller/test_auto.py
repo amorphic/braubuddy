@@ -2,13 +2,13 @@
 Braubuddy Auto envcontroller unit tests.
 """
 
-import unittest
 from mock import patch, call, MagicMock
+from braubuddy.tests import BraubuddyTestCase
 from braubuddy.envcontroller import auto 
 from braubuddy.envcontroller import dummy 
 from braubuddy.envcontroller import tosr0x_usb 
 
-class TestAuto(unittest.TestCase):
+class TestAuto(BraubuddyTestCase):
 
     @patch('braubuddy.envcontroller.tosr0x_usb.tosr0x')
     def test_dummy_returned_if_no_devices(self, mk_tosr0x):

@@ -2,10 +2,10 @@
 Braubuddy SimpleRanged thermostat unit tests
 """
 
-import unittest
+from braubuddy.tests import BraubuddyTestCase
 from braubuddy.thermostat import simpleranged
 
-class TestSimpleRangedInvalidBounds(unittest.TestCase):
+class TestSimpleRangedInvalidBounds(BraubuddyTestCase):
 
     def test_upper_inside_equals_upper_outside(self):
         """Upper inside bound equals upper outside bound"""
@@ -32,7 +32,7 @@ class TestSimpleRangedInvalidBounds(unittest.TestCase):
                 lower_in=2, upper_in=2, upper_out=1)
 
 
-class TestSimpleRangedRequiredStates(unittest.TestCase):
+class TestSimpleRangedRequiredStates(BraubuddyTestCase):
 
     def setUp(self):
         target = 20

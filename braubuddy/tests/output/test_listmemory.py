@@ -2,10 +2,10 @@
 Braubuddy ListMemory unit tests
 """
 
-import unittest
+from braubuddy.tests import BraubuddyTestCase
 from braubuddy.output import listmemory
 
-class TestListMemory(unittest.TestCase):
+class TestListMemory(BraubuddyTestCase):
 
     def test_published_datapoint_returned(self):
         """Published datapoint is returned."""
