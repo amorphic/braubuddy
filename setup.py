@@ -24,6 +24,7 @@ setup(
         'cherrypy>=3.2.2',
         'pyxdg>=0.25',
         'jinja2>=2.7.0',
+        'mock>=1.0,<2.0',
         'alabaster>=0.6.0',
     ],
     classifiers=[
