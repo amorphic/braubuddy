@@ -1,16 +1,17 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='braubuddy',
     version='0.2.0',
     author='James Stewart',
     author_email='jstewart101@gmail.com',
-    packages=['braubuddy'],
-    scripts=[],
-    url='http://pypi.python.org/pypi/Braubuddy/',
-    license='LICENSE.txt',
     description='An extensile thermostat framework',
     long_description=open('README.rst').read(),
+    license='LICENSE.txt',
+    packages=find_packages(),
+    scripts=[],
+    tests='braubuddy.tests',
+    url='http://braubudy.org/',
     entry_points={
         'console_scripts': [
             'braubuddy = braubuddy.runserver:main',
@@ -25,5 +26,17 @@ setup(
         'pyxdg>=0.25',
         'jinja2>=2.7.0',
         'alabaster>=0.6.0',
+    ],
+    classifiers=[
+        'Development Status :: 4 - Beta',
+        'Environment :: Web Environment',
+        'Intended Audience :: Developers',
+        'Intended Audience :: End Users/Desktop',
+        'License :: OSI Approved :: BSD License',
+        'Operating System :: POSIX :: Linux',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.6',
+        'Programming Language :: Python :: 2.7',
     ],
 )
