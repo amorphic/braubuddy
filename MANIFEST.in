@@ -1,6 +1,6 @@
 recursive-include braubuddy/static *.js *.css *.svg *.ico
-include braubuddy/templates *.html
-include braubuddy/config *
+recursive-include braubuddy/templates *.html
+recursive-include braubuddy/config *
 include CONTRIBUTE.rst
 include README.rst
 include LICENSE.txt

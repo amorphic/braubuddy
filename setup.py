@@ -9,9 +9,8 @@ setup(
     long_description=open('README.rst').read(),
     license='LICENSE.txt',
     packages=find_packages(),
-    scripts=[],
-    tests='braubuddy.tests',
-    url='http://braubudy.org/',
+    url='http://braubuddy.org/',
+    include_package_data=True,
     entry_points={
         'console_scripts': [
             'braubuddy = braubuddy.runserver:main',
