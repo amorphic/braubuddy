@@ -30,6 +30,8 @@ DS18B20 GPIO
 
 .. _envcontroller:
 
+----
+
 EnvController
 -------------
 
@@ -45,6 +47,8 @@ Tosr0x USB
 
 .. _thermostat:
 
+----
+
 Thermostat
 ----------
 
@@ -55,6 +59,8 @@ SimpleRanged
 .. autoclass:: braubuddy.thermostat.simpleranged.SimpleRangedThermostat
 
 .. _output:
+
+----
 
 Output
 ------
