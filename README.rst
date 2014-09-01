@@ -36,7 +36,7 @@ Outputs
 Extensible
 ^^^^^^^^^^
 
-The various *Braubuddy* components are designed to be extended. Consult the ``CONTRIBUTE.TXT`` if you'd like to request or contribute support for a particular component.
+The various *Braubuddy* components are designed to be extended. Consult ``CONTRIBUTE.RST`` if you'd like to request or contribute support for a particular component.
 
 Getting Started
 ---------------
