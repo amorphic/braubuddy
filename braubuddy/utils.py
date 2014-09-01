@@ -13,8 +13,8 @@ def abbreviate_temp_units(units):
     conversion_map = {
         'celsius':      'C',
         'Celsius':      'C',
-        'Farenheit':    'F',
-        'farenheit':    'F',
+        'Fahrenheit':   'F',
+        'fahrenheit':   'F',
     }
     if units not in conversion_map.keys():
         raise KeyError('Unable to abbreviate {0}. Unknown unit.'.format(units))
