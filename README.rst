@@ -86,7 +86,7 @@ If not already present, a default configuration file is deployed to ``~/.config/
 
 For system-wide configuration, copy this config file to ``/etc/xdg/braubuddy/``.
 
-The example config file use default targets and automatically attempts to find a compatible thermometer and environmental controller. Follow `the docs <http://braubuddy.org/configure>`_ to customise your configuration. 
+The example config file use default targets and automatically attempts to find a compatible thermometer and environmental controller. Follow `the docs <http://braubuddy.org/configure.html>`_ to customise your configuration. 
 
 
 .. |travis| image:: https://travis-ci.org/amorphic/braubuddy.svg?branch=master
@@ -100,4 +100,3 @@ The example config file use default targets and automatically attempts to find a
 .. |web_interface| image:: /images/screenshots/1.png
   :alt: Braubuddy web application
   :target: https://braubuddy.org
-
