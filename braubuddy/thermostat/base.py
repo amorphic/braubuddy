@@ -22,11 +22,15 @@ class IThermostat(object):
     
         self._target = target
 
-    #TODO: abc.property?
-    def get_target(self):
+    @property
+    def target(self):
+        """
+        Get the target temperature.
+        """
         return self._target
 
-    def set_target(self, target):
+    @target.setter
+    def target(self, target):
         self._target = target
 
     @abc.abstractmethod
