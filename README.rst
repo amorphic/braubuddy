@@ -11,6 +11,8 @@ Conceived as a means of monitoring and controlling the fermentation temperature 
 - Brew a perfect lager by fermenting at a constant 9°C
 - Maximise employee productivity with an optimum office ambient air temp of 21.5°C
 
+Complete documentation is available at `braubuddy.org <http://braubuddy.org>`.
+
 Features
 --------
 
@@ -24,30 +26,33 @@ Web Interface
 API
 ^^^
 
-Time-series temperature, heating and cooling metrics may be consumed programatically using the *Braubuddy* :ref:`API`.
+Time-series temperature, heating and cooling metrics may be consumed programatically using the *Braubuddy* API.
 
 Outputs
 ^^^^^^^
 
-*Braubuddy* :ref:`outputs <output>` allow metric values to be recorded in a variety of formats or published directly to external services.
+*Braubuddy* outputs allow metric values to be recorded in a variety of formats or published directly to external services.
 
 Extensible
 ^^^^^^^^^^
 
-The various *Braubuddy* :ref:`components` are designed to be extended. Consult the :ref:`guidelines <contribute>` if you'd like to request or contribute support for a particular component.Getting Started
+The various *Braubuddy* components are designed to be extended. Consult the ``CONTRIBUTE.TXT`` if you'd like to request or contribute support for a particular component.
+
+Getting Started
 ---------------
 
 Installation
-~~~~~~~~~~~~
+^^^^^^^^^^^^
 
 *Braubuddy* is best enjoyed from within a Python `virtualenv <http://virtualenv.readthedocs.org/en/latest/>`_:
+
 ::
 
     virtualenv ~/braubuddy
     source ~/braubuddy/bin/activate
 
 Production
-^^^^^^^^^^
+~~~~~~~~~~
 
 Install the latest production release from `PyPI <https://pypi.python.org/>`_ using `pip <http://www.pip-installer.org/>`_:
 
@@ -56,7 +61,7 @@ Install the latest production release from `PyPI <https://pypi.python.org/>`_ us
     pip install braubuddy
 
 Development
-^^^^^^^^^^^
+~~~~~~~~~~~
 
 Install the latest development release from `Github <https://github.com/amorphic/braubuddy>`_:
 
@@ -66,13 +71,16 @@ Install the latest development release from `Github <https://github.com/amorphic
     pip install -e ./braubuddy
 
 Start
-~~~~~
+^^^^^
+
+Start braubuddy with a single command:
 
 ::
+
     braubuddy
 
 Configure
-~~~~~~~~~
+^^^^^^^^^
 
 If not already present, a default configuration file is deployed to ``~/.config/braubuddy/``.
 
