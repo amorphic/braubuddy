@@ -68,7 +68,7 @@ class Dashboard(object):
         return template.render(
             title=cherrypy.config['dashboard_title'],
             frequency=cherrypy.config['frequency'],
-            units=unit_w_symbol,
+            units=units_w_symbol,
             show_footer=cherrypy.config['dashboard_footer'])
 
 class Engine(object):
