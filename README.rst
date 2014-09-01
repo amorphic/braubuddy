@@ -41,8 +41,8 @@ The various *Braubuddy* components are designed to be extended. Consult ``CONTRI
 Getting Started
 ---------------
 
-Installation
-^^^^^^^^^^^^
+Install
+^^^^^^^
 
 *Braubuddy* is best enjoyed from within a Python `virtualenv <http://virtualenv.readthedocs.org/en/latest/>`_:
 
@@ -84,7 +84,7 @@ Configure
 
 If not already present, a default configuration file is deployed to ``~/.config/braubuddy/``.
 
-For system-wide configuration, copy this config to ``/etc/xdg/braubuddy/``.
+For system-wide configuration, copy this config file to ``/etc/xdg/braubuddy/``.
 
 The example config file use default targets and automatically attempts to find a compatible thermometer and environmental controller. Follow `the docs <http://braubuddy.org/configure>`_ to customise your configuration. 
 
