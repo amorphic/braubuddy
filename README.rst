@@ -11,7 +11,7 @@ Conceived as a means of monitoring and controlling the fermentation temperature 
 - Brew a perfect lager by fermenting at a constant 9°C
 - Maximise employee productivity with an optimum office ambient air temp of 21.5°C
 
-Complete documentation is available at `braubuddy.org <http://braubuddy.org>`.
+Complete documentation is available at `braubuddy.org <http://braubuddy.org>`_.
 
 Features
 --------
@@ -95,9 +95,9 @@ The example config file use default targets and automatically attempts to find a
 
 .. |logo| image:: images/logo/bb_logo_24x24.png
   :alt: Braubuddy web application
-  :target: https://github.com/amorphic/braubuddy
+  :target: https://braubuddy.org
 
 .. |web_interface| image:: /images/screenshots/1.png
   :alt: Braubuddy web application
-  :target: https://github.com/amorphic/braubuddy
+  :target: https://braubuddy.org
 
