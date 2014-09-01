@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Braubuddy utility functions.
 """
@@ -57,3 +58,37 @@ def convert_temp_units(temperature, units_from='celsius', units_to='fahrenheit')
             'Unable to convert from {0!r} to {1!r}'.format(
                 units_from, units_to))
     return conversion_sub_map[units_to](temperature)
+
+
+def map_temp_units_to_symbol(units):
+    """ 
+    Map temperature units to a symbol.
+
+    :param units: Temperature units to map. Should be 'celsius',
+        'fahrenheit' or some variant thereof.
+    :type units: :class:`unicode`
+    """
+
+    unit_map =  {
+        'celsius':      {   
+            'symbol':   '°C',
+            'aliases':  [
+                'celsius',
+                'Celsius',
+                'C',
+                'c' 
+            ]   
+        },  
+        'fahrenheit':   {   
+            'symbol':   '°F',
+            'aliases':  [
+                'fahrenheit',
+                'Fahrenheit',
+                'F',
+                'f' 
+            ]   
+        }   
+    }   
+    for unit, details in unit_map.iteritems():
+        if units in details['aliases']:
+            return details['symbol']

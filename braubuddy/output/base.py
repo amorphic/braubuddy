@@ -4,6 +4,7 @@ Braubuddy output template and interface.
 """
 
 import abc
+from braubuddy import utils
 
 
 class OutputError(Exception):
@@ -34,43 +35,9 @@ class IOutput(object):
         """
 
         try:
-            self.units = self.map_temp_units_to_symbol(new_units)
+            self.units = utils.map_temp_units_to_symbol(new_units)
         except:
             raise OutputError('Unrecognised units: {0}'.format(units))
-
-    @staticmethod
-    def map_temp_units_to_symbol(units='celsius'):
-        """ 
-        Map temperature units to a symbol for output.
-
-        :param units: Temperature units to map. Should be 'celsius',
-            'fahrenheit' or some variant thereof.
-        :type units: :class:`unicode`
-        """
-
-        unit_map =  {
-            'celsius':      {   
-                'symbol':   '°C',
-                'aliases':  [
-                    'celsius',
-                    'Celsius',
-                    'C',
-                    'c' 
-                ]   
-            },  
-            'fahrenheit':   {   
-                'symbol':   '°F',
-                'aliases':  [
-                    'fahrenheit',
-                    'Fahrenheit',
-                    'F',
-                    'f' 
-                ]   
-            }   
-        }   
-        for unit, details in unit_map.iteritems():
-            if units in details['aliases']:
-                return details['symbol']
 
     @abc.abstractmethod
     def publish_status(self, target, temp, heater_percent, cooler_percent):
