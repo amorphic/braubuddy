@@ -63,7 +63,7 @@ class Dashboard(object):
             * daily temperature chart
         '''
         units_w_symbol = braubuddy.utils.map_temp_units_to_symbol(
-            cherrypy.config['units'],
+            cherrypy.config['units'])
         template = self.j2env.get_template('braubuddy.html')
         return template.render(
             title=cherrypy.config['dashboard_title'],
