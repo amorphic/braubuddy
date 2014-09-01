@@ -19,9 +19,9 @@ Features
 Web Interface
 ^^^^^^^^^^^^^
 
-*Braubuddy*'s web interface facilitates temperature monitoring from any device with a web browser:
+*Braubuddy*'s web interface facilitates temperature monitoring from any device with a web browser.
 
-.. image:: ../images/screenshots/1.png
+|web_interface|
 
 API
 ^^^
@@ -97,7 +97,7 @@ The example config file use default targets and automatically attempts to find a
   :alt: Braubuddy web application
   :target: https://github.com/amorphic/braubuddy
 
-.. |screenshot_1| image:: /images/screenshots/1.png
+.. |web_interface| image:: /images/screenshots/1.png
   :alt: Braubuddy web application
   :target: https://github.com/amorphic/braubuddy
 
