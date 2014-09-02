@@ -22,8 +22,9 @@ class CSVFileOutput(TextFileOutput):
     """
 
     def __init__(self, units='celsius', out_file='braubuddy.csv',
-        show_timestamp=True, timestamp_format='%Y-%m-%d %H:%M:%S'):
+                 show_timestamp=True, timestamp_format='%Y-%m-%d %H:%M:%S'):
 
-        super(CSVFileOutput, self).__init__(units=units, out_file=out_file,
-            separator=',', show_labels=False, show_units=False,
-            show_timestamp=show_timestamp, timestamp_format=timestamp_format)
+        super(CSVFileOutput, self).__init__(
+            units=units, out_file=out_file, separator=',', show_labels=False,
+            show_units=False, show_timestamp=show_timestamp,
+            timestamp_format=timestamp_format)

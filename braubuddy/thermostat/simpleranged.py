@@ -25,7 +25,7 @@ class SimpleRangedThermostat(IThermostat):
         #. Temperature is rising.
         #. Temperature rises above the upper_in threshold: Cooling remains
             disabled.
-        #. Repeat 
+        #. Repeat
 
     :param lower_out: Units below target at which heating will switch on.
     :type lower_out: :class:`int`
@@ -38,7 +38,7 @@ class SimpleRangedThermostat(IThermostat):
     """
 
     def __init__(self, target, lower_out=2, lower_in=1, upper_in=1,
-            upper_out=2):
+                 upper_out=2):
 
         if lower_out <= lower_in:
             raise ValueError('lower_out must be > lower_in.')
@@ -51,7 +51,7 @@ class SimpleRangedThermostat(IThermostat):
         super(SimpleRangedThermostat, self).__init__(target)
 
     def get_required_state(self, temp, heater_percent, cooler_percent,
-            units='celsius'):
+                           units='celsius'):
 
         # By default heater/cooler percents remain the same
         new_heater_percent = heater_percent

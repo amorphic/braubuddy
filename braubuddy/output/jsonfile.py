@@ -20,14 +20,14 @@ class JSONFileOutput(IOutput):
     """
 
     def __init__(self, units='celsius', out_file='braubuddy.json',
-        datapoint_limit=44640):
+                 datapoint_limit=44640):
 
         self._out_file = expanduser(out_file)
         self._datapoint_limit = datapoint_limit
         super(JSONFileOutput, self).__init__(units)
 
     def publish_status(self, target, temp, heater_percent, cooler_percent):
-        
+
         # Load status history from JSON
         try:
             with open(self._out_file, 'r') as fh:
@@ -46,9 +46,8 @@ class JSONFileOutput(IOutput):
         if self._datapoint_limit != 0:
             while len(status_history) > self._datapoint_limit:
                 # Discard oldest status datapoint
-                log(('Datapoint limit exceeded - '
-                    'dropping earliest datapoint: {0!r}').format(
-                        status_history[0]))
+                log('Datapoint limit exceeded - dropping earliest datapoint: '
+                    '{0!r}'.format(status_history[0]))
                 status_history.pop(0)
         # Write status history JSON to file
         new_json = json.dumps(status_history)

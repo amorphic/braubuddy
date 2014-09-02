@@ -19,13 +19,13 @@ class ListMemoryOutput(IOutput):
     """
 
     def __init__(self, units='celsius', datapoint_limit=44640):
-        
+
         self._datapoints = []
         self._datapoint_limit = datapoint_limit
         super(ListMemoryOutput, self).__init__(units)
 
     def get_datapoints(self, since=None, before=None, limit=None):
-        
+
         results = self._datapoints
         if since:
             results = [x for x in results if x[4] >= since]
@@ -33,10 +33,10 @@ class ListMemoryOutput(IOutput):
             results = [x for x in results if x[4] <= before]
         if limit:
             results = results[-limit:]
-        return results 
+        return results
 
     def publish_status(self, target, temp, heater_percent, cooler_percent):
-        
+
         # Get timestamp in epoch seconds
         timestamp = int(time.time())
         # Append new status

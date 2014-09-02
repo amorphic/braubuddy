@@ -11,11 +11,13 @@ class DeviceError(Exception):
     """
     pass
 
+
 class ReadError(Exception):
     """
     Raised if there is a problem reading temperature.
     """
     pass
+
 
 class IThermometer(object):
     """
@@ -35,7 +37,7 @@ class IThermometer(object):
         :type units: :class:`str`
         :returns: Thermometer temperature reading
         :rtype: :class:`float`
-        :raises: :class:`braubuddy.thermometer.ReadError` if temperature can not
-            be read.
+        :raises: :class:`braubuddy.thermometer.ReadError` if temperature can
+            not be read.
         """
         pass

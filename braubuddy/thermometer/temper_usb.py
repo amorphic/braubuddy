@@ -8,7 +8,7 @@ class TEMPerThermometer(IThermometer):
     """
     TEMPer USB Thermometer manufactured by `RDing
     <http://www.rding-china.com/>`_.
-    
+
     :raises: :class:`braubuddy.thermometer.DeviceError` if no TEMPer USB
         thermometer devices discovered.
     """
@@ -26,7 +26,7 @@ class TEMPerThermometer(IThermometer):
         Internal method.
 
         Get attached TEMPer devices
-        
+
         :returns: list of attached TEMPer devices
         :rtype: :class:`list` of :class:`temperusb.TemperDevice`
         """
@@ -36,7 +36,7 @@ class TEMPerThermometer(IThermometer):
 
     def get_temperature(self, units='celsius'):
         try:
-	        return self._temper_device.get_temperature(format=units)
+            return self._temper_device.get_temperature(format=units)
         except Exception as err:
             raise ReadError(
                 'Error reading device temperature: {0}'.format(err))

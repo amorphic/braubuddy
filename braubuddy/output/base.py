@@ -12,6 +12,7 @@ class OutputError(Exception):
     Raised whenever an output fails
     """
 
+
 class IOutput(object):
     """
     Interface for creating an output for use with :mod:`braubuddy`.

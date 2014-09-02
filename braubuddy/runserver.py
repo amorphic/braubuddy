@@ -5,25 +5,25 @@ Start Braubuddy
 import sys
 import logging
 import cherrypy
-#TODO: clean these up
-from cherrypy.process.plugins import Monitor
-from cherrypy.lib import reprconf
 import braubuddy
 
+
 def main():
-    """ 
+    """
     Start the braubuddy engine and interface.
-    
+
     Involves some creative use of cherrypy's config loader to allow for a
     single user-editable config file.
     """
 
-    braubuddy_config = reprconf.as_dict(braubuddy.CONFIG_FILE_BRAUBUDDY)
+    braubuddy_config = cherrypy.lib.reprconf.as_dict(
+        braubuddy.CONFIG_FILE_BRAUBUDDY)
     cherrypy.config.update(braubuddy_config['global'])
 
     # Engine
-    cherrypy.tree.mount(braubuddy.apps.Engine(), '/engine',
-        config={'outputs': braubuddy_config['outputs']})
+    engine_config = {'outputs': braubuddy_config['outputs']}
+    cherrypy.tree.mount(
+        braubuddy.apps.Engine(), '/engine', config=engine_config)
     # Dashboard
     cherrypy.tree.mount(
         braubuddy.apps.Dashboard(), '', config=braubuddy.CONFIG_FILE_DASHBOARD)
@@ -36,7 +36,7 @@ def main():
     engine_config['outputs']['recent_data'] = braubuddy.RECENT_DATA
 
     # Job to regularly perform thermostat cycle
-    cycle = Monitor(
+    cycle = cherrypy.process.plugins.Monitor(
         cherrypy.engine,
         cherrypy.tree.apps['/engine'].root.cycle,
         frequency=cherrypy.config['frequency'],

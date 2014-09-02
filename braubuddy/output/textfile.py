@@ -29,8 +29,8 @@ class TextFileOutput(IOutput):
     """
 
     def __init__(self, units='celsius', out_file='braubuddy.log',
-            separator=' ', show_labels=False, show_units=True,
-            show_timestamp=True, timestamp_format='%Y-%m-%d %H:%M:%S'):
+                 separator=' ', show_labels=False, show_units=True,
+                 show_timestamp=True, timestamp_format='%Y-%m-%d %H:%M:%S'):
 
         self._out_file = expanduser(out_file)
         self._separator = separator
@@ -41,7 +41,7 @@ class TextFileOutput(IOutput):
         super(TextFileOutput, self).__init__(units)
 
     def publish_status(self, target, temp, heater_percent, cooler_percent):
-        
+
         target_str = target
         temp_str = temp
         heater_str = heater_percent

@@ -3,7 +3,6 @@ from braubuddy import utils
 from braubuddy.thermometer import IThermometer
 
 
-
 class DummyThermometer(IThermometer):
     """
     A dummy thermometer which generates random temperature readings within

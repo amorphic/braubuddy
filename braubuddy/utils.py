@@ -22,12 +22,12 @@ def abbreviate_temp_units(units):
     return conversion_map[units]
 
 
-def convert_temp_units(temperature, units_from='celsius', units_to='fahrenheit'):
+def convert_temp_units(temp, units_from='celsius', units_to='fahrenheit'):
     """
     Convert units of a given temperature value.
 
-    :param temperature: Temperature value to convert.
-    :type temperature: :class:`float`
+    :param temp: Temperature value to convert.
+    :type temp: :class:`float`
     :param units_from: Temperature units to convert from.
     :type units_from: :class:`string`
     :param units_to: Temperature units to convert to.
@@ -37,12 +37,12 @@ def convert_temp_units(temperature, units_from='celsius', units_to='fahrenheit')
     """
     conversion_map = {
         'celsius':      {
-            'fahrenheit':   lambda t: (9.0 / 5.0 * t) + 32,
-            'celsius':      lambda t: t
-        },   
+            'fahrenheit': lambda t: (9.0 / 5.0 * t) + 32,
+            'celsius': lambda t: t
+        },
         'fahrenheit':   {
-            'celsius':      lambda t: (t - 32) * (5.0 / 9.0),
-            'fahrenheit':   lambda t: t
+            'celsius': lambda t: (t - 32) * (5.0 / 9.0),
+            'fahrenheit': lambda t: t
         }
     }
     # Use lowercase units names to catch more input values
@@ -57,11 +57,11 @@ def convert_temp_units(temperature, units_from='celsius', units_to='fahrenheit')
         raise KeyError(
             'Unable to convert from {0!r} to {1!r}'.format(
                 units_from, units_to))
-    return conversion_sub_map[units_to](temperature)
+    return conversion_sub_map[units_to](temp)
 
 
 def map_temp_units_to_symbol(units):
-    """ 
+    """
     Map temperature units to a symbol.
 
     :param units: Temperature units to map. Should be 'celsius',
@@ -69,26 +69,26 @@ def map_temp_units_to_symbol(units):
     :type units: :class:`unicode`
     """
 
-    unit_map =  {
-        'celsius':      {   
+    unit_map = {
+        'celsius':      {
             'symbol':   '°C',
             'aliases':  [
                 'celsius',
                 'Celsius',
                 'C',
-                'c' 
-            ]   
-        },  
-        'fahrenheit':   {   
+                'c'
+            ]
+        },
+        'fahrenheit':   {
             'symbol':   '°F',
             'aliases':  [
                 'fahrenheit',
                 'Fahrenheit',
                 'F',
-                'f' 
-            ]   
-        }   
-    }   
+                'f'
+            ]
+        }
+    }
     for unit, details in unit_map.iteritems():
         if units in details['aliases']:
             return details['symbol']

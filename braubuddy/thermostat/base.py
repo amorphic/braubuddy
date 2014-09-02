@@ -19,7 +19,7 @@ class IThermostat(object):
         :param target: Target temperature.
         :type target: :class:`float`
         """
-    
+
         self._target = target
 
     @property
@@ -35,7 +35,7 @@ class IThermostat(object):
 
     @abc.abstractmethod
     def get_required_state(self, temp, heater_percent, cooler_percent,
-            units='celsius'):
+                           units='celsius'):
         """
         Get the required heater + cooler power levels given the current
         temperature and heater + cooler power levels.

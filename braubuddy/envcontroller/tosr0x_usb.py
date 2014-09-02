@@ -1,5 +1,5 @@
 import tosr0x
-from braubuddy.envcontroller import IEnvController 
+from braubuddy.envcontroller import IEnvController
 from braubuddy.envcontroller import DeviceError
 from braubuddy.envcontroller import PercentageError
 
@@ -28,7 +28,7 @@ class Tosr0xEnvController(IEnvController):
         Internal method.
 
         Get attached Tosr0x devices
-                        
+
         :returns: list of attached Tosr0x devices
         :rtype: :class:`list` of :class:`tosr0x.relayModule`
         """
@@ -52,7 +52,7 @@ class Tosr0xEnvController(IEnvController):
             the range 0-100.
         """
 
-        if percent not in range(0,101):
+        if percent not in range(0, 101):
             msg = '{0} is not in range 0-100'.format(percent)
             raise PercentageError(msg)
         if percent == 0:
@@ -66,7 +66,7 @@ class Tosr0xEnvController(IEnvController):
 
     def set_heater_level(self, percent):
 
-        self._set_relay_from_percent(1, percent)    
+        self._set_relay_from_percent(1, percent)
 
     def set_cooler_level(self, percent):
 

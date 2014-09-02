@@ -27,7 +27,7 @@ class DS18B20Thermometer(IThermometer):
 
     def get_temperature(self, units='celsius'):
         try:
-	        return self._ds18b20_device.get_temperature(unit=UNIT_MAP[units])
+            return self._ds18b20_device.get_temperature(unit=UNIT_MAP[units])
         except Exception as err:
             raise ReadError(
                 'Error reading device temperature: {0}'.format(err))

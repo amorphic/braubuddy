@@ -5,6 +5,7 @@ from datetime import datetime
 from jinja2 import Environment, FileSystemLoader
 import braubuddy
 
+
 class API(object):
     """
     Braubuddy API
@@ -29,7 +30,7 @@ class API(object):
         except ValueError:
             limit = 0
         return braubuddy.RECENT_DATA.get_datapoints(
-                since=since, before=before, limit=limit)
+            since=since, before=before, limit=limit)
 
     @cherrypy.expose
     def set(self, temp):
@@ -42,13 +43,15 @@ class API(object):
             pass
         return 'Temperature set to {0}'.format(temp)
 
+
 class Dashboard(object):
     """
     Braubuddy Dashboard.
     """
 
     def __init__(self):
-        self.j2env = Environment(loader=FileSystemLoader(braubuddy.TEMPLATE_DIR))
+        self.j2env = Environment(
+            loader=FileSystemLoader(braubuddy.TEMPLATE_DIR))
 
     @cherrypy.expose
     def index(self):
@@ -66,9 +69,10 @@ class Dashboard(object):
         return template.render(
             title=cherrypy.config['dashboard_title'],
             frequency=cherrypy.config['frequency'],
-            units = braubuddy.utils.abbreviate_temp_units(
+            units=braubuddy.utils.abbreviate_temp_units(
                 cherrypy.config['units']),
             show_footer=cherrypy.config['dashboard_footer'])
+
 
 class Engine(object):
     """
@@ -106,7 +110,8 @@ class Engine(object):
         envcontroller.set_heater_level(required_heat)
         envcontroller.set_cooler_level(required_cool)
         # Output
-        target = thermostat.target 
+        target = thermostat.target
         for name, output in cherrypy.request.app.config['outputs'].iteritems():
-            output.publish_status(target, current_temp, current_heat, current_cool)
+            output.publish_status(
+                target, current_temp, current_heat, current_cool)
         return True
