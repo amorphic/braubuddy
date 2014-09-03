@@ -7,18 +7,19 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4"></div>
-        <div class="col-md-2">
-            <div class="inline-headers">
-                <h1 id="temp-current">&infin;</h1><h1>&deg;{{ units }}</h1>
-            </div>
+        <div class="col-md-2 inline-headers">
+            <h1><i class="wi wi-thermometer"></i></h1>
+            <h1 id="temp-current">&infin;</h1>
+            <h2>&deg;{{ units }}</h2>
         </div>
         <div class="col-md-2 voffset2">
             <div class="inline-headers">
-                <h5><strong>Target:&nbsp;</strong></h5>
-                <h5 id="temp-target">&infin;</h5><h5>&deg;{{ units }}</h5>
+                <h5><i class="glyphicon glyphicon-screenshot"></i></h5>
+                <h5 id="temp-target">&infin;</h5>
+                <h5>&deg;{{ units }}</h5>
             </div>
             <div class="inline-headers">
-                <h5><strong>Cycle:&nbsp;</strong></h5>
+                <h5><i class="glyphicon glyphicon-repeat"></i></h5>
                 <h5 id="cycle-time">&infin;</h5>
             </div>
         </div>
@@ -26,22 +27,19 @@
     </div>
     <div class="row">
         <div class="col-md-4"></div>
-        <div class="col-md-2">
-            <div class="inline-headers">
-                <h3><i class="glyphicon glyphicon-fire"></i></h3>
-                <h2 id="heat-level">&infin;</h2>
-            </div>
+        <div class="col-md-2 inline-headers">
+            <h3><i class="glyphicon glyphicon-fire"></i></h3>
+            <h2 id="heat-level">&infin;</h2>
         </div>
-        <div class="col-md-2">
-            <div class="inline-headers">
-                <h3><i class="glyphicon glyphicon-asterisk"></i></h3>
-                <h2 id="cool-level">&infin;</h2>
-            </div>
+        <div class="col-md-2 inline-headers">
+            <h2><i class="wi wi-snowflake-cold"></i></h2>
+            <h2 id="cool-level">&infin;</h2>
         </div>
         <div class="col-md-4"></div>
     </div>
     <div class="row">
-        <div class="col-md-3"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-1 text-right"><h3>1h</h3></div>
         <div class="col-md-6">
             <div id="chart-hourly">
                 <svg></svg>
@@ -50,7 +48,8 @@
         <div class="col-md-3"></div>
     </div>
     <div class="row">
-        <div class="col-md-3"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-1 text-right"><h3>24h</h3></div>
         <div class="col-md-6">
             <div id="chart-daily">
                 <svg></svg>
