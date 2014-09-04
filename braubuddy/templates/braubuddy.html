@@ -7,31 +7,30 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3"></div>
-        <div class="col-md-2 inline-headers">
+        <div class="col-md-2 inline-headers text-right">
             <h1><i class="wi wi-thermometer"></i></h1>
             <h1 id="temp-current">&infin;</h1>
             <h2>&deg;{{ units }}</h2>
         </div>
-        <div class="col-md-2 inline-headers">
+        <div class="col-md-2 inline-headers text-right voffset3">
             <div>
-                <h5><i class="glyphicon glyphicon-screenshot"></i></h5>
                 <h4 id="temp-target">&infin;</h4>
-                <h4>&deg;{{ units }}</h4>
+                <h4>&deg;{{ units }}</h4>&nbsp;
+                <h4><i class="glyphicon glyphicon-screenshot"></i></h4>
             </div>
             <div>
-                <h5><i class="glyphicon glyphicon-repeat"></i></h5>
-                <h4 id="cycle-time">&infin;</h4>
+                <h4 id="cycle-time">&infin;</h4>&nbsp;
+                <h4><i class="glyphicon glyphicon-repeat"></i></h4>
             </div>
         </div>
-        <div class="col-md-2 inline-headers">
+        <div class="col-md-2 inline-headers voffset3">
             <div>
                 <h4><i class="glyphicon glyphicon-fire"></i></h4>
-                <h4 id="heat-level">&infin;</h4>
+                &nbsp;<h4 id="heat-level">&infin;</h4>
             </div>
             <div>
                 <h4><i class="glyphicon glyphicon-asterisk"></i></h4>
-                <!--<h4><i class="wi wi-snowflake-cold"></i></h4>-->
-                <h4 id="cool-level">&infin;</h4>
+                &nbsp;<h4 id="cool-level">&infin;</h4>
             </div>
         </div>
         <div class="col-md-3"></div>

@@ -4,7 +4,6 @@
 <head>
 {% block head %}
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
-<link rel="stylesheet" href="/css/weather-icons.min.css" />
 <link rel="stylesheet" href="/css/nv.d3.min.css" />
 <link rel="stylesheet" href="/css/braubuddy.css" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +21,11 @@
 {% block footer %}
 {% if show_footer %}
 <div align=center>
-    <h6>Braubuddy | By <a href="http://jimter.net/">James Stewart</a>.</h6>
+    <h6>
+        <a href="http://braubuddy.org">Braubuddy</a>
+        <i class="glyphicon glyphicon-copyright-mark"></i>
+        <a href="http://jimter.net/">James Stewart</a>
+    </h6>
 </div>
 {% endif %}
 {% endblock %}
