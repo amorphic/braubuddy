@@ -7,33 +7,34 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3"></div>
-        <div class="col-md-2 inline-headers text-center">
+        <div class="col-md-2 inline-headers">
             <h1><i class="wi wi-thermometer"></i></h1>
             <h1 id="temp-current">&infin;</h1>
             <h2>&deg;{{ units }}</h2>
         </div>
-        <div class="col-md-2 inline-headers text-center">
-            <h3><i class="glyphicon glyphicon-fire"></i></h3>
-            <h1 id="heat-level">&infin;</h1>
+        <div class="col-md-2 inline-headers">
+            <div>
+                <h5><i class="glyphicon glyphicon-screenshot"></i></h5>
+                <h4 id="temp-target">&infin;</h4>
+                <h4>&deg;{{ units }}</h4>
+            </div>
+            <div>
+                <h5><i class="glyphicon glyphicon-repeat"></i></h5>
+                <h4 id="cycle-time">&infin;</h4>
+            </div>
         </div>
         <div class="col-md-2 inline-headers">
-            <h2><i class="wi wi-snowflake-cold"></i></h2>
-            <h1 id="cool-level">&infin;</h1>
+            <div>
+                <h4><i class="glyphicon glyphicon-fire"></i></h4>
+                <h4 id="heat-level">&infin;</h4>
+            </div>
+            <div>
+                <h4><i class="glyphicon glyphicon-asterisk"></i></h4>
+                <!--<h4><i class="wi wi-snowflake-cold"></i></h4>-->
+                <h4 id="cool-level">&infin;</h4>
+            </div>
         </div>
         <div class="col-md-3"></div>
-    </div>
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-2 inline-headers text-center">
-            <h5><i class="glyphicon glyphicon-screenshot"></i></h5>
-            <h5 id="temp-target">&infin;</h5>
-            <h5>&deg;{{ units }}</h5>
-        </div>
-        <div class="col-md-2 inline-headers text-center">
-            <h5><i class="glyphicon glyphicon-repeat"></i></h5>
-            <h5 id="cycle-time">&infin;</h5>
-        </div>
-        <div class="col-md-4"></div>
     </div>
     <div class="row">
         <div class="col-md-2"></div>

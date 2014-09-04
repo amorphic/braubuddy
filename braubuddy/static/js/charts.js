@@ -62,7 +62,6 @@ function updateGauges() {
 function processBraubuddyData(json) {
   var target = []; temp = [], heat = [], cool = [];
   for (var i=0; i<json.length; i++) {
-    console.log(json)
     var timestamp = json[i][4]*1000;
     target.push({x: timestamp, y: json[i][0]});
     temp.push({x: timestamp, y: json[i][1]});
