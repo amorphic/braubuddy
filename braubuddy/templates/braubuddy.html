@@ -6,34 +6,32 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-2 inline-headers">
+        <div class="col-md-3"></div>
+        <div class="col-md-2 inline-headers text-center">
             <h1><i class="wi wi-thermometer"></i></h1>
             <h1 id="temp-current">&infin;</h1>
             <h2>&deg;{{ units }}</h2>
         </div>
-        <div class="col-md-2 voffset2">
-            <div class="inline-headers">
-                <h5><i class="glyphicon glyphicon-screenshot"></i></h5>
-                <h5 id="temp-target">&infin;</h5>
-                <h5>&deg;{{ units }}</h5>
-            </div>
-            <div class="inline-headers">
-                <h5><i class="glyphicon glyphicon-repeat"></i></h5>
-                <h5 id="cycle-time">&infin;</h5>
-            </div>
-        </div>
-        <div class="col-md-4"></div>
-    </div>
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-2 inline-headers">
+        <div class="col-md-2 inline-headers text-center">
             <h3><i class="glyphicon glyphicon-fire"></i></h3>
-            <h2 id="heat-level">&infin;</h2>
+            <h1 id="heat-level">&infin;</h1>
         </div>
         <div class="col-md-2 inline-headers">
             <h2><i class="wi wi-snowflake-cold"></i></h2>
-            <h2 id="cool-level">&infin;</h2>
+            <h1 id="cool-level">&infin;</h1>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-2 inline-headers text-center">
+            <h5><i class="glyphicon glyphicon-screenshot"></i></h5>
+            <h5 id="temp-target">&infin;</h5>
+            <h5>&deg;{{ units }}</h5>
+        </div>
+        <div class="col-md-2 inline-headers text-center">
+            <h5><i class="glyphicon glyphicon-repeat"></i></h5>
+            <h5 id="cycle-time">&infin;</h5>
         </div>
         <div class="col-md-4"></div>
     </div>
