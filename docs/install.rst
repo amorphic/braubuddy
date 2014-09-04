@@ -1,6 +1,13 @@
 Install
 =======
 
+Hardware
+^^^^^^^^
+
+To monitor temperature using *Braubuddy* you will need a supported :ref:`thermometer <thermometer>`.
+
+To control temperature you will also need a supported :ref:`environmental controller <envcontroller>`.
+
 Virtualenv
 ----------
 

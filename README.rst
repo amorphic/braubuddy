@@ -41,6 +41,13 @@ The various *Braubuddy* components are designed to be extended. Consult ``CONTRI
 Getting Started
 ---------------
 
+Hardware
+^^^^^^^^
+
+To monitor temperature using *Braubuddy* you will need a supported `thermometer <http://braubuddy.org/components.html#thermometer>`_.
+
+To control temperature you will also need a supported `environmental controller <http://braubuddy.org/components.html#envcontroller>`_.
+
 Install
 ^^^^^^^
 

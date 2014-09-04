@@ -45,9 +45,9 @@ Tosr0x USB
 ^^^^^^^^^^
 .. autoclass:: braubuddy.envcontroller.tosr0x_usb.Tosr0xEnvController
 
-.. _thermostat:
-
 ----
+
+.. _thermostat:
 
 Thermostat
 ----------
