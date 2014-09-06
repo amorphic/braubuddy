@@ -71,7 +71,9 @@ class Dashboard(object):
             frequency=cherrypy.config['frequency'],
             units=braubuddy.utils.abbreviate_temp_units(
                 cherrypy.config['units']),
-            show_footer=cherrypy.config['dashboard_footer'])
+            show_footer=cherrypy.config['dashboard_footer'],
+            year=datetime.now().year,
+        )
 
 
 class Engine(object):
