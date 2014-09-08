@@ -15,7 +15,7 @@ Background
 Dedicated temperature management devices suffer various limitations:
 
 * Thermostat algorithms often can not be customised.
-* Adjusting settings and monitoring temperature readings requires physical access.
+* Adjusting settings and monitoring temperature readings require physical access.
 * Output is limited to a simple digital display and no historical data is retained.
 * Heater/cooler control is limited to switching mains power on/off.
 * Changes to target temperature cannot be scheduled.
@@ -46,4 +46,4 @@ Outputs
 Extensible
 ^^^^^^^^^^
 
-The various *Braubuddy* :ref:`components` are designed to be extended. Consult the :ref:`guidelines <contribute>` if you'd like to request or contribute support for a particular component.
+The various *Braubuddy* :ref:`components <components>` are designed to be extended. Consult the :ref:`contribution guidelines <contribute>` if you'd like to request or contribute support for a particular component.

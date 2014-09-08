@@ -4,9 +4,11 @@ Components
 ==========
 *Braubuddy* brings together a number of components to control and monitor temperature.
 
-A growing list of :ref:`thermometers <thermometer>`, :ref:`environmental controllers <envcontroller>`, :ref:`thermostat algorithms <thermostat>` and :ref:`outputs <output>` are supported.
+.. image:: ../images/diagrams/components.png
 
-Consult the :ref:`guidelines <contribute>` if you'd like to request or contribute support for a particular component.
+A growing list of :ref:`thermometers <thermometer>`, :ref:`environmental controllers <envcontroller>`, :ref:`thermostats <thermostat>` and :ref:`outputs <output>` are supported.
+
+Consult the :ref:`contribution guidelines <contribute>` if you'd like to request or contribute support for a particular component.
 
 .. _thermometer:
 
