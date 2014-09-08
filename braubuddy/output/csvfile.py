@@ -15,10 +15,10 @@ class CSVFileOutput(TextFileOutput):
     :type out_file: :class:`str`
     :param show_timestamp: Add timestamp to output values, (e.g.
         2014-01-01 06:40 Temperature:40°C).
-    :type: :class:`bool`
+    :type show_timestamp: :class:`bool`
     :param timetamp_format: A timestamp format parseable by
         :func:`datetime.datetime.strftime`, (e.g. '%Y-%m-%d %H:%M:%S').
-    :type: :class:`str`
+    :type timestamp_format: :class:`str`
     """
 
     def __init__(self, units='celsius', out_file='braubuddy.csv',
