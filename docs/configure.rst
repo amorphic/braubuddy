@@ -63,14 +63,14 @@ Parameters
 +-------------+-------------------+---------------+--------------------------------------+------------------------------+
 
 .. |thermometer| replace:: :ref:`thermometer`
-.. |ithermometer| replace:: :class:`braubuddy.thermometer.IThermometer`
+.. |ithermometer| replace:: :class:`IThermometer`
 .. |thermometer_auto| replace:: :ref:`AutoThermometer`
 .. |envcontroller| replace:: :ref:`Environmental Controller <envcontroller>` 
-.. |iecontroller| replace:: :class:`braubuddy.envcontoller.IEnvcontroller`
+.. |iecontroller| replace:: :class:`IEnvcontroller`
 .. |econtroller_auto| replace:: :ref:`AutoEnvController`
 .. |thermostat| replace:: :ref:`thermostat` 
-.. |ithermostat| replace:: :class:`braubuddy.thermostat.IThermostat`
+.. |ithermostat| replace:: :class:`IThermostat`
 .. |thermostat_simpleranged| replace:: :ref:`SimpleRangedThermostat`
 .. |outputs| replace:: :ref:`outputs <output>` 
-.. |ioutput| replace:: :class:`braubuddy.output.IOutput`
+.. |ioutput| replace:: :class:`IOutput`
 .. _XDG Base Directory Specification: http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
