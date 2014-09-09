@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='braubuddy',
-    version='0.2.0',
+    version='0.3.0',
     author='James Stewart',
     author_email='jstewart101@gmail.com',
     description='An extensile thermostat framework',
