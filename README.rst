@@ -1,7 +1,7 @@
 |logo| Braubuddy
 ================
 
-|travis|
+|travis| |downloads| 
 
 *Braubuddy* is a temperature management framework written in Python.
 
@@ -99,6 +99,10 @@ The example config file use default targets and automatically attempts to find a
 .. |travis| image:: https://travis-ci.org/amorphic/braubuddy.svg?branch=master
   :alt: Braubuddy CI
   :target: https://travis-ci.org/amorphic/braubuddy
+
+.. |downloads| image:: https://pypip.in/download/braubuddy/badge.svg
+  :target: https://pypi.python.org/pypi/braubuddy/
+  :alt: Downloads
 
 .. |logo| image:: images/logo/bb_logo_24x24.png
   :alt: Braubuddy web application
