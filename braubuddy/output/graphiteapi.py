@@ -11,9 +11,9 @@ class GraphiteAPIOutput(IOutput):
     :param units: Temperature units to output. Use 'celsius' or
         'fahrenheit'.
     :type units: :class:`str`
-    :param host: Graphite service host name or IP address.
+    :param host: Graphite host name or IP address.
     :type host: :class:`str`
-    :param port: Graphite service port.
+    :param port: Graphite port.
     :type port: class:`int`
     :param prefix: Graphite metric prefix.
     :type prefix: :class:`str`
@@ -22,18 +22,18 @@ class GraphiteAPIOutput(IOutput):
     def __init__(self, units='celsius', host='graphite.example.com',
                  port=2003, prefix='braubuddy'):
 
-        self._service = graphitesend.init(
+        self._api = graphitesend.init(
             graphite_server=host,
             graphite_port=port,
             prefix=prefix,
             system_name='',
         )
-        super(GraphiteServiceOutput, self).__init__(units)
+        super(GraphiteAPIOutput, self).__init__(units)
 
     def publish_status(self, target, temp, heater_percent, cooler_percent):
 
         try:
-            self._service.send_dict({
+            self._api.send_dict({
                 'target_temp':      target,
                 'actual_temp':      temp,
                 'heater_percent':   heater_percent,
