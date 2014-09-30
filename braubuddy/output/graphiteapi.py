@@ -1,4 +1,4 @@
-import graphitesend 
+import graphitesend
 from cherrypy import log
 from braubuddy.output import IOutput
 from braubuddy.output import OutputError
@@ -38,8 +38,7 @@ class GraphiteAPIOutput(IOutput):
                 'actual_temp':      temp,
                 'heater_percent':   heater_percent,
                 'cooler_percent':   cooler_percent,
-              })
+            })
         except Exception as err:
             raise OutputError(
                 'Error publishing to Graphite service: {0}'.format(err))
-
