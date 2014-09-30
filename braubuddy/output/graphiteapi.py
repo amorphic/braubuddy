@@ -1,13 +1,12 @@
 import graphitesend 
-from os.path import expanduser
 from cherrypy import log
 from braubuddy.output import IOutput
 from braubuddy.output import OutputError
 
 
-class GraphiteServiceOutput(IOutput):
+class GraphiteAPIOutput(IOutput):
     """
-    Output to a Graphite service.
+    Output to the `Graphite <http://metrics.librato.com>`_ API.
 
     :param units: Temperature units to output. Use 'celsius' or
         'fahrenheit'.

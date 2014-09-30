@@ -8,4 +8,5 @@ from braubuddy.output.textfile import TextFileOutput
 from braubuddy.output.csvfile import CSVFileOutput
 from braubuddy.output.jsonfile import JSONFileOutput
 from braubuddy.output.listmemory import ListMemoryOutput
-from braubuddy.output.graphiteservice import GraphiteServiceOutput
+from braubuddy.output.graphiteapi import GraphiteAPIOutput
+from braubuddy.output.libratoapi import LibratoAPIOutput
