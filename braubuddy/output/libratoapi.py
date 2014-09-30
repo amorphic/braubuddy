@@ -26,7 +26,7 @@ class LibratoAPIOutput(IOutput):
                  source='braubuddy'):
 
         self._source = source
-        self._api = librato.connect(user, token)
+        self._api = librato.connect(username, token)
         super(LibratoAPIOutput, self).__init__(units)
 
     def publish_status(self, target, temp, heater_percent, cooler_percent):
