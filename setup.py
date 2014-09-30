@@ -26,7 +26,7 @@ setup(
         'jinja2>=2.7.0',
         'mock>=1.0,<2.0',
         'alabaster>=0.6.0',
-        'graphitesend>0.3.4,<0.4',
+        'graphitesend>=0.3.4,<0.4',
     ],
     classifiers=[
         'Development Status :: 4 - Beta',
