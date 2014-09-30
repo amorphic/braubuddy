@@ -55,5 +55,4 @@ thermostat: braubuddy.thermostat.SimpleRangedThermostat(20, lower_out=2, lower_i
 # Graphite API
 ##graphite_out: braubuddy.output.GraphiteAPIOutput(host='localhost', port=2003, prefix='braubuddy')
 # Librato API
-##librato_out: braubuddy.output.LibratoAPIOutput(units='celsius', username='myusername', token='mytoken',
-                 source='braubuddy') 
+##librato_out: braubuddy.output.LibratoAPIOutput(units='celsius', username='myusername', token='mytoken', source='braubuddy') 
