@@ -41,4 +41,4 @@ class GraphiteAPIOutput(IOutput):
             })
         except Exception as err:
             raise OutputError(
-                'Error publishing to Graphite service: {0}'.format(err))
+                'Error publishing to Graphite API: {0}'.format(err))
