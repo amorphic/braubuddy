@@ -33,7 +33,7 @@ class LibratoAPIOutput(IOutput):
 
         queue = self._api.new_queue()
         queue.add('target_temperature', target, source=self._source)
-        queue.add('actual_temperature', temp, source=self.source)
+        queue.add('actual_temperature', temp, source=self._source)
         queue.add('heater_percent', heater_percent, source=self._source)
         queue.add('cooler_percent', cooler_percent, source=self._source)
         try:
