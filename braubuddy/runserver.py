@@ -3,7 +3,6 @@ Start Braubuddy
 """
 
 import sys
-import logging
 import cherrypy
 import braubuddy
 
