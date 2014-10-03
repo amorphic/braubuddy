@@ -28,6 +28,7 @@ setup(
         'alabaster>=0.6.0',
         'graphitesend>=0.3.4,<0.4',
         'python-librato>=0.4.12,<0.5',
+        'python-twitter>=2.0,<3',
     ],
     classifiers=[
         'Development Status :: 4 - Beta',
