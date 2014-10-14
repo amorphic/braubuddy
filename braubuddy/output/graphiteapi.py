@@ -1,5 +1,4 @@
 import graphitesend
-from cherrypy import log
 from braubuddy.output import IOutput
 from braubuddy.output import OutputError
 

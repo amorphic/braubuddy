@@ -3,7 +3,6 @@
 Braubuddy CSVFileOutput unit tests
 """
 
-import re
 from tempfile import NamedTemporaryFile
 from braubuddy.tests import BraubuddyTestCase
 from braubuddy.output import csvfile

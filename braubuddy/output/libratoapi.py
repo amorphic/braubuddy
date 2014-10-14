@@ -1,5 +1,4 @@
 import librato
-from cherrypy import log
 from braubuddy.output import IOutput
 from braubuddy.output import OutputError
 
@@ -18,8 +17,8 @@ class LibratoAPIOutput(IOutput):
     :type username: :class:`str`
     :param token: Librato token.
     :type token: class:`str`
-    :param prefix: Graphite metric prefix.
-    :type prefix: :class:`str`
+    :param source: Librato metric source.
+    :type source: :class:`str`
     """
 
     def __init__(self, units='celsius', username='myusername', token='mytoken',

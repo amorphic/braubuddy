@@ -3,7 +3,7 @@ Braubuddy JSONFileOutput unit tests
 """
 
 import json
-from random import randrange 
+from random import randrange
 from time import time
 from tempfile import NamedTemporaryFile
 from braubuddy.tests import BraubuddyTestCase
@@ -37,7 +37,7 @@ class JSONFileOutput(BraubuddyTestCase):
         # publish metrics
         for d in range(20):
             target = 20
-            temp = randrange(15,25)
+            temp = randrange(15, 25)
             if temp > target:
                 heat = 0
                 cool = 100
@@ -45,8 +45,8 @@ class JSONFileOutput(BraubuddyTestCase):
                 heat = 100
                 cool = 0
             else:
-                heat=0
-                cool=0
+                heat = 0
+                cool = 0
             now = int(time())
             output.publish_status(target, temp, heat, cool)
             expected.append([target, temp, heat, cool, now])

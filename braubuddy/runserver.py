@@ -15,10 +15,19 @@ def main():
     single user-editable config file.
     """
 
-    braubuddy_config = cherrypy.lib.reprconf.as_dict(
-        braubuddy.CONFIG_FILE_BRAUBUDDY)
-    cherrypy.config.update(braubuddy_config['global'])
+    # First load everything fron the config file into a dict. 
+    try:
+        braubuddy_config = cherrypy.lib.reprconf.as_dict(
+            braubuddy.CONFIG_FILE_BRAUBUDDY)
+    except Exception as err:
+        print err
+        return -1
+    
+    # Now initialise the various parts of the application with the relevant
+    # pieces of config.
 
+    # Global
+    cherrypy.config.update(braubuddy_config['global'])
     # Engine
     engine_config = {'outputs': braubuddy_config['outputs']}
     cherrypy.tree.mount(

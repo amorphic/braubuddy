@@ -38,7 +38,7 @@ class IOutput(object):
         try:
             self.units = utils.map_temp_units_to_symbol(new_units)
         except:
-            raise OutputError('Unrecognised units: {0}'.format(units))
+            raise OutputError('Unrecognised units: {0}'.format(new_units))
 
     @abc.abstractmethod
     def publish_status(self, target, temp, heater_percent, cooler_percent):
