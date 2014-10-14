@@ -10,3 +10,4 @@ from braubuddy.output.jsonfile import JSONFileOutput
 from braubuddy.output.listmemory import ListMemoryOutput
 from braubuddy.output.graphiteapi import GraphiteAPIOutput
 from braubuddy.output.libratoapi import LibratoAPIOutput
+from braubuddy.output.twitterapi import TwitterAPIOutput
