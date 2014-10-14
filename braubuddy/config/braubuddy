@@ -56,3 +56,5 @@ thermostat: braubuddy.thermostat.SimpleRangedThermostat(20, lower_out=2, lower_i
 ##graphite_out: braubuddy.output.GraphiteAPIOutput(host='localhost', port=2003, prefix='braubuddy')
 # Librato API
 ##librato_out: braubuddy.output.LibratoAPIOutput(units='celsius', username='myusername', token='mytoken', source='braubuddy') 
+# Twitter API
+##twitter_out: braubuddy.output.TwitterAPIOutput(units='celsius', frequency=1440, message='Environment Status: Temp {temp}{units} | Target {target}{units} | Heat {heat}% | Cool {cool}% #braubuddy')
