@@ -32,7 +32,6 @@ class JSONFileOutput(IOutput):
         try:
             with open(self._out_file, 'r') as fh:
                 status_history = json.loads(fh.read())
-            fh.close()
         except (IOError, ValueError):
             # No existing file or invalid JSON so start with no datapoints
             status_history = []
@@ -51,6 +50,8 @@ class JSONFileOutput(IOutput):
                 status_history.pop(0)
         # Write status history JSON to file
         new_json = json.dumps(status_history)
-        fh = open(self._out_file, 'w+')
-        fh.write(new_json)
-        fh.close()
+        try:
+            with open(self._out_file, 'w+') as fh:
+                fh.write(new_json)
+        except (IOError, ValueError) as err:
+            raise OutputError(err)
