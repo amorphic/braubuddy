@@ -5,6 +5,7 @@ Braubuddy ListMemory unit tests
 from braubuddy.tests import BraubuddyTestCase
 from braubuddy.output import listmemory
 
+
 class TestListMemory(BraubuddyTestCase):
 
     def test_published_datapoint_returned(self):
