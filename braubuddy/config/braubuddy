@@ -52,6 +52,8 @@ thermostat: braubuddy.thermostat.SimpleRangedThermostat(20, lower_out=2, lower_i
 ##csv_out: braubuddy.output.CSVFileOutput(out_file='~/braubuddy.csv', show_timestamp=True, timestamp_format='%Y-%m-%d %H:%M:%S')
 # JSON file
 ##json_out: braubuddy.output.JSONFileOutput(out_file='~/braubuddy.json', datapoint_limit=44640)
+# Image file
+##image_out: braubuddy.output.ImageFileOutput(units='celsius', out_file='braubuddy.png', out_format='png', chart_title='Braubuddy', chart_mins=10080, x_label_mins=60)
 # Graphite API
 ##graphite_out: braubuddy.output.GraphiteAPIOutput(host='localhost', port=2003, prefix='braubuddy')
 # Librato API

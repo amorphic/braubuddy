@@ -17,8 +17,8 @@ setup(
         ]
     },
     install_requires=[
-        'pyserial>=2.0',
         'tosr0x>=0.2.0',
+        'pyserial>=2.0',                # required for tosr0x
         'temperusb>=1.2.0',
         'ds18b20>=0.01.03',
         'cherrypy>=3.2.2',
@@ -29,6 +29,11 @@ setup(
         'graphitesend>=0.3.4,<0.4',
         'librato-metrics>=0.4.12,<0.5',
         'twitter>=1.15,<2',
+        'pygal>=1.5.1,<2',
+        'cairosvg>=1.0.9,<2',           # required for pygal png
+        'tinycss>=0.3,<0.4',            # required for pygal png
+        'cssselect>=0.9.1,<0.10',       # required for pygal png
+        'lxml>=3.4,<4',                 # required for pygal png
     ],
     classifiers=[
         'Development Status :: 4 - Beta',
