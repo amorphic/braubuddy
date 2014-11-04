@@ -23,3 +23,6 @@ pip-log.txt
 
 # Todo list
 .todo
+
+# Temp files
+*.swp
