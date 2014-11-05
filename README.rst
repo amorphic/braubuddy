@@ -5,7 +5,7 @@
 
 *Braubuddy* is a temperature management framework written in Python.
 
-Conceived as a means of monitoring and controlling the fermentation temperature of beer, *Braubuddy* can be used in any situation requiring precise temperature control:
+Conceived as a means of monitoring and controlling the fermentation temperature of beer, *Braubuddy* can be used in any situation where visibility and/or control of temperature is critical:
 
 - Keep tropical fish swimming happily in water that's 26°C 
 - Brew a perfect lager by fermenting at a constant 9°C
@@ -31,7 +31,7 @@ Time-series temperature, heating and cooling metrics may be consumed programatic
 Outputs
 ^^^^^^^
 
-*Braubuddy* outputs allow metric values to be recorded in a variety of formats or published directly to external services.
+*Braubuddy* outputs allow metric values to be recorded in a variety of formats or published directly to external services including Graphite, Librato and Twitter.
 
 Extensible
 ^^^^^^^^^^
