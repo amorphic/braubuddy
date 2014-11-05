@@ -26,3 +26,6 @@ pip-log.txt
 
 # Temp files
 *.swp
+
+# Build dir
+docs/_build
