@@ -16,8 +16,9 @@ class ImageFileOutput(IOutput):
     """
     Output chart to an image file.
 
-    .. todo::
-        Heating/cooling as bars on 2nd y axis (pending support in pygal).
+    .. note::
+        Heating/cooling as bars with values on 2nd y axis are pending support
+        for mixed bar/line graphs in :mod:`pygal`.
 
     :param units: Temperature units to output. Use 'celsius' or
         'fahrenheit'.

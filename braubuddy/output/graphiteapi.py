@@ -5,7 +5,13 @@ from braubuddy.output import OutputError
 
 class GraphiteAPIOutput(IOutput):
     """
-    Output to the `Graphite <http://metrics.librato.com>`_ API.
+    Output to the `Graphite <http://graphite.wikidot.com/>`_ API.
+
+    .. note:: This output may also be used to publish to
+        `Hosted Graphite <https://www.hostedgraphite.com>`_. Simply prepend
+        the `prefix` kwarg with your API key as described in the Hosted
+        Graphite
+        `docs <http://docs.hostedgraphite.com/languageguide/lg_python.html>`_.
 
     :param units: Temperature units to output. Use 'celsius' or
         'fahrenheit'.

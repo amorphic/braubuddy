@@ -85,17 +85,29 @@ JSONFile
 ^^^^^^^^
 .. autoclass:: braubuddy.output.jsonfile.JSONFileOutput
 
+.. _imagefile:
+
+ImageFile
+^^^^^^^^^
+.. autoclass:: braubuddy.output.imagefile.ImageFileOutput
+
 .. _graphiteapi:
 
 GraphiteAPI
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^
 .. autoclass:: braubuddy.output.graphiteapi.GraphiteAPIOutput
 
 .. _libratoapi:
 
 LibratoAPI
-^^^^^^^^^^^^^^^
+^^^^^^^^^^
 .. autoclass:: braubuddy.output.libratoapi.LibratoAPIOutput
+
+.. _twitterapi:
+
+TwitterAPI
+^^^^^^^^^^
+.. autoclass:: braubuddy.output.twitterapi.TwitterAPIOutput
 
 .. _listmemory:
 

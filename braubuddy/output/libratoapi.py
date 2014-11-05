@@ -8,7 +8,7 @@ class LibratoAPIOutput(IOutput):
     Output to the `Librato <http://metrics.librato.com>`_ API.
 
     Requires a Librato username and token, both found on the
-        `Account Settings page <https://metrics.librato.com/account>`.
+        `Account Settings page <https://metrics.librato.com/account>`_.
 
     :param units: Temperature units to output. Use 'celsius' or
         'fahrenheit'.

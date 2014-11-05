@@ -19,14 +19,11 @@ class TwitterAPIOutput(IOutput):
     """
     Output to the `Twitter <http://www.twitter.com>`_ API.
 
-    ..note:: When first run this output will attempt to authorise Braubuddy to
+    .. note::
+    
+        When first run this output will attempt to authorise Braubuddy to
         publish to the user's Twitter account. The resulting credentials are
         then retained for future use.
-
-    TODO:
-
-        * optionally add an image by piggybacking on the forthcoming image
-            output (extend or call a static method)
 
     :param units: Temperature units to output. Use 'celsius' or
         'fahrenheit'.
