@@ -61,7 +61,7 @@ Install
 Production
 ~~~~~~~~~~
 
-Install the latest production release from `PyPI <https://pypi.python.org/>`_ using `pip <http://www.pip-installer.org/>`_:
+Install the latest production release from `PyPI <https://pypi.python.org/>`:
 
 ::
 
