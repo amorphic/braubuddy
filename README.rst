@@ -31,7 +31,7 @@ Time-series temperature, heating and cooling metrics may be consumed programatic
 Outputs
 ^^^^^^^
 
-*Braubuddy* outputs allow metric values to be recorded in a variety of formats or published directly to external services including Graphite, Librato and Twitter.
+*Braubuddy* outputs allow metric values to be recorded in a variety of formats or published directly to external services including Graphite, Librato, Dweet and Twitter.
 
 Extensible
 ^^^^^^^^^^
