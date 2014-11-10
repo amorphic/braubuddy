@@ -84,4 +84,5 @@ class TwitterAPIOutput(IOutput):
             self._api.statuses.update(status=message)
             self._last_published = datetime.now()
         except Exception as err:
-            raise OutputError(err)
+            raise OutputError(
+                'Error publishing to Twitter API: {0}'.format(err))
