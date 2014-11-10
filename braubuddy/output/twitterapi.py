@@ -20,7 +20,7 @@ class TwitterAPIOutput(IOutput):
     Output to the `Twitter <http://www.twitter.com>`_ API.
 
     .. note::
-    
+
         When first run this output will attempt to authorise Braubuddy to
         publish to the user's Twitter account. The resulting credentials are
         then retained for future use.
