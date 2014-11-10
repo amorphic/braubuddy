@@ -2,10 +2,10 @@ from setuptools import setup, find_packages
 
 setup(
     name='braubuddy',
-    version='0.3.0',
+    version='0.4.0',
     author='James Stewart',
     author_email='jstewart101@gmail.com',
-    description='An extensile thermostat framework',
+    description='An extensile temperature management framework.',
     long_description=open('README.rst').read(),
     license='LICENSE.txt',
     packages=find_packages(),
