@@ -1,6 +1,5 @@
-import os
 from datetime import datetime
-import dweepy 
+import dweepy
 from braubuddy.output import IOutput
 from braubuddy.output import OutputError
 
