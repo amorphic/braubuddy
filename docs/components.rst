@@ -103,6 +103,12 @@ LibratoAPI
 ^^^^^^^^^^
 .. autoclass:: braubuddy.output.libratoapi.LibratoAPIOutput
 
+.. _dweetapi:
+
+DweetAPI
+^^^^^^^^^^
+.. autoclass:: braubuddy.output.dweetapi.DweetAPIOutput
+
 .. _twitterapi:
 
 TwitterAPI
