@@ -11,4 +11,5 @@ from braubuddy.output.imagefile import ImageFileOutput
 from braubuddy.output.listmemory import ListMemoryOutput
 from braubuddy.output.graphiteapi import GraphiteAPIOutput
 from braubuddy.output.libratoapi import LibratoAPIOutput
+from braubuddy.output.dweetapi import DweetAPIOutput
 from braubuddy.output.twitterapi import TwitterAPIOutput

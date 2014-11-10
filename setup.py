@@ -34,6 +34,7 @@ setup(
         'tinycss>=0.3,<0.4',            # required for pygal png
         'cssselect>=0.9.1,<0.10',       # required for pygal png
         'lxml>=3.4,<4',                 # required for pygal png
+        'dweepy>=0.0.1,<0.0.2',
     ],
     classifiers=[
         'Development Status :: 4 - Beta',
