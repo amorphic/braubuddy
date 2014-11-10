@@ -1,5 +1,5 @@
 """
-Braubuddy LibratoAPI unit tests
+Braubuddy LibratoAPI unit tests.
 """
 
 from mock import call, patch, MagicMock
