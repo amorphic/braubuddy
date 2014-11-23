@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='braubuddy',
-    version='0.4.1',
+    version='0.4.2',
     author='James Stewart',
     author_email='jstewart101@gmail.com',
     description='An extensile temperature management framework.',
@@ -19,7 +19,7 @@ setup(
     install_requires=[
         'tosr0x>=0.2.0,<0.3.0',
         'pyserial>=2.0,<3.0',           # required for tosr0x
-        'temperusb>=1.2.2,<1.3',
+        'temperusb>=1.2.3,<1.3',
         'ds18b20>=0.01.03',
         'cherrypy>=3.2.2,<4.0',
         'pyxdg>=0.25',
